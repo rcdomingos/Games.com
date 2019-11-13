@@ -1,0 +1,270 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+/*----- CORES PADRÃO -----*/
+/*background*/
+.bk-laranja {
+  background-color: #ff6f00;
+}
+
+.bk-escuro {
+  background-color: #20232c;
+}
+/*Fonte color*/
+.ft-laranja {
+  color: #ff6f00;
+}
+.ft-escuro {
+  color: #20232c;
+}
+
+.ft-branca {
+  color: #ffffff;
+}
+
+/*Titulo padrão da home*/
+.tt-header-wrap {
+  width: 100%;
+  position: relative;
+  background: linear-gradient(to right, #20232c, #20232c, #ff6f00);
+  padding: 3px;
+  border-radius: 7px;
+}
+
+.tt-header {
+  /* background: linear-gradient(to right, #20232c,#20232c, #ff6f00); */
+  background: url(../images/icones/plus-control.png) no-repeat;
+  background-position: center right;
+  background-size: contain;
+  color: white;
+  padding: 1rem;
+}
+
+/*---------- menu princiapl-------------*/
+.menu-principal {
+  width: 100%;
+}
+
+#icon-logo {
+  height: 50px;
+  padding: 5px;
+}
+
+#lista-menu {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+
+#lista-menu ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  width: inherit;
+  text-align: center;
+}
+
+#lista-menu ul li {
+  display: inline;
+  margin: 0 auto;
+}
+
+#lista-menu ul li a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 18px;
+  width: 20%;
+}
+
+#lista-menu span img {
+  height: 40px;
+}
+
+#lista-menu span {
+  display: inline-block;
+  padding-right: 12px;
+  vertical-align: middle;
+}
+
+.border-button {
+  transition: background-color 0.2s linear;
+  border-radius: 70px;
+  margin: 4px 2px;
+}
+
+.border-button:hover {
+  background-color: #fff;
+  color: #000000;
+}
+
+.border-button:active {
+  background-color: #20232c;
+}
+/*---------estilos do form de pesquisa------------------*/
+.box-search {
+  border-radius: 70px;
+  height: 40px;
+  width: 100%;
+  padding: 0px;
+  margin: 5px auto;
+}
+
+/*estilo do campo de input*/
+.input-search {
+  height: 40px;
+  border: none;
+  border-radius: 70px;
+  width: 89%;
+  padding-left: 10px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.box-search span {
+  width: 11%;
+  float: right;
+}
+
+/* estilos do botão lupa*/
+.btn-search {
+  color: #ff6f00;
+  border: 2px solid #ff6f00;
+  border-radius: 100%;
+  cursor: pointer;
+  outline: none;
+  width: 40px;
+  height: 40px;
+  float: right;
+  /* font-size: 15px; */
+}
+
+.btn-search svg {
+  fill: #ff6f00;
+  stroke: #ff6f00;
+  stroke-width: 5;
+}
+
+/*opções do carrinho */
+.carrinho {
+  padding: 5px;
+}
+.carrinho img {
+  height: 50px;
+}
+
+/* opções de entrar ou cadastrar */
+#icone-user {
+  height: 50px;
+  padding-top: 5px;
+  vertical-align: top;
+}
+
+.menu-entrar {
+  display: inline-block;
+}
+
+.menu-entrar img {
+  width: 50px;
+  padding: 5px;
+}
+
+.menu-entrar ul {
+  list-style: none;
+  margin-left: -25px;
+}
+
+.menu-entrar ul li a {
+  text-decoration: none;
+}
+
+.menu-entrar ul li a {
+  color: #20232c;
+}
+
+.menu-entrar ul li:last-child a {
+  color: #fff;
+}
+
+/* --------------FOOTER--------------*/
+#lista-footer {
+  padding: 0px;
+  margin: 0px;
+}
+
+#lista-footer li a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 18px;
+  width: 250px;
+}
+
+#lista-footer ul {
+  list-style: none;
+  text-align: left;
+}
+
+#lista-footer img {
+  height: 35px;
+  vertical-align: middle;
+  padding: 2px 15px;
+}
+
+#logo-footer {
+  padding: 5px;
+  width: 200px;
+}
+
+input[type="search"],
+input[type="submit"] {
+  outline: none;
+}
+
+/*Destques*/
+section.destaques {
+  max-height: 400px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+#carroselDestaques img {
+  max-height: 400px;
+}
+
+/* .card-home .btn-comprar{
+  visibility: hidden;
+ } */
+
+img.img-cover {
+  max-height: 270px;
+}
+
+.card-home {
+  transition: box-shadow 0.3s ease;
+}
+
+.card-home:hover {
+  box-shadow: 0px 0px 12px 0 #dadada;
+}
+
+/* .card-home:hover .btn-comprar{
+  visibility: visible;
+} */
+
+.btn-comprar {
+  background-color: #ff6f00;
+  color: #20232c;
+  border: 1px solid #20232c;
+  transition: all 0.3s ease;
+}
+
+.card-home .card-footer {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s ease, opacity 0.3s ease;
+}
+
+.card-home:hover .card-footer {
+  visibility: visible;
+  opacity: 1;
+}
