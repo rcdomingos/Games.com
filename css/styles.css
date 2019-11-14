@@ -285,3 +285,229 @@ img.img-cover {
 img.img-detalhe{
   max-height: 500px;
 }
+
+/* --------------PÁGINA PLAYSTATION RENATA--------------*/
+
+.imagem-principal-playstation{
+  width: 100%;
+  height: 300px;
+  background-image: url(../images/playstation-principal.png);
+  background-size: cover;
+  margin-top: -0.99rem !important;
+
+}
+
+.caixa-playstation{
+  text-align: left;
+  margin-left: 35px;
+  padding-top: 15px;
+  width: 45%;
+
+}
+
+.display-playstation{
+  color: rgb(255, 255, 255);
+  padding-top: 25px;
+}
+
+.display-playstation-2{
+  color: rgba(255, 255, 255, 0.842);
+  padding-top: 15px;
+}
+
+.jogos-playstation{
+  width: 200px;
+  height: 300px;
+  background-image: url(../images/xbox-jogo-1.png);
+  background-size: cover;
+  margin-left: 20px;
+
+}
+
+.divisorias-games{
+  border: 1px solid
+  rgb(102, 102, 102);
+  border-top-color: rgb(48, 4, 241);
+  border-top-style: solid;
+  border-top-width: 1px;
+  width: 100%;
+}
+
+
+
+/* --------------PÁGINA XBOX RENATA--------------*/
+
+.imagem-principal-xbox{
+  width: 100%;
+  height: 300px;
+  background-image: url(../images/xbox-principal.png);
+  background-size: cover;
+  margin-top: -0.99rem !important;
+
+}
+
+.caixa-xbox{
+  text-align: left;
+  margin-left: 35px;
+  padding-top: 15px;
+  width: 45%;
+
+}
+
+.display-xbox{
+  color: rgb(255, 255, 255);
+  padding-top: 25px;
+}
+
+.display-xbox-2{
+  color: rgba(255, 255, 255, 0.849);
+  padding-top: 15px;
+}
+
+
+
+/* --------------PÁGINA NINTENDO RENATA--------------*/
+
+.imagem-principal-nintendo{
+  width: 100%;
+  height: 300px;
+  background-image: url(../images/nintendo-principal);
+  background-size: cover;
+  margin-top: -0.99rem !important;
+
+}
+
+.caixa-nintendo{
+  text-align: left;
+  margin-left: 35px;
+  padding-top: 15px;
+  width: 45%;
+
+}
+
+.display-nintendo{
+  color: rgb(255, 255, 255);
+  padding-top: 25px;
+}
+
+.display-nintendo-2{
+  color: rgba(255, 255, 255, 0.822);
+  padding-top: 15px;
+}
+
+
+
+/* --------------PÁGINA TODOS RENATA--------------*/
+
+.imagem-principal-todos{
+  width: 100%;
+  height: 300px;
+  background-image: url(../images/todos-principal.png);
+  background-size: cover;
+  margin-top: -0.99rem !important;
+}
+
+.efeito-hov:hover{
+  background-color: #ff6f00;
+  border-color: #ff6f00;
+}
+
+.caixa-todos{
+  text-align: left;
+  margin-left: 35px;
+  padding-top: 15px;
+  width: 45%;
+}
+
+.display-todos{
+  color: rgb(7, 7, 7);
+  padding-top: 25px;
+}
+
+.display-todos-2{
+  color: rgba(0, 0, 0, 0.699);
+  padding-top: 15px;
+}
+
+
+/* --------------PÁGINA CADASTRO CLIENTES RENATA--------------*/
+
+.principal-cadastro{
+  width: 100%;
+  height: 100px;
+}
+.principal-cadastro:hover{
+  background-color: #000000;
+  border-color: rgba(0, 0, 0, 0);
+  color: #ff6f00;
+}
+
+/* .efeito:hover{
+  background-color: #ff6f00;
+  border-color: rgba(0, 0, 0, 0);
+} */
+
+.caixa-cadastro{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+}
+
+.paragrafo-cadastro{
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.divisor-cadastro{
+  margin-top: 3rem;
+  text-align: center;
+  background-image: linear-gradient(180deg,transparent 10px,#e3e3e3 0,#e3e3e3 12px,transparent 0);
+  color: #666;
+}
+
+
+.botao-cadastro{
+  display: block;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+.btn-success{
+  margin-top: 20px;
+  position: relative;
+  width: 300px;
+  color:#fff;
+  background: #40cd28;
+  border-color: #40cd28;
+}
+
+.btn-success:hover{
+  background-color: #ff6f00;
+  border-color: #ff6f00;
+  
+}
+
+.display-cadastro{
+  color: rgb(0, 0, 0);
+  padding-top: 25px;
+}
+
+.caixa-formulario{
+  max-width: 500px;
+  margin: 3rem auto 0;
+  
+}
+
+.cadastroForm{
+  width: 400px;
+  margin: auto;
+}
+
+.inputGroup{
+  width: 100%;
+  margin-bottom: 15px;
+  position: relative;
+}
