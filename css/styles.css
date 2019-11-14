@@ -33,7 +33,6 @@ body {
 }
 
 .tt-header {
-  /* background: linear-gradient(to right, #20232c,#20232c, #ff6f00); */
   background: url(../images/icones/plus-control.png) no-repeat;
   background-position: center right;
   background-size: contain;
@@ -215,12 +214,14 @@ body {
   width: 200px;
 }
 
+
+/*----------- ajuste da HOME -----------------*/
 input[type="search"],
-input[type="submit"] {
+input{
   outline: none;
 }
 
-/*Destques*/
+/*Destaques*/
 section.destaques {
   max-height: 400px;
   max-width: 100%;
@@ -231,25 +232,18 @@ section.destaques {
   max-height: 400px;
 }
 
-/* .card-home .btn-comprar{
-  visibility: hidden;
- } */
-
+/*** cards dos jogos **/
 img.img-cover {
   max-height: 270px;
 }
 
-.card-home {
+.card-jogo {
   transition: box-shadow 0.3s ease;
 }
 
-.card-home:hover {
+.card-jogo:hover {
   box-shadow: 0px 0px 12px 0 #dadada;
 }
-
-/* .card-home:hover .btn-comprar{
-  visibility: visible;
-} */
 
 .btn-comprar {
   background-color: #ff6f00;
@@ -258,13 +252,36 @@ img.img-cover {
   transition: all 0.3s ease;
 }
 
-.card-home .card-footer {
+.card-jogo .card-footer {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.3s ease, opacity 0.3s ease;
 }
 
-.card-home:hover .card-footer {
+.card-jogo:hover .card-footer {
   visibility: visible;
   opacity: 1;
+}
+
+
+.box-detalhe-jogo{
+  box-shadow: 4px 3px 6px 1px rgba(176,176,176,1);
+  background-color: rgba(35,35,44,0.9);
+}
+
+.ico-favoritos{
+  height: 50px;
+  width: 50px;
+  position: relative;
+  left: 85%;
+  transform: rotate(20deg);
+  transition: transform 0.3s linear;
+}
+
+.ico-favoritos:hover{
+  transform: rotate(0deg);
+}
+
+img.img-detalhe{
+  max-height: 500px;
 }

@@ -17,11 +17,12 @@ $conf = include $_SERVER['DOCUMENT_ROOT'] . '/Games.com/config.php';
 <body>
   <!-- menu do site -->
   <?php include $conf['path'].'/includes/menu.php';?>
+
   <!--conteudo da pagina -->
+  <main>
 
 
-
-
+  </main>
 
   <!-- footer site -->
   <?php include $conf['path'].'/includes/footer.php';?>

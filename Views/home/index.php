@@ -17,7 +17,7 @@ $data_slide = 0;
   <link rel="stylesheet"
     href="<?php echo $conf['url'] ?>/css/styles.css">
 
-  <title>Games.com</title>
+  <title>Games.com | Sua Loja de Games on-line</title>
 </head>
 
 <body>
@@ -57,7 +57,7 @@ $data_slide = 0;
             </h5>
             <p><?php echo $itemLista['descricao_prod']?>
             </p>
-            <a href="#?produto=<?php echo $itemLista['cod_produto']?>"
+            <a href="<?php echo $conf['url'] ?>/Views/produto/detalhe.php?jogo=<?php echo $itemLista['cod_produto']?>"
               class="btn btn-outline-dark">Confira</a>
           </div>
         </div>
@@ -91,7 +91,7 @@ $data_slide = 0;
           <div class="card-deck mt-2">
             <?php foreach ($listaSugestao as $itemSugestao) { ?>
 
-            <div class="card text-center border-0 card-home">
+            <div class="card text-center border-0 card-jogo">
               <div class="card-header border-0 bg-transparent">
                 <h5 class="card-title text-uppercase">
                   <?php echo $itemSugestao['nome_prod'] ." - " . $itemSugestao['nome_categoria']  ?>
@@ -104,11 +104,11 @@ $data_slide = 0;
                 <p class="card-text">Jogo de <?php echo $itemSugestao['nome_genero']?>
                 </p>
                 <p class="card-text mt-n3"><small class="text-muted">Por Apenas</small></p>
-                <p class="card-text h2 font-weight-bold"><small>R$ </small><?php echo $itemSugestao['precounitario']?>
+                <p class="card-text h2 font-weight-bold"><small>R$ </small><?php echo $itemSugestao['valor_un']?>
                 </p>
               </div>
               <div class="card-footer border-0 bg-transparent">
-                <a href="#?produto=<?php echo $itemSugestao['cod_produto']?>"
+                <a href="<?php echo $conf['url'] ?>/Views/produto/detalhe.php?jogo=<?php echo $itemSugestao['cod_produto']?>"
                   class="btn btn-dark btn-block btn-comprar">Comprar</a>
               </div>
             </div>
@@ -147,7 +147,7 @@ $data_slide = 0;
 
             <!-- listando os itens da promoção -->
             <?php foreach ($listaPromocoes as $itemPromocao) { ?>
-            <div class="card text-center border-0 card-home">
+            <div class="card text-center border-0 card-jogo">
               <div class="card-header border-0 bg-transparent">
                 <h5 class="card-title text-uppercase">
                   <?php echo $itemPromocao['nome_prod'] ." - " . $itemPromocao['nome_categoria']  ?>
@@ -160,15 +160,15 @@ $data_slide = 0;
                 <p class="card-text">Jogo de <?php echo $itemPromocao['nome_genero']?>
                 </p>
                 <p class="card-text mt-n3"><small class="text-muted">De</small></p>
-                <p class="card-text mt-n4 "><small>R$ </small> <?php echo $itemPromocao['precounitario']?>
+                <p class="card-text mt-n4 "><small>R$ </small> <?php echo $itemPromocao['valor_un']?>
                 </p>
                 <p class="card-text"><small class="text-muted">Por Apenas</small></p>
                 <p class="card-text h2 mt-n3 font-weight-bold "><small>R$
-                  </small><?php echo $itemPromocao['precopromocao']?>
+                  </small><?php echo $itemPromocao['valor_promocao']?>
                 </p>
               </div>
               <div class="card-footer border-0 bg-transparent">
-                <a href="#?produto=<?php echo $itemPromocao['cod_produto']?>"
+                <a href="<?php echo $conf['url'] ?>/Views/produto/detalhe.php?jogo=<?php echo $itemSugestao['cod_produto']?>"
                   class="btn btn-dark btn-block btn-comprar">Comprar</a>
               </div>
             </div>
