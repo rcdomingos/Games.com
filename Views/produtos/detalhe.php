@@ -1,11 +1,13 @@
 <?php
-$conf = include $_SERVER['DOCUMENT_ROOT'] . '/Games.com/config.php';
+
+include_once '../../config.php';
 
 $DetalheProduto = $_GET['jogo'];
 
-require $conf['path'].'/Controllers/c_produto.php';
+require SITE_PATH .'/Controllers/c_produto.php';
 
-
+/**Titulo da pagina mudar de acordo com a pagina rederenciada */
+$titlePage =  "Jogo " . $infoProduto['nome_prod'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,28 +16,30 @@ require $conf['path'].'/Controllers/c_produto.php';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="<?php echo $conf['url'] ?>/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo $conf['url'] ?>/css/styles.css">
+  <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
 
-  <title>Games.com</title>
+  <title>
+    Games.com | <?php echo $titlePage ;?>
+  </title>
 </head>
 
 <body>
   <!-- menu do site -->
-  <?php include $conf['path'].'/includes/menu.php';?>
+  <?php include SITE_PATH .'/includes/menu.php';?>
   <!--conteudo da pagina -->
   <main>
     <div class="container">
 
       <div class="row">
         <div class="col-12 col-md-6 mb-5">
-          <img src="<?php echo $conf['url'] ?>/images/produtos/<?php echo $infoProduto['cover_img']?>"
+          <img src="<?php echo SITE_URL ?>/images/produtos/<?php echo $infoProduto['cover_img']?>"
             class="img-fluid img-detalhe" alt="Capa do jogo <?php echo $infoProduto['nome_prod']?>">
         </div>
         <div class="col-12 col-md-5 align-self-center">
           <!-- link para adicionar o jogo aos favoritos -->
           <a class="text-right" href="#?idcliente=1&cod_jogo=23">
-            <img class="text-right ico-favoritos" src="<?php echo $conf['url'] ?>/images/icones/add-favoritos.svg"
+            <img class="text-right ico-favoritos" src="<?php echo SITE_URL ?>/images/icones/add-favoritos.svg"
               alt="Adicionar a Favoritos" title="Adicionar aos Favoritos">
           </a>
           <!-- card com a opção de comprar -->
@@ -106,7 +110,7 @@ require $conf['path'].'/Controllers/c_produto.php';
         <div class="w-100 d-none d-md-block"></div>
         <div class="col-12">
           <img class="img-fluid shadow  rounded"
-            src="<?php echo $conf['url'] ?>/images/produtos/<?php echo $infoProduto['banner_img']?>" class="img-fluid"
+            src="<?php echo SITE_URL ?>/images/produtos/<?php echo $infoProduto['banner_img']?>" class="img-fluid"
             alt="Poster do jogo <?php echo $infoProduto['nome_prod']?>">
         </div>
       </div>
@@ -136,7 +140,7 @@ require $conf['path'].'/Controllers/c_produto.php';
   </aside>
 
   <!-- footer site -->
-  <?php include $conf['path'].'/includes/footer.php';?>
+  <?php include SITE_PATH .'/includes/footer.php';?>
 </body>
 
 </html>

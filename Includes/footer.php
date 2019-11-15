@@ -6,23 +6,20 @@
           <ul>
             <li>
               <a class="border-button ft-escuro" href="#"><span><img
-                    src="<?php echo $conf['url'] ?>/images/icones/area-adm.svg"></span>Area
+                    src="<?php echo SITE_URL ?>/images/icones/area-adm.svg"></span>Area
                 Administrativa</a>
             </li>
             <li>
               <a class="border-button ft-escuro" href="#"><span><img
-                    src="<?php echo $conf['url'] ?>/images/icones/cooperative-game.svg"></span>Sobre
+                    src="<?php echo SITE_URL ?>/images/icones/cooperative-game.svg"></span>Sobre
                 Nós</a>
             </li>
           </ul>
         </nav>
       </div>
       <div class="col-md-6 text-right">
-        <a
-          href="<?php echo $conf['url']?>/Views/home/index.php"><img
-            id="logo-footer"
-            src="<?php echo $conf['url'] ?>/images/logo.png"
-            alt="Logo"></a>
+        <a href="<?php echo SITE_URL ?>/Views/home/index.php"><img id="logo-footer"
+            src="<?php echo SITE_URL ?>/images/logo.png" alt="Logo"></a>
       </div>
     </div>
     <div class="row">

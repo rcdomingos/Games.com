@@ -1,4 +1,6 @@
-<?php
-$conf = include $_SERVER['DOCUMENT_ROOT'] . '/Games.com/config.php';
+ <?php
 
-header("location:$conf[url]/Views/home/index.php");
+include_once './config.php';
+
+// direcionar para home de vendas
+header("location:". SITE_URL."/Views/home/index.php");

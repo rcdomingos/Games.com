@@ -1,12 +1,23 @@
 <?php
 
-$dir = '/Games.com';
+// $dir = '/Games.com';
+// $DIRNAME = explode("/", $_SERVER['REQUEST_URI']);
+// $dir = rtrim("/". $DIRNAME[1], "/");
 
-return [
-  'path' => $_SERVER['DOCUMENT_ROOT'].$dir,
-  'url'  => 'http://'.$_SERVER['HTTP_HOST'].$dir,
-  'host' => 'localhost',
-  'user' => 'root',
-  'pass' => 'usbw',
-  'data' => 'games_com',
-];
+//print_r($DIRNAME);
+$dir = "/Games.com";
+
+// if (realpath("../root")) {
+//     $dir = "/";
+// } else {
+//     $DIRNAME = explode('\\', realpath("config.php"));
+//     $dir = $DIRNAME[count($DIRNAME)-2];
+// }
+
+
+
+define('DS', DIRECTORY_SEPARATOR);
+define('ROOT', $_SERVER['DOCUMENT_ROOT']);
+define('SITE_ROOT', ROOT.$dir);
+define('SITE_PATH', ROOT.$dir);
+define('SITE_URL', 'http://'.$_SERVER['HTTP_HOST'].$dir);

@@ -1,8 +1,10 @@
 <?php
-$conf = include $_SERVER['DOCUMENT_ROOT'] . '/Games.com/config.php';
-require $conf['path'].'/Controllers/c_home.php';
-$data_slide = 0;
 
+include_once '../../config.php';
+
+require SITE_PATH .'/Controllers/c_home.php';
+$data_slide = 0;
+$titlePage = "Sua Loja de Games on-line";
 // print_r($itensCarrosel);
 ?>
 <!DOCTYPE html>
@@ -13,16 +15,17 @@ $data_slide = 0;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet"
-    href="<?php echo $conf['url'] ?>/css/bootstrap.min.css">
+    href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
   <link rel="stylesheet"
-    href="<?php echo $conf['url'] ?>/css/styles.css">
-
-  <title>Games.com | Sua Loja de Games on-line</title>
+    href="<?php echo SITE_URL ?>/css/styles.css">
+  <title>
+    Games.com | <?php echo $titlePage ;?>
+  </title>
 </head>
 
 <body>
   <!-- menu do site -->
-  <?php include $conf['path'].'/includes/menu.php';?>
+  <?php include SITE_PATH.'/includes/menu.php';?>
   <!--conteudo da pagina -->
   <section class="destaques">
     <div id="carroselDestaques" class="carousel slide" data-ride="carousel">
@@ -39,7 +42,7 @@ $data_slide = 0;
         <!-- item padrão do site -->
         <div class="carousel-item active">
           <img class="d-block w-100"
-            src="<?php echo $conf['url'] ?>/images/produtos/destaque.png"
+            src="<?php echo SITE_URL ?>/images/produtos/destaque.png"
             alt="Primeiro Slide">
           <div class="carousel-caption d-none d-md-block">
             <h5>Destaques</h5>
@@ -50,14 +53,14 @@ $data_slide = 0;
         <?php foreach ($itensCarrosel as $itemLista) { ?>
         <div class="carousel-item">
           <img class="d-block  w-100 img-fluid"
-            src="<?php echo $conf['url'] ?>/images/produtos/<?php echo $itemLista['banner_img']?>"
+            src="<?php echo SITE_URL ?>/images/produtos/<?php echo $itemLista['banner_img']?>"
             alt="Imagem: <?php echo $itemLista['nome_prod']?>">
           <div class="carousel-caption d-none d-md-block">
             <h5><?php echo $itemLista['nome_prod']?>
             </h5>
             <p><?php echo $itemLista['descricao_prod']?>
             </p>
-            <a href="<?php echo $conf['url'] ?>/Views/produto/detalhe.php?jogo=<?php echo $itemLista['cod_produto']?>"
+            <a href="<?php echo SITE_URL ?>/Views/produtos/detalhe.php?jogo=<?php echo $itemLista['cod_produto']?>"
               class="btn btn-outline-dark">Confira</a>
           </div>
         </div>
@@ -98,7 +101,7 @@ $data_slide = 0;
                 </h5>
               </div>
               <img class="card-img-top px-3 img-cover"
-                src="<?php echo $conf['url'] ?>/images/produtos/<?php echo $itemSugestao['cover_img']?>"
+                src="<?php echo SITE_URL  ?>/images/produtos/<?php echo $itemSugestao['cover_img']?>"
                 alt="Cover: <?php echo $itemSugestao['nome_prod']?>">
               <div class="card-body">
                 <p class="card-text">Jogo de <?php echo $itemSugestao['nome_genero']?>
@@ -108,7 +111,7 @@ $data_slide = 0;
                 </p>
               </div>
               <div class="card-footer border-0 bg-transparent">
-                <a href="<?php echo $conf['url'] ?>/Views/produto/detalhe.php?jogo=<?php echo $itemSugestao['cod_produto']?>"
+                <a href="<?php echo SITE_URL ?>/Views/produtos/detalhe.php?jogo=<?php echo $itemSugestao['cod_produto']?>"
                   class="btn btn-dark btn-block btn-comprar">Comprar</a>
               </div>
             </div>
@@ -154,7 +157,7 @@ $data_slide = 0;
                 </h5>
               </div>
               <img class="card-img-top px-3 img-cover"
-                src="<?php echo $conf['url'] ?>/images/produtos/<?php echo $itemPromocao['cover_img']?>"
+                src="<?php echo SITE_URL  ?>/images/produtos/<?php echo $itemPromocao['cover_img']?>"
                 alt="Cover: <?php echo $itemPromocao['nome_prod']?>">
               <div class="card-body">
                 <p class="card-text">Jogo de <?php echo $itemPromocao['nome_genero']?>
@@ -168,7 +171,7 @@ $data_slide = 0;
                 </p>
               </div>
               <div class="card-footer border-0 bg-transparent">
-                <a href="<?php echo $conf['url'] ?>/Views/produto/detalhe.php?jogo=<?php echo $itemSugestao['cod_produto']?>"
+                <a href="<?php echo SITE_URL  ?>/Views/produtos/detalhe.php?jogo=<?php echo $itemSugestao['cod_produto']?>"
                   class="btn btn-dark btn-block btn-comprar">Comprar</a>
               </div>
             </div>
@@ -182,13 +185,11 @@ $data_slide = 0;
   </section>
 
   <!-- footer site -->
-  <?php include $conf['path'].'/includes/footer.php';?>
+  <?php include SITE_PATH .'/includes/footer.php';?>
   <!-- script bootstrap -->
-  <script
-    src="<?php echo $conf['url'] ?>/js/jquery-3.4.1.min.js">
+  <script src="<?php echo SITE_URL ?>/js/jquery-3.4.1.min.js">
   </script>
-  <script
-    src="<?php echo $conf['url'] ?>/js/bootstrap.min.js">
+  <script src="<?php echo SITE_URL ?>/js/bootstrap.min.js">
   </script>
 </body>
 

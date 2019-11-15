@@ -1,10 +1,14 @@
 <?php
-$conf = include $_SERVER['DOCUMENT_ROOT'] . '/Games.com/config.php';
-$conn = require $conf['path'] . '/Models/conexao.php';
+
+include_once '../config.php';
+
+
+$conn = require SITE_PATH . '/Models/conexao.php';
+
 
 // var_dump($conn);
 /**funçoes usadas nos produtos*/
-include $conf['path'] . '/Models/m_produto.php';
+include SITE_PATH . '/Models/m_produto.php';
 
 
 /**Verificar se foi selecionado o produto para mostrar */
@@ -12,6 +16,20 @@ if (isset($DetalheProduto)) {
     if ($DetalheProduto) {
         $infoProduto = listarProduto($DetalheProduto, $conn);
     } else {
-        header("location:$conf[url]/Views/home/index.php");
+        header("location:" . SITE_URL . "/Views/home/index.php");
     }
 }
+
+/**verificar se esta na pagina todos os jogos e se teve pesquisa */
+if ($jogoPesquisa) {
+    $listaTodosJogos = pesquisarJogo($conn, $jogoPesquisa);
+} elseif (isset($listaTodosJogos)) {
+    $listaTodosJogos = carregarJogos($conn);
+}
+
+
+
+// if (isset($listaTodosJogos)) {
+//   $listaTodosJogos = carregarJogos($conn);
+//   // print_r($listaTodosJogos);
+// }

@@ -2,14 +2,11 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4">
-        <a
-          href="<?php echo $conf['url']?>/Views/home/index.php"><img
-            id="icon-logo"
-            src="<?php echo $conf['url'] ?>/images/logo.png"
-            alt="Logo"></a>
+        <a href="<?php echo SITE_URL ?>/Views/home/index.php"><img id="icon-logo"
+            src="<?php echo SITE_URL ?>/images/logo.png" alt="Logo"></a>
       </div>
       <div class="col-md-4">
-        <form class="box-search bk-escuro">
+        <form class="box-search bk-escuro" action="<?php echo SITE_URL ?>/Views/produtos/todos.php" method="get">
           <input class="input-search bk-escuro" type="search" name="pesquisa" id="pesquisa"
             placeholder="Pesquise seu jogo">
           <span>
@@ -29,21 +26,20 @@
         </form>
       </div>
       <div class="col-md-3 text-right">
-        <img id="icone-user"
-          src="<?php echo $conf['url']?>/images/icones/utilizador.svg"
-          alt="">
+        <img id="icone-user" src="<?php echo SITE_URL ?>/images/icones/utilizador.svg" alt="">
         <div class="menu-entrar">
           <ul class="text-left">
-            <li><a href="#">Entrar</a></li>
-            <li><a href="#">Cadastrar</a></li>
+            <li><a href="<?php echo SITE_URL ?>/Views/Clientes/loginClientes.php">Entrar</a>
+            </li>
+            <li><a href="<?php echo SITE_URL ?>/Views/Clientes/cadastroClientes.php">Cadastrar</a>
+            </li>
           </ul>
         </div>
       </div>
       <div class="col-md-1 text-right">
         <div class="carrinho">
           <a class="text-right" href="#" title="Meu Carrinho"><img
-              src="<?php echo $conf['url']?>/images/icones/carrinho.svg"
-              alt="Meu Carrinho"></a>
+              src="<?php echo SITE_URL ?>/images/icones/carrinho.svg" alt="Meu Carrinho"></a>
         </div>
       </div>
     </div>
@@ -52,20 +48,20 @@
         <nav id="lista-menu">
           <ul>
             <li>
-              <a class="border-button ft-escuro" href="#"><span><img
-                    src="<?php echo $conf['url'] ?>/images/icones/ps4-control.svg"></span>Playstation</a>
+              <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/produtos/playstation.php"><span><img
+                    src="<?php echo SITE_URL  ?>/images/icones/ps4-control.svg"></span>Playstation</a>
             </li>
             <li>
-              <a class="border-button ft-escuro" href="#"><span><img
-                    src="<?php echo $conf['url'] ?>/images/icones/xbox-control.svg"></span>Xbox</a>
+              <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/produtos/xbox.php"><span><img
+                    src="<?php echo SITE_URL ?>/images/icones/xbox-control.svg"></span>Xbox</a>
             </li>
             <li>
-              <a class="border-button ft-escuro" href="#"><span><img
-                    src="<?php echo $conf['url'] ?>/images/icones/nintendo-swtch.png"></span>Nintendo</a>
+              <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/produtos/nintendo.php"><span><img
+                    src="<?php echo SITE_URL ?>/images/icones/nintendo-swtch.png"></span>Nintendo</a>
             </li>
             <li>
-              <a class="border-button ft-escuro" href="#"><span><img
-                    src="<?php echo $conf['url'] ?>/images/icones/joystick-control.svg"></span>Todos</a>
+              <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/produtos/todos.php"><span><img
+                    src="<?php echo SITE_URL ?>/images/icones/joystick-control.svg"></span>Todos</a>
             </li>
           </ul>
         </nav>
