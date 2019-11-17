@@ -503,3 +503,38 @@ input:-internal-autofill-selected {
   background-image: none !important;
   color: #ffffff !important;
 }
+
+
+/* -------------- CSS PAGINAS ADM  ||  THAIS M.  --------------*/
+.btn-adm {
+  background-color: #ff6f00;
+  color: #20232c;
+  border: 1px solid #20232c;
+  transition: all 0.3s ease;
+  /* width: 50 px; */
+}
+
+.btn-adm-lista {
+  background-color: #ff6f00;
+  color: #20232c;
+  border: 1px solid #20232c;
+  transition: all 0.3s ease;
+  width: 50 px;
+}
+
+.quadro-sucess {
+  background-color: #ff6f00;
+  border: 2px solid #20232c;
+  padding: 50px;
+  margin: 100px;
+}
+
+.quadro-adm{
+  /* background-color: #ff6f00; */
+  border: 2px solid #ff6f00;
+}
+
+.input-adm{
+  /* background-color: #ff6f00; */
+  border: 1px solid #ff6f00;
+}
