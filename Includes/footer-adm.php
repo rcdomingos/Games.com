@@ -5,18 +5,13 @@
         <nav id="lista-footer" class="bk-laranja ">
           <ul>
             <li>
-              <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/adm/index.php"><span><img src="<?php echo SITE_URL ?>/images/icones/area-adm.svg"></span>Area
-                Administrativa</a>
-            </li>
-            <li>
-              <a class="border-button ft-escuro" href="#"><span><img src="<?php echo SITE_URL ?>/images/icones/cooperative-game.svg"></span>Sobre
-                Nós</a>
+              <a class="border-button ft-escuro mt-3" href="<?php echo SITE_URL ?>/Views/home/index.php"><span><img class="ml-3" src="<?php echo SITE_URL ?>/images/logo.png"></span><strong>Games.com</strong></a>
             </li>
           </ul>
         </nav>
       </div>
       <div class="col-md-6 text-right">
-        <a href="<?php echo SITE_URL ?>/Views/home/index.php"><img id="logo-footer" src="<?php echo SITE_URL ?>/images/logo.png" alt="Logo"></a>
+        <a href="<?php echo SITE_URL ?>/Views/home/index.php"><img id="logo-footer" src="<?php echo SITE_URL   ?>/images/logo.png" alt="Logo"></a>
       </div>
     </div>
     <div class="row">
