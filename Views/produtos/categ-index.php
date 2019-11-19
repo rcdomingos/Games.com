@@ -2,7 +2,7 @@
 include_once '../../config.php';
 
 require SITE_PATH . '/Controllers/c_produto.php';
-$linha = "";
+// $linha = "";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -35,14 +35,16 @@ $linha = "";
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><?php echo $linha['cod_categria'] ?>
-              </td>
-              <td><?php echo $linha['nome_categoria'] ?>
-              <td><a class="btn btn-dark btn-adm-lista col-2" href="<?php echo SITE_URL ?>/Views/produtos/alter-categ.php?categoria=<?php echo $linha['cod_categoria']; ?>" role="button">Alterar</a>
-                <a class="btn btn-dark btn-adm-lista col-2" href="<?php echo SITE_URL ?>/Controllers/c_produto.php?excluir=<?php echo $linha['cod_categoria']; ?>" role="button">Excluir</a>
-              </td>
-            </tr>
+            <?php foreach ($categorias as $linha) { ?>
+              <tr>
+                <td><?php echo $linha['cod_categoria'] ?>
+                </td>
+                <td><?php echo $linha['nome_categoria'] ?>
+                <td><a class="btn btn-dark btn-adm-lista col-2" href="<?php echo SITE_URL ?>/Views/produtos/alter-categ.php?categoria=<?php echo $linha['cod_categoria']; ?>" role="button">Alterar</a>
+                  <a class="btn btn-dark btn-adm-lista col-2" href="<?php echo SITE_URL ?>/Controllers/c_produto.php?excluir=<?php echo $linha['cod_categoria']; ?>" role="button">Excluir</a>
+                </td>
+              </tr>
+            <?php } ?>
           </tbody>
         </table>
       </div>
