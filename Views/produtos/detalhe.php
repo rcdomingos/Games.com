@@ -1,6 +1,11 @@
 <?php
 
 include_once '../../config.php';
+session_start();
+
+$_SESSION['nome_cliente'] = 'Reginaldo';
+$_SESSION['cod_cliente'] = '1';
+
 
 $DetalheProduto = $_GET['jogo'];
 
@@ -55,7 +60,7 @@ $titlePage =  "Jogo " . $infoProduto['nome_prod'];
               </p>
             </div>
             <div class="card-footer border-0 bg-transparent">
-              <a href="#?addProduto=<?php echo $infoProduto['cod_produto']?>"
+              <a href="<?php echo SITE_URL ?>/Controllers/c_pedido.php?addProduto=<?php echo $infoProduto['cod_produto']?>"
                 class="btn btn-dark btn-block btn-comprar btn-lg">Adicionar ao Carrinho</a>
             </div>
           </div>
