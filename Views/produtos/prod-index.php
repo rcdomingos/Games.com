@@ -44,7 +44,6 @@ require SITE_PATH .'/Controllers/c_produto.php';
               <th scope="col-3">Categoria</th>
               <th scope="col-2">Estoque</th>
               <th scope="col-2">Ações</th>
-
             </tr>
           </thead>
           <tbody>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once '../../config.php';
 include   SITE_PATH .'/Controllers/c_valida_usuario.php';
 
@@ -29,13 +29,13 @@ $titlePage = 'ADM Games.com'
         <div class="col-md-4 mt-md-5">
           <a class="btn btn-dark btn-block btn-adm py-4 my-3 col align-self-center"
             href="<?php echo SITE_URL ?>/Views/produtos/prod-index.php"><strong
-              class="h5">CADASTRAR PRODUTO</strong></a>
+              class="h5">PRODUTOS</strong></a>
           <a class="btn btn-dark btn-block btn-adm py-4 my-3 col align-self-center"
             href="<?php echo SITE_URL ?>/Views/produtos/genero-index.php"><strong
-              class="h5">CADASTRAR GÊNERO</strong></a>
+              class="h5">GÊNEROS</strong></a>
           <a class="btn btn-dark btn-block btn-adm py-4 my-3 col align-self-center"
             href="<?php echo SITE_URL ?>/Views/produtos/categ-index.php"><strong
-              class="h5">CADASTRAR CATEGORIA</strong></a>
+              class="h5">CATEGORIAS</strong></a>
         </div>
       </div>
     </div>

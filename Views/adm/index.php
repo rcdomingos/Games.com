@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 include_once '../../config.php';
 ?>
 <!DOCTYPE html>
@@ -24,7 +24,7 @@ include_once '../../config.php';
       <div class="row justify-content-md-center mt-5">
         <div class="col-md-4 mt-md-5  rounded quadro-adm">
           <form class="mt-3 px-md-3 "
-            action='<?php echo SITE_URL ?>/Controllers/c_usuario.php'
+            action='<?php echo SITE_URL ?>/Controllers/C_usuario.php'
             method="post">
             <h1 class="h3 mb-3 font-weight-normal text-center">ADM GAMES.COM</h1>
             <label for="login_usuario" class="sr-only">Usuário</label>

@@ -2,7 +2,7 @@
 include_once '../../config.php';
 
 require SITE_PATH . '/Controllers/c_produto.php';
-$linha = "";
+// $linha = "";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,8 +11,10 @@ $linha = "";
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
+  <link rel="stylesheet"
+    href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
+  <link rel="stylesheet"
+    href="<?php echo SITE_URL ?>/css/styles.css">
 
   <title>Cadastrar Categoria</title>
 </head>
@@ -26,7 +28,8 @@ $linha = "";
       </div>
       <div class="row">
         <a class="col-2 btn btn-dark btn-block btn-comprar my-2"
-          href="<?php echo SITE_URL ?>/Views/produtos/create-categ.php" role="button">Cadastrar Categoria</a>
+          href="<?php echo SITE_URL ?>/Views/produtos/create-categ.php"
+          role="button">Cadastrar Categoria</a>
         <table class=" table text-center " style="width: 100%">
           <thead>
             <tr>
@@ -36,8 +39,9 @@ $linha = "";
             </tr>
           </thead>
           <tbody>
+            <?php foreach ($categorias as $linha) { ?>
             <tr>
-              <td><?php echo $linha['cod_categria'] ?>
+              <td><?php echo $linha['cod_categoria'] ?>
               </td>
               <td><?php echo $linha['nome_categoria'] ?>
               <td><a class="btn btn-dark btn-adm-lista col-2"
@@ -48,6 +52,7 @@ $linha = "";
                   role="button">Excluir</a>
               </td>
             </tr>
+            <?php } ?>
           </tbody>
         </table>
       </div>
