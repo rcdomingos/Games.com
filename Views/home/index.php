@@ -14,8 +14,10 @@ $titlePage = "Sua Loja de Games on-line";
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
+  <link rel="stylesheet"
+    href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
+  <link rel="stylesheet"
+    href="<?php echo SITE_URL ?>/css/styles.css">
   <title>
     Games.com | <?php echo $titlePage ;?>
   </title>
@@ -31,14 +33,17 @@ $titlePage = "Sua Loja de Games on-line";
         <li data-target="#carroselDestaques" data-slide-to="0" class="active"></li>
         <?php foreach ($itensCarrosel as $itemLista) {
     $data_slide++ ?>
-        <li data-target="#carroselDestaques" data-slide-to="<?php echo $data_slide?>"></li>
+        <li data-target="#carroselDestaques"
+          data-slide-to="<?php echo $data_slide?>"></li>
         <?php
 }; ?>
       </ol>
       <div class="carousel-inner">
         <!-- item padrão do site -->
         <div class="carousel-item active">
-          <img class="d-block w-100" src="<?php echo SITE_URL ?>/images/produtos/destaque.png" alt="Primeiro Slide">
+          <img class="d-block w-100"
+            src="<?php echo SITE_URL ?>/images/produtos/destaque.png"
+            alt="Primeiro Slide">
           <div class="carousel-caption d-none d-md-block">
             <h5>Destaques</h5>
             <p>Os melhores jogos você encotra na Games.com</p>
@@ -91,31 +96,33 @@ $titlePage = "Sua Loja de Games on-line";
       <div class="row justify-content-center">
         <?php foreach ($listaSugestao as $itemSugestao) { ?>
         <div class="col-sm-3 col-10 mt-2">
-          <div class="card text-center border-0 card-jogo">
-            <div class="card-header border-0 bg-transparent">
-              <h5 class="card-title text-uppercase">
-                <?php echo $itemSugestao['nome_prod'] ." - " . $itemSugestao['nome_categoria']  ?>
-              </h5>
+          <a href="<?php echo SITE_URL ?>/Views/produtos/detalhe.php?jogo=<?php echo $itemSugestao['cod_produto']?>"
+            class="linkCardsGames">
+            <div class="card text-center border-0 card-jogo">
+              <div class="card-header border-0 bg-transparent">
+                <h5 class="card-title text-uppercase">
+                  <?php echo $itemSugestao['nome_prod'] ." - " . $itemSugestao['nome_categoria']  ?>
+                </h5>
+              </div>
+              <img class="card-img-top px-3 img-cover"
+                src="<?php echo SITE_URL  ?>/images/produtos/<?php echo $itemSugestao['cover_img']?>"
+                alt="Cover: <?php echo $itemSugestao['nome_prod']?>">
+              <div class="card-body">
+                <p class="card-text">Jogo de <?php echo $itemSugestao['nome_genero']?>
+                </p>
+                <p class="card-text mt-n3"><small class="text-muted">Por Apenas</small></p>
+                <p class="card-text h2 font-weight-bold"><small>R$ </small><?php echo $itemSugestao['valor_un']?>
+                </p>
+              </div>
+              <div class="card-footer border-0 bg-transparent">
+                <a href="<?php echo SITE_URL ?>/Controllers/c_pedido.php?addProduto=<?php echo $itemSugestao['cod_produto']?>"
+                  class="btn btn-dark btn-block btn-comprar">Comprar</a>
+              </div>
             </div>
-            <img class="card-img-top px-3 img-cover"
-              src="<?php echo SITE_URL  ?>/images/produtos/<?php echo $itemSugestao['cover_img']?>"
-              alt="Cover: <?php echo $itemSugestao['nome_prod']?>">
-            <div class="card-body">
-              <p class="card-text">Jogo de <?php echo $itemSugestao['nome_genero']?>
-              </p>
-              <p class="card-text mt-n3"><small class="text-muted">Por Apenas</small></p>
-              <p class="card-text h2 font-weight-bold"><small>R$ </small><?php echo $itemSugestao['valor_un']?>
-              </p>
-            </div>
-            <div class="card-footer border-0 bg-transparent">
-              <a href="<?php echo SITE_URL ?>/Views/produtos/detalhe.php?jogo=<?php echo $itemSugestao['cod_produto']?>"
-                class="btn btn-dark btn-block btn-comprar">Comprar</a>
-            </div>
-          </div>
+          </a>
         </div>
 
         <?php }; ?>
-
       </div>
     </div>
   </section>
@@ -148,31 +155,34 @@ $titlePage = "Sua Loja de Games on-line";
         <!-- listando os itens da promoção -->
         <?php foreach ($listaPromocoes as $itemPromocao) { ?>
         <div class="col-sm-3 col-10 mt-2">
-          <div class="card text-center border-0 card-jogo">
-            <div class="card-header border-0 bg-transparent">
-              <h5 class="card-title text-uppercase">
-                <?php echo $itemPromocao['nome_prod'] ." - " . $itemPromocao['nome_categoria']  ?>
-              </h5>
+          <a href="<?php echo SITE_URL ?>/Views/produtos/detalhe.php?jogo=<?php echo $itemPromocao['cod_produto']?>"
+            class="linkCardsGames">
+            <div class="card text-center border-0 card-jogo">
+              <div class="card-header border-0 bg-transparent">
+                <h5 class="card-title text-uppercase">
+                  <?php echo $itemPromocao['nome_prod'] ." - " . $itemPromocao['nome_categoria']  ?>
+                </h5>
+              </div>
+              <img class="card-img-top px-3 img-cover"
+                src="<?php echo SITE_URL  ?>/images/produtos/<?php echo $itemPromocao['cover_img']?>"
+                alt="Cover: <?php echo $itemPromocao['nome_prod']?>">
+              <div class="card-body">
+                <p class="card-text">Jogo de <?php echo $itemPromocao['nome_genero']?>
+                </p>
+                <p class="card-text mt-n3"><small class="text-muted">De</small></p>
+                <p class="card-text mt-n4 "><small>R$ </small> <?php echo $itemPromocao['valor_un']?>
+                </p>
+                <p class="card-text"><small class="text-muted">Por Apenas</small></p>
+                <p class="card-text h2 mt-n3 font-weight-bold "><small>R$
+                  </small><?php echo $itemPromocao['valor_promocao']?>
+                </p>
+              </div>
+              <div class="card-footer border-0 bg-transparent">
+                <a href="<?php echo SITE_URL ?>/Controllers/c_pedido.php?addProduto=<?php echo $itemPromocao['cod_produto']?>"
+                  class="btn btn-dark btn-block btn-comprar">Comprar</a>
+              </div>
             </div>
-            <img class="card-img-top px-3 img-cover"
-              src="<?php echo SITE_URL  ?>/images/produtos/<?php echo $itemPromocao['cover_img']?>"
-              alt="Cover: <?php echo $itemPromocao['nome_prod']?>">
-            <div class="card-body">
-              <p class="card-text">Jogo de <?php echo $itemPromocao['nome_genero']?>
-              </p>
-              <p class="card-text mt-n3"><small class="text-muted">De</small></p>
-              <p class="card-text mt-n4 "><small>R$ </small> <?php echo $itemPromocao['valor_un']?>
-              </p>
-              <p class="card-text"><small class="text-muted">Por Apenas</small></p>
-              <p class="card-text h2 mt-n3 font-weight-bold "><small>R$
-                </small><?php echo $itemPromocao['valor_promocao']?>
-              </p>
-            </div>
-            <div class="card-footer border-0 bg-transparent">
-              <a href="<?php echo SITE_URL  ?>/Views/produtos/detalhe.php?jogo=<?php echo $itemSugestao['cod_produto']?>"
-                class="btn btn-dark btn-block btn-comprar">Comprar</a>
-            </div>
-          </div>
+          </a>
         </div>
         <?php }; ?>
 
@@ -187,6 +197,7 @@ $titlePage = "Sua Loja de Games on-line";
   </script>
   <script src="<?php echo SITE_URL ?>/js/bootstrap.min.js">
   </script>
+
 </body>
 
 </html>

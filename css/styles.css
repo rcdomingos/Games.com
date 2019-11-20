@@ -504,7 +504,6 @@ input:-internal-autofill-selected {
   color: #ffffff !important;
 }
 
-
 /* -------------- CSS PAGINAS ADM  ||  THAIS M.  --------------*/
 .btn-adm {
   background-color: #ff6f00;
@@ -529,21 +528,46 @@ input:-internal-autofill-selected {
   margin: 100px;
 }
 
-.quadro-adm{
+.quadro-adm {
   /* background-color: #ff6f00; */
   border: 2px solid #ff6f00;
 }
 
-.input-adm{
+.input-adm {
   /* background-color: #ff6f00; */
   border: 1px solid #ff6f00;
 }
 
-.min-h-75{
+.min-h-75 {
   min-height: 75vh;
 }
 
 /*AJuste da pagina carrinho */
-.img-carrinho{
+.img-carrinho {
   max-width: 60px;
+}
+
+.min-h-50 {
+  min-height: 55vh;
+}
+
+.linkCardsGames {
+  color: #20232c;
+}
+
+.linkCardsGames:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+.icone-carrinho {
+  position: absolute;
+  right: 10px;
+}
+
+.bdg-carrinho {
+  position: absolute;
+  right: 25%;
+  top: 30%;
+  transition: all 0.9ms linear;
 }
