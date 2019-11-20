@@ -1,6 +1,11 @@
 <?php
 include_once '../../config.php';
 
+$listaJogosPlaystation =[];
+$codCategoria = 1; /** 1-Plastation */
+
+require SITE_PATH .'/Controllers/c_produto.php';
+
 $titlePage = "Jogos Playstation";
 
 ?>
@@ -23,104 +28,50 @@ $titlePage = "Jogos Playstation";
   <!-- menu do site -->
   <?php include SITE_PATH .'/includes/menu.php';?>
   <!--conteudo da pagina -->
-  <div>
+
+  <!-- header da pagina -->
+  <header>
     <div class="imagem-principal-playstation">
       <div class="caixa-playstation">
         <h1 class="display-playstation">Jogos PlayStation</h1>
         <h4 class="display-playstation-2">Aqui você encontra todos os jogos que procura!</h4>
       </div>
     </div>
-  </div>
-
-  <article class="mt-5">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-sm">
-          <div class="card border-primary jogos-playstation">
-            <!-- <img class="card-img-top" src="" alt="Imagem de capa do card"> -->
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Reserva de STAR WARS Jedi: Fallen Order</h5>
-            <p class="card-text">Reserve para receber o Bônus de Reserva de STAR WARS Jedi: Fallen Order™, que inclui
-              uma série de atualizações cosméticas para seu sabre de luz e companheiro droide.</p>
-            <a href="#" class="btn btn-success">Adicionar ao carrinho</a>
-          </div>
-        </div>
-        <div class="col-sm">
-          <div class="card border-primary jogos-playstation">
-            <!-- <img class="card-img-top" src="" alt="Imagem de capa do card"> -->
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Reserva de STAR WARS Jedi: Fallen Order</h5>
-            <p class="card-text">Reserve para receber o Bônus de Reserva de STAR WARS Jedi: Fallen Order™, que inclui
-              uma série de atualizações cosméticas para seu sabre de luz e companheiro droide.</p>
-            <a href="#" class="btn btn-success">Adicionar ao carrinho</a>
-          </div>
-        </div>
-
-        <div class="col-sm">
-          <div class="card border-primary jogos-playstation">
-            <!-- <img class="card-img-top" src="" alt="Imagem de capa do card"> -->
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Reserva de STAR WARS Jedi: Fallen Order</h5>
-            <p class="card-text">Reserve para receber o Bônus de Reserva de STAR WARS Jedi: Fallen Order™, que inclui
-              uma série de atualizações cosméticas para seu sabre de luz e companheiro droide.</p>
-            <a href="#" class="btn btn-success">Adicionar ao carrinho</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <hr class="divisorias-games">
-
+  </header>
+  <!-- section com a lista dos jogos  -->
+  <section>
     <div class="container mt-5">
       <div class="row">
-
-        <div class="col-sm">
-          <div class="card border-primary jogos-playstation">
-            <!-- <img class="card-img-top" src="" alt="Imagem de capa do card"> -->
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Reserva de STAR WARS Jedi: Fallen Order</h5>
-            <p class="card-text">Reserve para receber o Bônus de Reserva de STAR WARS Jedi: Fallen Order™, que inclui
-              uma série de atualizações cosméticas para seu sabre de luz e companheiro droide.</p>
-            <a href="#" class="btn btn-success">Adicionar ao carrinho</a>
-          </div>
-        </div>
-
-        <div class="col-sm">
-          <div class="card border-primary jogos-playstation">
-            <!-- <img class="card-img-top" src="" alt="Imagem de capa do card"> -->
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Reserva de STAR WARS Jedi: Fallen Order</h5>
-            <p class="card-text">Reserve para receber o Bônus de Reserva de STAR WARS Jedi: Fallen Order™, que inclui
-              uma série de atualizações cosméticas para seu sabre de luz e companheiro droide.</p>
-            <a href="#" class="btn btn-success">Adicionar ao carrinho</a>
-          </div>
-        </div>
-
-        <div class="col-sm">
-          <div class="card border-primary jogos-playstation">
-            <!-- <img class="card-img-top" src="" alt="Imagem de capa do card"> -->
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Reserva de STAR WARS Jedi: Fallen Order</h5>
-            <p class="card-text">Reserve para receber o Bônus de Reserva de STAR WARS Jedi: Fallen Order™, que inclui
-              uma série de atualizações cosméticas para seu sabre de luz e companheiro droide.</p>
-            <a href="#" class="btn btn-success">Adicionar ao carrinho</a>
+        <?php foreach ($listaJogosPlaystation as $jogo) { ?>
+        <div class="col-sm-3 mb-3">
+          <div class="card text-center border-0 card-jogo">
+            <div class="card-header border-0 bg-transparent">
+              <h5 class="card-title text-uppercase">
+                <?php echo $jogo['nome_prod'] ." - " . $jogo['nome_categoria']  ?>
+              </h5>
+            </div>
+            <img class="card-img-top px-3 img-cover"
+              src="<?php echo SITE_URL  ?>/images/produtos/<?php echo $jogo['cover_img']?>"
+              alt="Cover: <?php echo $jogo['nome_prod']?>">
+            <div class="card-body">
+              <p class="card-text">Jogo de <?php echo $jogo['nome_genero']?>
+              </p>
+              <p class="card-text mt-n3"><small class="text-muted">Por Apenas</small></p>
+              <p class="card-text h2 font-weight-bold"><small>R$ </small><?php echo $jogo['valor_un']?>
+              </p>
+            </div>
+            <div class="card-footer border-0 bg-transparent">
+              <a href="<?php echo SITE_URL ?>/Views/produtos/detalhe.php?jogo=<?php echo $jogo['cod_produto']?>"
+                class="btn btn-dark btn-block btn-comprar">Comprar</a>
+            </div>
           </div>
         </div>
+
+        <?php } ?>
 
       </div>
     </div>
-
-
-  </article>
-
+  </section>
 
   <!-- footer site -->
   <?php include SITE_PATH .'/includes/footer.php';?>

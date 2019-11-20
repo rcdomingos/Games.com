@@ -27,9 +27,21 @@ if ($jogoPesquisa) {
     $listaTodosJogos = carregarJogos($conn);
 }
 
+/**Listar os jogos da pagina playtation */
+if (isset($listaJogosPlaystation)) {
+    $listaJogosPlaystation = carregarJogosCategoria($conn, $codCategoria);
+}
 
+/**Listar os jogos da pagina xbox */
+if (isset($listaJogosXbox)) {
+    $listaJogosXbox = carregarJogosCategoria($conn, $codCategoria);
+}
 
-// if (isset($listaTodosJogos)) {
-//   $listaTodosJogos = carregarJogos($conn);
-//   // print_r($listaTodosJogos);
-// }
+/**Listar os jogos da pagina nintendo */
+if (isset($listaJogosNintendo)) {
+    $listaJogosNintendo = carregarJogosCategoria($conn, $codCategoria);
+}
+
+if (isset($itensProdHome)) {
+    $itensProdHome = listarprodutos($conn);
+}

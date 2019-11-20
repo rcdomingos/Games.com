@@ -538,3 +538,12 @@ input:-internal-autofill-selected {
   /* background-color: #ff6f00; */
   border: 1px solid #ff6f00;
 }
+
+.min-h-75{
+  min-height: 75vh;
+}
+
+/*AJuste da pagina carrinho */
+.img-carrinho{
+  max-width: 60px;
+}
