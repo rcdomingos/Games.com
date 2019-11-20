@@ -2,7 +2,10 @@
 include_once '../../config.php';
 
 $titlePage   = 'Cadastrar Produtos';
-$linha = [];
+// $linha = [];
+require SITE_PATH . '/Controllers/c_produto.php';
+// var_dump($listarprodutos);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -39,21 +42,23 @@ $linha = [];
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><?php echo $linha['cod_produto'] ?>
-              </td>
-              <td><?php echo $linha['nome_prod'] ?>
-              </td>
-              <td><?php echo $linha['cod_genero'] ?>
-              </td>
-              <td><?php echo $linha['cod_categoria'] ?>
-              </td>
-              <td><?php echo $linha['estoque'] ?>
-              </td>
-              <td><a class="btn btn-dark btn-comprar" href="<?php echo SITE_URL ?>/Views/produto/alter-prod.php?produto=<?php echo $linha['cod_produto']; ?>" role="button">Alterar</a>
-                <a class="btn btn-dark btn-comprar" href="<?php echo SITE_URL ?>/Controllers/c_produto.php?excluir=<?php echo $linha['cod_produto']; ?>" role="button">Excluir</a>
-              </td>
-            </tr>
+            <?php foreach ($listarprodutos as $linha) { ?>
+              <tr>
+                <td><?php echo $linha['cod_produto'] ?>
+                </td>
+                <td><?php echo $linha['nome_prod'] ?>
+                </td>
+                <td><?php echo $linha['nome_genero'] ?>
+                </td>
+                <td><?php echo $linha['nome_categoria'] ?>
+                </td>
+                <td><?php echo $linha['estoque'] ?>
+                </td>
+                <td><a class="btn btn-dark btn-comprar" href="<?php echo SITE_URL ?>/Views/produto/alter-prod.php?produto=<?php echo $linha['cod_produto']; ?>" role="button">Alterar</a>
+                  <a class="btn btn-dark btn-comprar" href="<?php echo SITE_URL ?>/Controllers/c_produto.php?excluir=<?php echo $linha['cod_produto']; ?>" role="button">Excluir</a>
+                </td>
+              </tr>
+            <?php } ?>
           </tbody>
         </table>
       </div>

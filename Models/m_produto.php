@@ -51,12 +51,13 @@ function pesquisarJogo($conn, $jogoPesquisa)
 }
 
 
+/* ================================================================================ */
 
 /* FUNÇÃO PARA CADASTRAR GENERO DOS PRODUTOS  ||  THAIS M */
 function cadastargenero($dados, $conn)
 {
   $valores = $dados;
-  $sql = 'INSERT INTO genero (nome_genero) VALUES(?)';
+  $sql = 'INSERT INTO genero (nome_genero) VALUES (?)';
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("s", $valores['nome_genero']);
   // $stmt->execute();
@@ -69,7 +70,7 @@ function cadastargenero($dados, $conn)
 /* FUNÇÃO PARA LISTAR GENERO  || THAIS M */
 function listargenero($conn)
 {
-  $sql = 'SELECT cod_categoria, nome_categoria FROM categoria';
+  $sql = 'SELECT cod_genero, nome_genero FROM genero';
   $stmt = $conn->prepare($sql);
   $stmt->execute();
 
@@ -77,6 +78,19 @@ function listargenero($conn)
   $stmt->close();
   return $result;
 }
+
+/* ALTERAR GENERO NO BANCO */
+function alterargenero($dados, $conn)
+{
+  $sql = 'UPDATE genero SET name_genero = ?';
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("s", $dados['nome_genero']);
+  $result = $stmt->execute() ? true : false;
+  $stmt->close();
+  return $result;
+}
+
+/* ================================================================================ */
 
 /* FUNÇÃO PARA CADASTRAR CATEGORIA DOS PRODUTOS   ||  THAIS M */
 function cadastrarcategoria($dados, $conn)
@@ -105,11 +119,18 @@ function listarcategoria($conn)
 }
 
 /* FUNÇÃO PARA FAZER UM SELECT E LISTAR OS GENEROS E CATEGORIAS  ||  THAIS M */
-function listagenero($dados, $conn)
+function listagenero($conn)
 {
-  $valores = $dados;
-  $sql = 'SELECT cod_genero FROM genero WHERE nome_genero = nome_genero ';
+  $sql = 'SELECT cod_genero FROM genero ';
+  $stmt = $conn->prepare($sql);
+  $stmt->execute();
+
+  $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+  $stmt->close();
+  return $result;
 }
+
+/* ================================================================================ */
 
 /* FUNÇÃO PARA CADASTRAR PRODUTOS  ||  THAIS M*/
 function cadastarproduto($dados, $conn)
@@ -127,14 +148,25 @@ function cadastarproduto($dados, $conn)
 
 
 /* LISTAR NA INDEX OS PRODUTOS || THAIS M */
-function listarprodutos($conn)
+function carregarprodutos($conn)
 {
-
-  $sql = "SELECT  p.cod_produto, p.nome_prod,g.nome_genero, c.nome_categoria, p.estoque FROM produto p INNER JOIN genero g ON p.cod_genero = g.cod_genero INNER JOIN categoria c ON p.cod_categotia = c.cod_categoria WHERE p.cod_produto = ?";
+  $sql = "SELECT  p.cod_produto, p.nome_prod, g.nome_genero, c.nome_categoria, p.estoque FROM produto p INNER JOIN genero g ON p.cod_genero = g.cod_genero INNER JOIN categoria c ON p.cod_categoria = c.cod_categoria";
   $stmt = $conn->prepare($sql);
   $stmt->execute();
-
   $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
   $stmt->close();
   return $result;
 }
+
+/* EXCLUIR GENERO DO BANCO */
+// function excluirgenero($codgenero, $conn)
+// {
+//   $sql = 'DELETE FROM genero WHERE cod_genero =? ';
+//   $stmt = $conn->prepare($sql);
+//   $stmt->bind_param("i", $codgenero);
+
+//   $result = $stmt->execute() ? true : false;
+//   $stmt->close();
+
+//   return $result;
+// }

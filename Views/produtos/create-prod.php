@@ -2,10 +2,9 @@
 include_once '../../config.php';
 
 $titlePage      = "Cadastrar Produto";
-$listagenero    = [];
-$listacategoria = [];
-$itemcategoria  = [];
-$itemgenero     = [];
+
+require SITE_PATH . '/Controllers/c_produto.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -28,7 +27,7 @@ $itemgenero     = [];
     </div>
     <div class="row justify-content-md-center mt-3">
       <div class="col-md-6">
-        <form class="" action='<?php echo SITE_URL ?>/Controllers/c_produto.php' method="post">
+        <form class="" enctype="multipart/form-data" action='<?php echo SITE_URL ?>/Controllers/c_produto.php' method="post">
           <div class="form-group mb-3">
             <label class="sr-only" for="nome_prod">Nome Produto:</label>
             <input class="form-control input-adm" type="text" name="nome_prod" placeholder="Nome Produto">

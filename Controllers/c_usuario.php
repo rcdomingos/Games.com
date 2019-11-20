@@ -7,7 +7,7 @@ $conn = require SITE_PATH . '/Models/conexao.php';
 include SITE_PATH . '/Models/m_usuario.php';
 
 /* VERIFICA SE USUARIO EXISTE NO BANCO PARA ACESSAR O SISTEMA DE ADM  || THAIS M.*/
-if (isset($_POST['acessar'])) {
+if (isset($_POST['acessar-usuario'])) {
   $usuario = validarUsuario($_POST['logim'], $_POST['senha'], $conn);
   if ($usuario) {
     session_start();

@@ -12,7 +12,7 @@ $titlePage    = 'Cadastrar Gênero';
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
 
-  <title>Cadastrar Gênero</title>
+  <title><?php $titlePage ?></title>
 </head>
 <?php require SITE_PATH . '/includes/menu-adm.php'; ?>
 
@@ -29,7 +29,7 @@ $titlePage    = 'Cadastrar Gênero';
             <input class="form-control" type="text" name="nome_genero" placeholder="Gênero">
           </div>
           <div class="input-group d-flex justify-content-center">
-            <input class="btn btn-dark btn-block btn-comprar mx-2 col-3" type="submit" value="Cadastrar" name="cadastrar" id="criar">
+            <input class="btn btn-dark btn-block btn-comprar mx-2 col-3" type="submit" value="Cadastrar" name="cadastrar-genero" id="cadastrar-genero">
             <input class="btn btn-dark btn-block  btn-comprar mx-2 col-3" type="reset" value="Limpar" id="limpar">
             <a class="btn btn-dark btn-block btn-comprar mx-2 col-3" href="./adm-index.php">Cancelar</a>
           </div>
