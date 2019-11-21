@@ -43,7 +43,7 @@ if (isset($listaJogosNintendo)) {
 }
 
 if (isset($itensProdHome)) {
-    $itensProdHome = listarprodutos($conn);
+    $itensProdHome = carregarprodutos($conn);
 }
 // if (isset($listaTodosJogos)) {
 //   $listaTodosJogos = carregarJogos($conn);

@@ -571,3 +571,39 @@ input:-internal-autofill-selected {
   top: 30%;
   transition: all 0.9ms linear;
 }
+
+.texto-carrosel h5,
+.texto-carrosel p {
+  text-shadow: 1px 1px 2px #000000;
+  /* text-shadow: 1px 1px 2px #000000, 0 0 1em #ff6f00, 0 0 0.2em #ff6f00; */
+  color: white;
+  font: 1.8em Georgia, "Bitstream Charter", "URW Bookman L",
+    "Century Schoolbook L", serif;
+}
+
+#listaItensCarrosel .btn-outline-light {
+  box-shadow: 1px 1px 2px #000000;
+}
+
+.texto-carrosel p {
+  font-size: 1.2em;
+}
+
+#listaItensCarrosel div:nth-child(even) .carousel-caption {
+  text-align: right !important;
+}
+
+#listaItensCarrosel div:nth-child(odd) .carousel-caption {
+  text-align: left !important;
+}
+
+.card-pedido {
+  font-size: 1.6rem;
+}
+.card-pedido p span {
+  font-size: 1.62rem;
+}
+
+.card-pedido img {
+  width: 180px;
+}

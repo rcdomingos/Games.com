@@ -72,7 +72,8 @@ CREATE TABLE pedido (
 	cod_cliente INT NOT NULL,
 	data_pedido DATE NOT NULL, 
 	data_entrega DATE,
-	valor_pedido DECIMAL(6,2)
+	valor_pedido DECIMAL(6,2),
+  cod_carrinho VARCHAR(50)
 );
 
 /**ADICIONANDO AS CHAVES ESTRANGEIRAS DA TABELA PEDIDO**/

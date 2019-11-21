@@ -2,9 +2,9 @@
 
 include_once '../../config.php';
 
-require SITE_PATH .'/Controllers/c_home.php';
+require SITE_PATH.'/Controllers/c_home.php';
 $data_slide = 0;
-$titlePage = "Sua Loja de Games on-line";
+$titlePage = 'Sua Loja de Games on-line';
 // print_r($itensCarrosel);
 ?>
 <!DOCTYPE html>
@@ -14,18 +14,16 @@ $titlePage = "Sua Loja de Games on-line";
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet"
-    href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
-  <link rel="stylesheet"
-    href="<?php echo SITE_URL ?>/css/styles.css">
+  <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
   <title>
-    Games.com | <?php echo $titlePage ;?>
+    Games.com | <?php echo $titlePage; ?>
   </title>
 </head>
 
 <body>
   <!-- menu do site -->
-  <?php include SITE_PATH.'/includes/menu.php';?>
+  <?php include SITE_PATH.'/includes/menu.php'; ?>
   <!--conteudo da pagina -->
   <section class="destaques">
     <div id="carroselDestaques" class="carousel slide" data-ride="carousel">
@@ -33,18 +31,15 @@ $titlePage = "Sua Loja de Games on-line";
         <li data-target="#carroselDestaques" data-slide-to="0" class="active"></li>
         <?php foreach ($itensCarrosel as $itemLista) {
     $data_slide++ ?>
-        <li data-target="#carroselDestaques"
-          data-slide-to="<?php echo $data_slide?>"></li>
+        <li data-target="#carroselDestaques" data-slide-to="<?php echo $data_slide?>"></li>
         <?php
-}; ?>
+} ?>
       </ol>
-      <div class="carousel-inner">
+      <div id="listaItensCarrosel" class="carousel-inner">
         <!-- item padrão do site -->
         <div class="carousel-item active">
-          <img class="d-block w-100"
-            src="<?php echo SITE_URL ?>/images/produtos/destaque.png"
-            alt="Primeiro Slide">
-          <div class="carousel-caption d-none d-md-block">
+          <img class="d-block w-100" src="<?php echo SITE_URL ?>/images/produtos/destaque.png" alt="Primeiro Slide">
+          <div class="carousel-caption d-none d-md-block texto-carrosel">
             <h5>Destaques</h5>
             <p>Os melhores jogos você encotra na Games.com</p>
           </div>
@@ -55,17 +50,17 @@ $titlePage = "Sua Loja de Games on-line";
           <img class="d-block  w-100 img-fluid"
             src="<?php echo SITE_URL ?>/images/produtos/<?php echo $itemLista['banner_img']?>"
             alt="Imagem: <?php echo $itemLista['nome_prod']?>">
-          <div class="carousel-caption d-none d-md-block">
+          <div class="carousel-caption d-none d-md-block texto-carrosel">
             <h5><?php echo $itemLista['nome_prod']?>
             </h5>
             <p><?php echo $itemLista['descricao_prod']?>
             </p>
             <a href="<?php echo SITE_URL ?>/Views/produtos/detalhe.php?jogo=<?php echo $itemLista['cod_produto']?>"
-              class="btn btn-outline-dark">Confira</a>
+              class="btn btn-outline-light">Confira</a>
           </div>
         </div>
 
-        <?php }; ?>
+        <?php } ?>
 
       </div>
       <!-- controle do carrosel  -->
@@ -101,7 +96,7 @@ $titlePage = "Sua Loja de Games on-line";
             <div class="card text-center border-0 card-jogo">
               <div class="card-header border-0 bg-transparent">
                 <h5 class="card-title text-uppercase">
-                  <?php echo $itemSugestao['nome_prod'] ." - " . $itemSugestao['nome_categoria']  ?>
+                  <?php echo $itemSugestao['nome_prod'].' - '.$itemSugestao['nome_categoria']  ?>
                 </h5>
               </div>
               <img class="card-img-top px-3 img-cover"
@@ -122,7 +117,7 @@ $titlePage = "Sua Loja de Games on-line";
           </a>
         </div>
 
-        <?php }; ?>
+        <?php } ?>
       </div>
     </div>
   </section>
@@ -160,7 +155,7 @@ $titlePage = "Sua Loja de Games on-line";
             <div class="card text-center border-0 card-jogo">
               <div class="card-header border-0 bg-transparent">
                 <h5 class="card-title text-uppercase">
-                  <?php echo $itemPromocao['nome_prod'] ." - " . $itemPromocao['nome_categoria']  ?>
+                  <?php echo $itemPromocao['nome_prod'].' - '.$itemPromocao['nome_categoria']  ?>
                 </h5>
               </div>
               <img class="card-img-top px-3 img-cover"
@@ -184,14 +179,14 @@ $titlePage = "Sua Loja de Games on-line";
             </div>
           </a>
         </div>
-        <?php }; ?>
+        <?php } ?>
 
       </div>
     </div>
   </section>
 
   <!-- footer site -->
-  <?php include SITE_PATH .'/includes/footer.php';?>
+  <?php include SITE_PATH.'/includes/footer.php'; ?>
   <!-- script bootstrap -->
   <script src="<?php echo SITE_URL ?>/js/jquery-3.4.1.min.js">
   </script>

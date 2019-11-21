@@ -2,6 +2,12 @@
 
 include_once '../../config.php';
 $titlePage = "Sua Loja de Games on-line";
+
+
+$Data = new DateTime();
+$carrinho= $Data->format('dmy') . rand(1, 99999) ;
+echo $carrinho;
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -37,14 +37,23 @@ if (isset($_GET['remItem'])) {
     }
 }
 
-
+/**Finalizar o pedido de compra */
 if (isset($_GET['finalizar'])) {
-    session_start();
-    foreach ($_SESSION['carrinho'] as $key => $itvalue) {
-        print_r($itvalue);
-        echo $_GET['finalizar'];
-        echo "<br>";
+    if (finalizarPedido($_GET['finalizar'], $_GET['total'], $conn)) {
+        header("location:" . SITE_URL . "/Views/pedidos/pedidoFinalizado.php");
+        exit;
+    } else {
+        echo "ERRO: Ocorreu um erro para finalizar o Pedido";
     }
+}
+
+
+
+/**Finalizar o pedido de compra */
+if (isset($PedidoCriado)) {
+    $PedidoCriado=listarPedidoAberto($_SESSION['cod_carrinho'], $_SESSION['cod_cliente'], $conn);
+    unset($_SESSION['carrinho']);
+    unset($_SESSION['cod_carrinho']);
 }
 
 
