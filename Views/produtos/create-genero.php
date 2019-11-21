@@ -1,5 +1,7 @@
 <?php
 include_once '../../config.php';
+include   SITE_PATH . '/Controllers/c_valida_usuario.php';
+
 $titlePage    = 'Cadastrar Gênero';
 ?>
 <!DOCTYPE html>

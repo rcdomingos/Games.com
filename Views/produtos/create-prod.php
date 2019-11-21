@@ -2,6 +2,9 @@
 include_once '../../config.php';
 
 $titlePage      = "Cadastrar Produto";
+$selectgenero = [];
+$selectcategoria = [];
+include   SITE_PATH . '/Controllers/c_valida_usuario.php';
 
 require SITE_PATH . '/Controllers/c_produto.php';
 
@@ -42,6 +45,10 @@ require SITE_PATH . '/Controllers/c_produto.php';
           </div>
           <div class="form-group mb-3">
             <label class="sr-only" for="valor_un">Valor do Produto:</label>
+            <input class="form-control input-adm" type="date" name="data_lancamento">
+          </div>
+          <div class="form-group mb-3">
+            <label class="sr-only" for="data-lacamento">Data de lançamento:</label>
             <input class="form-control input-adm" type="text" name="valor_un" placeholder="Valor R$">
           </div>
           <div class="form-group mb-3">
@@ -70,7 +77,7 @@ require SITE_PATH . '/Controllers/c_produto.php';
             <label class="sr-only" for="categoria">Categoria</label>
             <select class="form-control input-adm" name="cod_categoria" id="cod_categoria">
               <option value="">Selecione Categoria</option>
-              <?php foreach ($listacategoria as $itemcategoria) { ?>
+              <?php foreach ($selectcategoria as $itemcategoria) { ?>
                 <option value="<?php echo $itemcategoria['cod_categoria'] ?>"><?php echo $itemcategoria['nome_categoria'] ?></option>
               <?php }; ?>
             </select>
@@ -79,16 +86,16 @@ require SITE_PATH . '/Controllers/c_produto.php';
             <label class="sr-only" for="genero">Gênero</label>
             <select class="form-control input-adm" name="cod_genero" id="cod_genero">
               <option value="">Selecione Gênero</option>
-              <?php foreach ($listagenero as $itemgenero) { ?>
+              <?php foreach ($selectgenero as $itemgenero) { ?>
                 <option value="<?php echo $itemgenero['cod_genero'] ?>"><?php echo $itemgenero['nome_genero'] ?></option>
               <?php }; ?>
             </select>
           </div>
           <div class="input-group d-flex justify-content-center">
-            <input type="hidden" class="btn btn-dark btn-block btn-comprar" name="" id="">
-            <input class="btn btn-dark btn-block btn-comprar mx-2 col-3" type="submit" value="Cadastrar" name="cadastrar" id="criar">
+            <input type="hidden" class="btn btn-dark btn-block btn-comprar">
+            <input class="btn btn-dark btn-block btn-comprar mx-2 col-3" type="submit" value="Cadastrar" name="cadastrar-produto" id="cadastrar-produto">
             <input class="btn btn-dark btn-block btn-comprar mx-2 col-3" type="reset" value="Limpar" id="limpar">
-            <a class="btn btn-dark btn-block btn-comprar mx-2 col-3" href="./adm-index.php">Cancelar</a>
+            <a class="btn btn-dark btn-block btn-comprar mx-2 col-3" href="./prod-index.php">Cancelar</a>
           </div>
         </form>
       </div>

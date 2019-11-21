@@ -513,6 +513,7 @@ input:-internal-autofill-selected {
   /* width: 50 px; */
 }
 
+
 .btn-adm-lista {
   background-color: #ff6f00;
   color: #20232c;
@@ -530,12 +531,12 @@ input:-internal-autofill-selected {
 
 .quadro-adm {
   /* background-color: #ff6f00; */
-  border: 2px solid #ff6f00;
+  border: 3px solid #ff6f00;
 }
 
 .input-adm {
   /* background-color: #ff6f00; */
-  border: 1px solid #ff6f00;
+  border: 2px solid #ff6f00;
 }
 
 .min-h-75 {
