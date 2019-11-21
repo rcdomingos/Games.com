@@ -13,7 +13,7 @@
     </ul>
     <span class="navbar-text">
       Olá Administrador(a), <?php echo $_SESSION['nome_usuario'] ?>!
-      <a class="ml-4" href="<?php echo SITE_URL ?>/Views/adm"><strong class="ft-escuro">Sair</strong></a>
+      <a class="ml-4" href="<?php echo SITE_URL ?>/Controllers/c_sair.php"><strong class="ft-escuro">Sair</strong></a>
     </span>
   </div>
 </nav>

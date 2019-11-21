@@ -1,9 +1,9 @@
 <?php
 include '../../config.php';
+include   SITE_PATH . '/Controllers/c_valida_usuario.php';
 
-// require SITE_PATH . '/Controllers/c_produto.php';
 
-$linha = [];
+// $linha = [];
 
 ?>
 <!DOCTYPE html>

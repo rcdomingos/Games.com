@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../../config.php';
-include   SITE_PATH .'/Controllers/c_valida_usuario.php';
+include   SITE_PATH . '/Controllers/c_valida_usuario.php';
 
 $titlePage = 'ADM Games.com'
 ?>
@@ -12,10 +12,8 @@ $titlePage = 'ADM Games.com'
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet"
-    href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
-  <link rel="stylesheet"
-    href="<?php echo SITE_URL ?>/css/styles.css">
+  <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
 
   <title><?php echo $titlePage; ?>
   </title>
@@ -27,15 +25,9 @@ $titlePage = 'ADM Games.com'
     <div class="container">
       <div class="row justify-content-md-center mt-3 ">
         <div class="col-md-4 mt-md-5">
-          <a class="btn btn-dark btn-block btn-adm py-4 my-3 col align-self-center"
-            href="<?php echo SITE_URL ?>/Views/produtos/prod-index.php"><strong
-              class="h5">PRODUTOS</strong></a>
-          <a class="btn btn-dark btn-block btn-adm py-4 my-3 col align-self-center"
-            href="<?php echo SITE_URL ?>/Views/produtos/genero-index.php"><strong
-              class="h5">GÊNEROS</strong></a>
-          <a class="btn btn-dark btn-block btn-adm py-4 my-3 col align-self-center"
-            href="<?php echo SITE_URL ?>/Views/produtos/categ-index.php"><strong
-              class="h5">CATEGORIAS</strong></a>
+          <a class="btn btn-dark btn-block btn-adm py-4 my-3 col align-self-center" href="<?php echo SITE_URL ?>/Views/produtos/prod-index.php"><strong class="h5">PRODUTOS</strong></a>
+          <a class="btn btn-dark btn-block btn-adm py-4 my-3 col align-self-center" href="<?php echo SITE_URL ?>/Views/produtos/genero-index.php"><strong class="h5">GÊNEROS</strong></a>
+          <a class="btn btn-dark btn-block btn-adm py-4 my-3 col align-self-center" href="<?php echo SITE_URL ?>/Views/produtos/categ-index.php"><strong class="h5">CATEGORIAS</strong></a>
         </div>
       </div>
     </div>
