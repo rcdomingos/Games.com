@@ -55,6 +55,3 @@ if (isset($PedidoCriado)) {
     unset($_SESSION['carrinho']);
     unset($_SESSION['cod_carrinho']);
 }
-
-
-// session_destroy();
