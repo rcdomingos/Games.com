@@ -53,9 +53,17 @@ $titlePage =  "Jogo " . $infoProduto['nome_prod'];
               <h1 class="card-title h3 text-uppercase ft-branca">Jogo
                 <?php echo $infoProduto['nome_prod'] ."-" . $infoProduto['nome_categoria']?>
               </h1>
-              <p class="card-text pt-2"><small class="text-muted">Por Apenas</small></p>
-              <p class="card-text h2 mt-n3 ft-laranja"><?php echo $infoProduto['precounitario']?>
+              <?php if ($infoProduto['promocao']) { ?>
+              <p class="card-text ft-laranja">Promoção de: <s>R$ <?php echo $infoProduto['valor_un']?></s>
               </p>
+              <p class="card-text"><small class="text-muted">Por Apenas</small></p>
+              <p class="card-text h2 mt-n3 ft-laranja"><small>R$</small> <?php echo number_format($infoProduto['valor_promocao'], 2, ',', '.') ?>
+              </p>
+              <?php } else {?>
+              <p class="card-text pt-2"><small class="text-muted">Por Apenas</small></p>
+              <p class="card-text h2 mt-n3 ft-laranja"><small>R$</small> <?php echo number_format($infoProduto['valor_un'], 2, ',', '.')?>
+              </p>
+              <?php } ?>
               <p class="card-text ft-branca">Em Estoque: <?php echo $infoProduto['estoque']?>
               </p>
             </div>

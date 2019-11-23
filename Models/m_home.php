@@ -15,7 +15,7 @@ function carregarDestaques($conn)
     return $result;
 }
 
-/**FUNÇÃO PARA CARREGAR OS INTES DE SUGESTÃO DA HOME */
+/**FUNÇÃO PARA CARREGAR OS ITENS DE SUGESTÃO DA HOME */
 function carregarSugestoes($conn)
 {
     $sql = "SELECT  p.cod_produto, p.nome_prod, p.descricao_prod, p.cover_img, p.valor_un, g.nome_genero, c.nome_categoria
@@ -29,7 +29,7 @@ function carregarSugestoes($conn)
     return $result;
 }
 
-/**FUNÇÃO PARA CARREGAR OS INTES DE PROMOÇÃO DA HOME */
+/**FUNÇÃO PARA CARREGAR OS ITENS DE PROMOÇÃO DA HOME */
 function carregarPromocoes($conn)
 {
     $sql = "SELECT  p.cod_produto, p.nome_prod, p.descricao_prod, p.cover_img, p.valor_un, p.valor_promocao, g.nome_genero, c.nome_categoria

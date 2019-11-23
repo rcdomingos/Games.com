@@ -65,6 +65,7 @@ function finalizarPedido($carrinho, $valorTotal, $conn)
         if ($cod_pedido) {
             foreach ($_SESSION['carrinho'] as $key => $cart) {
                 $pedItem[] = criarPedidoitens($cod_pedido['cod_pedido'], $cart['cod_produto'], $cart['quantidade'], $conn);
+                ajustarSaldoEstoque($cart['cod_produto'], $cart['quantidade'], $conn);
             }
             if (count($_SESSION['carrinho']) > count($pedItem)) {
                 echo "ERRO: Ocorreu algum erro para integrar um item";
@@ -125,5 +126,26 @@ function listarPedidoAberto($cod_carrinho, $cod_cliente, $conn)
     $result = $stmt->execute() ? $stmt->get_result()->fetch_assoc() : false;
     $stmt->close();
 
+    return $result;
+}
+
+
+/** Função para ajustar o saldo de estoque */
+function ajustarSaldoEstoque($cod_produto, $quantidade, $conn)
+{
+    // $result->fetch_row()
+    $sqlSET = "SET @qdtEstoque := (SELECT estoque FROM produto WHERE cod_produto = ? )";
+    $stmt = $conn->prepare($sqlSET);
+    $stmt->bind_param("i", $cod_produto);
+    $stmt->execute();
+    
+    $sql = " UPDATE produto SET estoque = (@qdtEstoque - ?) WHERE cod_produto = ? ";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $quantidade, $cod_produto);
+
+    $result = $stmt->execute() ? true : false;
+
+    $stmt->close();
+      
     return $result;
 }

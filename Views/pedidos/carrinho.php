@@ -90,7 +90,7 @@ require SITE_PATH.'/Controllers/c_pedido.php';
                     <?php echo $itemCarrinho['quantidade']; ?>
                   </td>
                   <td class="align-middle">
-                    <?php echo number_format($itemCarrinho['quantidade'] * $itemCarrinho['valor_prod'], 2, '.', ''); ?>
+                    <?php echo number_format($itemCarrinho['quantidade'] * $itemCarrinho['valor_prod'], 2, '.', '.'); ?>
                   </td>
                   <td class="align-middle text-center">
                     <a href="./carrinho.php?remItem=<?php echo $itemCarrinho['cod_produto']; ?>">X</a>
@@ -106,7 +106,7 @@ require SITE_PATH.'/Controllers/c_pedido.php';
               <div class="card-body text-center">
                 <h1 class="card-title h3 text-uppercase ft-branca"> Checkout </h1>
                 <p class="card-text pt-2"><small class="text-muted">Valor Total do Pedido</small></p>
-                <p class="card-text h2 mt-n3 ft-laranja"><?php echo number_format($totalPedido, 2, ',', '') ?>
+                <p class="card-text h2 mt-n3 ft-laranja"><?php echo number_format($totalPedido, 2, ',', '.') ?>
                 </p>
               </div>
               <div class="card-footer border-0 bg-transparent">

@@ -1,10 +1,10 @@
 <?php
 
 include_once '../../config.php';
-
-require SITE_PATH.'/Controllers/c_home.php';
-$data_slide = 0;
 $titlePage = 'Sua Loja de Games on-line';
+
+$data_slide = 0;
+require SITE_PATH.'/Controllers/c_home.php';
 // print_r($itensCarrosel);
 ?>
 <!DOCTYPE html>
@@ -37,21 +37,21 @@ $titlePage = 'Sua Loja de Games on-line';
       </ol>
       <div id="listaItensCarrosel" class="carousel-inner">
         <!-- item padrão do site -->
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="<?php echo SITE_URL ?>/images/produtos/destaque.png" alt="Primeiro Slide">
+        <div class="carousel-item active"
+          style="background-image: url('<?php echo SITE_URL ?>/images/bannerSiteGames.jpg');">
+          <!-- <img class="d-block w-100" src="<?php echo SITE_URL ?>/images/bannerSiteGames.jpg"
+          alt="Primeiro Slide"> -->
           <div class="carousel-caption d-none d-md-block texto-carrosel">
-            <h5>Destaques</h5>
+            <h5 class="ft-laranja">Fazendo seu Jogo Melhor</h5>
             <p>Os melhores jogos você encotra na Games.com</p>
           </div>
         </div>
         <!-- itens de produtos -->
         <?php foreach ($itensCarrosel as $itemLista) { ?>
-        <div class="carousel-item">
-          <img class="d-block  w-100 img-fluid"
-            src="<?php echo SITE_URL ?>/images/produtos/<?php echo $itemLista['banner_img']?>"
-            alt="Imagem: <?php echo $itemLista['nome_prod']?>">
-          <div class="carousel-caption d-none d-md-block texto-carrosel">
-            <h5><?php echo $itemLista['nome_prod']?>
+        <div class="carousel-item"
+          style="background-image: url('<?php echo SITE_URL ?>/images/produtos/<?php echo $itemLista['banner_img']?>');">
+          <div class="carousel-caption d-md-block texto-carrosel">
+            <h5 class="ft-laranja"><?php echo $itemLista['nome_prod']?>
             </h5>
             <p><?php echo $itemLista['descricao_prod']?>
             </p>
@@ -96,17 +96,19 @@ $titlePage = 'Sua Loja de Games on-line';
             <div class="card text-center border-0 card-jogo">
               <div class="card-header border-0 bg-transparent">
                 <h5 class="card-title text-uppercase">
-                  <?php echo $itemSugestao['nome_prod'].' - '.$itemSugestao['nome_categoria']  ?>
+                  <?php echo $itemSugestao['nome_prod']?>
                 </h5>
+                <p class="mt-n3"><?php echo $itemSugestao['nome_categoria']  ?>
+                </p>
               </div>
-              <img class="card-img-top px-3 img-cover"
+              <img class="card-img-top px-4 img-cover"
                 src="<?php echo SITE_URL  ?>/images/produtos/<?php echo $itemSugestao['cover_img']?>"
                 alt="Cover: <?php echo $itemSugestao['nome_prod']?>">
               <div class="card-body">
                 <p class="card-text">Jogo de <?php echo $itemSugestao['nome_genero']?>
                 </p>
                 <p class="card-text mt-n3"><small class="text-muted">Por Apenas</small></p>
-                <p class="card-text h2 font-weight-bold"><small>R$ </small><?php echo $itemSugestao['valor_un']?>
+                <p class="card-text h2 font-weight-bold"><small>R$ </small><?php echo number_format($itemSugestao['valor_un'], 2, ',', '.')?>
                 </p>
               </div>
               <div class="card-footer border-0 bg-transparent">
@@ -155,21 +157,23 @@ $titlePage = 'Sua Loja de Games on-line';
             <div class="card text-center border-0 card-jogo">
               <div class="card-header border-0 bg-transparent">
                 <h5 class="card-title text-uppercase">
-                  <?php echo $itemPromocao['nome_prod'].' - '.$itemPromocao['nome_categoria']  ?>
+                  <?php echo $itemPromocao['nome_prod']?>
                 </h5>
+                <p class="mt-n3"><?php echo $itemPromocao['nome_categoria']  ?>
+                </p>
               </div>
-              <img class="card-img-top px-3 img-cover"
+              <img class="card-img-top px-4 img-cover"
                 src="<?php echo SITE_URL  ?>/images/produtos/<?php echo $itemPromocao['cover_img']?>"
                 alt="Cover: <?php echo $itemPromocao['nome_prod']?>">
               <div class="card-body">
                 <p class="card-text">Jogo de <?php echo $itemPromocao['nome_genero']?>
                 </p>
                 <p class="card-text mt-n3"><small class="text-muted">De</small></p>
-                <p class="card-text mt-n4 "><small>R$ </small> <?php echo $itemPromocao['valor_un']?>
+                <p class="card-text mt-n4 "><small>R$ </small> <?php echo number_format($itemPromocao['valor_un'], 2, ',', '.')?>
                 </p>
                 <p class="card-text"><small class="text-muted">Por Apenas</small></p>
                 <p class="card-text h2 mt-n3 font-weight-bold "><small>R$
-                  </small><?php echo $itemPromocao['valor_promocao']?>
+                  </small><?php echo number_format($itemPromocao['valor_promocao'], 2, ',', '.') ?>
                 </p>
               </div>
               <div class="card-footer border-0 bg-transparent">
