@@ -45,7 +45,7 @@ if (isset($_SESSION['carrinho'])) {
         <div class="menu-entrar">
           <ul class="text-left">
             <li><a
-                href="<?php echo SITE_URL ?>/Views/Clientes/loginClientes.php">Entrar</a>
+                href="<?php echo SITE_URL ?>/Views/Clientes/loginCliente.php">Entrar</a>
             </li>
             <li><a
                 href="<?php echo SITE_URL ?>/Views/Clientes/cadastroClientes.php">Cadastrar</a>

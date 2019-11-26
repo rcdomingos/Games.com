@@ -423,11 +423,11 @@ img.img-detalhe {
   width: 100%;
   height: 100px;
 }
-.principal-cadastro:hover {
+/* .principal-cadastro:hover{
   background-color: #000000;
   border-color: rgba(0, 0, 0, 0);
   color: #ff6f00;
-}
+} */
 
 /* .efeito:hover{
   background-color: #ff6f00;
@@ -459,6 +459,14 @@ img.img-detalhe {
     transparent 0
   );
   color: #666;
+}
+
+/* .dividor-cadastro::after, .dividor-cadastro::before {
+  box-sizing: border-box;
+} */
+
+.cadastroForm input {
+  padding-left: 9px;
 }
 
 .botao-cadastro {

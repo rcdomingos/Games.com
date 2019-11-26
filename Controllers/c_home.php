@@ -1,5 +1,5 @@
 <?php
-include_once './../config.php';
+include_once '../config.php';
 
 $conn = require SITE_PATH . '/Models/conexao.php';
 
