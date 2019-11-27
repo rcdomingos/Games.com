@@ -1,12 +1,12 @@
 <?php
 include_once '../../config.php';
-
+session_start();
 $listaJogosXbox = [];
 $codCategoria = 2; /** 2-Xbox */
 $limit = 12;/** quantidade de jogo por pagina */
 $Nextpg = (isset($_GET['page']))? ($_GET['page'] + 1) : 1;
 $Prevpg = (isset($_GET['page']) && $Nextpg > 1)? ($_GET['page'] - 1) : 0;
-$offset = (isset($_GET['page']))? ($_GET['page'] * 16) : 0;
+$offset = (isset($_GET['page']))? ($_GET['page'] * $limit ) : 0;
 
 require SITE_PATH .'/Controllers/c_produto.php';
 
@@ -45,6 +45,8 @@ $titlePage = "Jogos Xbox";
   <!-- section com a lista dos jogos  -->
   <section>
     <div class="container mt-5">
+    <?php
+        if ($listaJogosXbox) { ?>
       <div class="row">
         <?php foreach ($listaJogosXbox as $jogo) { ?>
         <div class="col-sm-3 mb-3">
@@ -62,9 +64,12 @@ $titlePage = "Jogos Xbox";
                 src="<?php echo SITE_URL  ?>/images/produtos/<?php echo $jogo['cover_img']?>"
                 alt="Cover: <?php echo $jogo['nome_prod']?>">
               <div class="card-body">
-                <p class="card-text">Jogo de <?php echo $jogo['nome_genero']?></p>
+                <p class="card-text">Jogo de <?php echo $jogo['nome_genero']?>
+                </p>
                 <p class="card-text mt-n3"><small class="text-muted">Por Apenas</small></p>
-                <p class="card-text h2 font-weight-bold"><small>R$ </small><?php echo number_format($jogo['valor_un'], 2, ',', '.') ?></p>
+                <p class="card-text h2 font-weight-bold"><small>R$
+                  </small><?php echo number_format($jogo['valor_un'], 2, ',', '.') ?>
+                </p>
               </div>
               <div class="card-footer border-0 bg-transparent">
                 <a href="<?php echo SITE_URL ?>/Controllers/c_pedido.php?addProduto=<?php echo $jogo['cod_produto']?>"
@@ -75,6 +80,10 @@ $titlePage = "Jogos Xbox";
         </div>
         <?php } ?>
       </div>
+      <?php } else {
+              /**Carregar a pagina de erro quando não tiver produto cadastrado */
+            include SITE_PATH.'/includes/erroCarregarProduto.php';
+          } ?>
     </div>
   </section>
   <!-- menu de navegação das paginas -->

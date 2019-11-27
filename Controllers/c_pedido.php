@@ -7,6 +7,7 @@ $conn = require SITE_PATH . '/Models/conexao.php';
 /**funçoes usadas nos produtos*/
 include SITE_PATH . '/Models/m_pedido.php';
 
+session_start();
 
 // adicionar o item no carrinho
 if (isset($_GET['addProduto'])) {
@@ -39,11 +40,16 @@ if (isset($_GET['remItem'])) {
 
 /**Finalizar o pedido de compra */
 if (isset($_GET['finalizar'])) {
-    if (finalizarPedido($_GET['finalizar'], $_GET['total'], $conn)) {
-        header("location:" . SITE_URL . "/Views/pedidos/pedidoFinalizado.php");
-        exit;
+    if (isset($_SESSION['cod_cliente'])) {
+        if (finalizarPedido($_GET['finalizar'], $_GET['total'], $conn)) {
+            header("location:" . SITE_URL . "/Views/pedidos/pedidoFinalizado.php");
+            exit;
+        } else {
+            echo "ERRO: Ocorreu um erro para finalizar o Pedido";
+        }
     } else {
-        echo "ERRO: Ocorreu um erro para finalizar o Pedido";
+        header("location:" . SITE_URL . "/Views/Clientes/loginCliente.php");
+        exit;
     }
 }
 

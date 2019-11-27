@@ -1,9 +1,9 @@
 <?php
 
-/**FUNÇÃO PARA VALIDAR O USUARIO NO BANCO */
+/**FUNÇÃO PARA VALIDAR O CLIENTE NO BANCO */
 function validarUsuario($user, $pass, $conn)
 {
-    $sql = 'SELECT cod_usuario, nome_usuario, telefone, cpf, email, senha  from usuario where email = ? ';
+    $sql = 'SELECT cod_cliente, nome_cliente, telefone, cpf, email, senha, cep  from cliente where email = ? ';
     $stmt = $conn->prepare($sql) ;
     $stmt->bind_param("s", $user);
     $stmt->execute();
@@ -12,36 +12,34 @@ function validarUsuario($user, $pass, $conn)
 
     $stmt->close();
 
-     return password_verify($pass, $result['senha']) ?  $result : false;
-//    return $result;
-    // return current($resultAcesso);
+    return password_verify($pass, $result['senha']) ?  $result : false;
 }
 
 
-/**FUNÇÃO PARA CADASTRAR O USUARIO NO BANCO */
+/**FUNÇÃO PARA CADASTRAR O CLIENTE NO BANCO */
 function cadastrarUsuario($dados, $conn)
 {
-  $valores = $dados;
+    $valores = $dados;
 
-  $sqlValida = 'SELECT email from usuario where email = ? ';
-  $stmt = $conn->prepare($sqlValida) ;
-  $stmt->bind_param("s", $valores['email']);
-  $stmt->execute();
+    $sqlValida = 'SELECT email from cliente where email = ? ';
+    $stmt = $conn->prepare($sqlValida) ;
+    $stmt->bind_param("s", $valores['email']);
+    $stmt->execute();
 
-  $resultValida = $stmt->get_result()->num_rows;
+    $resultValida = $stmt->get_result()->num_rows;
 
-  $stmt->close();
-   
-  if(!$resultValida){
-    $sql = 'INSERT INTO usuario (nome_usuario, telefone, cpf, email, senha) values(?,?,?,?,?)';
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $valores['nome_usuario'], $valores['telefone'], $valores['cpf'], $valores['email'], $valores['senha']);
-    // $stmt->execute();
-    $result = $stmt->execute() ? true : false;
     $stmt->close();
+   
+    if (!$resultValida) {
+        $sql = 'INSERT INTO cliente (nome_cliente, telefone, cpf, email, senha) values(?,?,?,?,?)';
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssss", $valores['nome_usuario'], $valores['telefone'], $valores['cpf'], $valores['email'], $valores['senha']);
+        // $stmt->execute();
+        $result = $stmt->execute() ? true : false;
+        $stmt->close();
 
-    return $result;
-   }else{
-    echo "Usuario ja existe!";
-  }
+        return $result;
+    } else {
+        echo "Usuario ja existe!";
+    }
 }

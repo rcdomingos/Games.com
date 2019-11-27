@@ -1,8 +1,8 @@
 <?php
 
 include_once '../../config.php';
+session_start();
 $titlePage = 'Sua Loja de Games on-line';
-
 $data_slide = 0;
 require SITE_PATH.'/Controllers/c_home.php';
 // print_r($itensCarrosel);
@@ -16,6 +16,7 @@ require SITE_PATH.'/Controllers/c_home.php';
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
+  <link rel="icon" href="<?php echo SITE_URL ?>/favicon.ico" type="image/x-icon">
   <title>
     Games.com | <?php echo $titlePage; ?>
   </title>
@@ -29,11 +30,12 @@ require SITE_PATH.'/Controllers/c_home.php';
     <div id="carroselDestaques" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carroselDestaques" data-slide-to="0" class="active"></li>
-        <?php foreach ($itensCarrosel as $itemLista) {
-    $data_slide++ ?>
+        <?php
+        foreach ($itensCarrosel as $itemLista) {
+            $data_slide++ ?>
         <li data-target="#carroselDestaques" data-slide-to="<?php echo $data_slide?>"></li>
         <?php
-} ?>
+        } ?>
       </ol>
       <div id="listaItensCarrosel" class="carousel-inner">
         <!-- item padrão do site -->
@@ -88,6 +90,8 @@ require SITE_PATH.'/Controllers/c_home.php';
           </div>
         </div>
       </div>
+
+      <?php if ($listaSugestao) { ?>
       <div class="row justify-content-center">
         <?php foreach ($listaSugestao as $itemSugestao) { ?>
         <div class="col-sm-3 col-10 mt-2">
@@ -108,7 +112,8 @@ require SITE_PATH.'/Controllers/c_home.php';
                 <p class="card-text">Jogo de <?php echo $itemSugestao['nome_genero']?>
                 </p>
                 <p class="card-text mt-n3"><small class="text-muted">Por Apenas</small></p>
-                <p class="card-text h2 font-weight-bold"><small>R$ </small><?php echo number_format($itemSugestao['valor_un'], 2, ',', '.')?>
+                <p class="card-text h2 font-weight-bold"><small>R$
+                  </small><?php echo number_format($itemSugestao['valor_un'], 2, ',', '.')?>
                 </p>
               </div>
               <div class="card-footer border-0 bg-transparent">
@@ -118,9 +123,14 @@ require SITE_PATH.'/Controllers/c_home.php';
             </div>
           </a>
         </div>
-
         <?php } ?>
       </div>
+
+      <?php } else {
+            /**Carregar a pagina de erro quando não tiver produto cadastrado */
+            include SITE_PATH.'/includes/erroCarregarProduto.php';
+        } ?>
+
     </div>
   </section>
 
@@ -148,6 +158,7 @@ require SITE_PATH.'/Controllers/c_home.php';
           </div>
         </div>
       </div>
+      <?php if ($listaPromocoes) { ?>
       <div class="row justify-content-center">
         <!-- listando os itens da promoção -->
         <?php foreach ($listaPromocoes as $itemPromocao) { ?>
@@ -169,7 +180,8 @@ require SITE_PATH.'/Controllers/c_home.php';
                 <p class="card-text">Jogo de <?php echo $itemPromocao['nome_genero']?>
                 </p>
                 <p class="card-text mt-n3"><small class="text-muted">De</small></p>
-                <p class="card-text mt-n4 "><small>R$ </small> <?php echo number_format($itemPromocao['valor_un'], 2, ',', '.')?>
+                <p class="card-text mt-n4 "><small>R$ </small>
+                  <?php echo number_format($itemPromocao['valor_un'], 2, ',', '.')?>
                 </p>
                 <p class="card-text"><small class="text-muted">Por Apenas</small></p>
                 <p class="card-text h2 mt-n3 font-weight-bold "><small>R$
@@ -184,8 +196,11 @@ require SITE_PATH.'/Controllers/c_home.php';
           </a>
         </div>
         <?php } ?>
-
       </div>
+      <?php } else {
+            /**Carregar a pagina de erro quando não tiver produto cadastrado */
+            include SITE_PATH.'/includes/erroCarregarProduto.php';
+        } ?>
     </div>
   </section>
 

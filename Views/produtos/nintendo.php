@@ -1,12 +1,12 @@
 <?php
 include_once '../../config.php';
-
+session_start();
 $listaJogosNintendo = [];
 $codCategoria = 3; /** 3-Nintendo */
 $limit = 12;/** quantidade de jogo por pagina */
 $Nextpg = (isset($_GET['page']))? ($_GET['page'] + 1) : 1;
 $Prevpg = (isset($_GET['page']) && $Nextpg > 1)? ($_GET['page'] - 1) : 0;
-$offset = (isset($_GET['page']))? ($_GET['page'] * 16) : 0;
+$offset = (isset($_GET['page']))? ($_GET['page'] * $limit ) : 0;
 
 require SITE_PATH .'/Controllers/c_produto.php';
 
@@ -46,6 +46,8 @@ $titlePage = "Jogos Nintendo";
     <!-- section com a lista dos jogos  -->
     <section>
       <div class="container mt-5">
+      <?php
+        if ($listaJogosNintendo) { ?>
         <div class="row">
           <?php foreach ($listaJogosNintendo as $jogo) { ?>
           <div class="col-sm-3 mb-3">
@@ -66,7 +68,8 @@ $titlePage = "Jogos Nintendo";
                   <p class="card-text">Jogo de <?php echo $jogo['nome_genero']?>
                   </p>
                   <p class="card-text mt-n3"><small class="text-muted">Por Apenas</small></p>
-                  <p class="card-text h2 font-weight-bold"><small>R$ </small><?php echo number_format($jogo['valor_un'], 2, ',', '.') ?>
+                  <p class="card-text h2 font-weight-bold"><small>R$
+                    </small><?php echo number_format($jogo['valor_un'], 2, ',', '.') ?>
                   </p>
                 </div>
                 <div class="card-footer border-0 bg-transparent">
@@ -78,6 +81,10 @@ $titlePage = "Jogos Nintendo";
           </div>
           <?php } ?>
         </div>
+        <?php } else {
+              /**Carregar a pagina de erro quando não tiver produto cadastrado */
+            include SITE_PATH.'/includes/erroCarregarProduto.php';
+          } ?>
       </div>
     </section>
     <!-- menu de navegação das paginas -->

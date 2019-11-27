@@ -1,9 +1,8 @@
 <?php
 
 include_once '../../config.php';
-$titlePage = 'Meu Carrinho';
-
 session_start();
+$titlePage = 'Meu Carrinho';
 
 $itensCarrinho = [];
 $totalPedido = 0.00;

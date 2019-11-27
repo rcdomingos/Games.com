@@ -1,5 +1,8 @@
 <?php
-
+/*******************************************
+ * MODEL HOME - FUNÇÕES USADAS NOS PEDIDOS
+ * DESENV - Reginaldo,Renata,Thais
+ *******************************************/
 
 /**função para criar os itens na variavel Session */
 function addItemCarrinho($codProduto, $qtdProduto)

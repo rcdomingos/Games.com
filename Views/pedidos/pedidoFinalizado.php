@@ -1,8 +1,8 @@
 <?php
 
 include_once '../../config.php';
-$titlePage = "Pedido Finalizado";
 session_start();
+$titlePage = "Pedido Finalizado";
 $PedidoCriado=[];
 
 require SITE_PATH.'/Controllers/c_pedido.php';

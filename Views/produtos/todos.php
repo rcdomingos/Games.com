@@ -1,5 +1,6 @@
 <?php
 include_once '../../config.php';
+session_start();
 
 if (isset($_GET['pesquisa'])) {
     $jogoPesquisa = $_GET['pesquisa'];
@@ -9,7 +10,7 @@ if (isset($_GET['pesquisa'])) {
 $limit = 12;/** quantidade de jogo por pagina */
 $Nextpg = (isset($_GET['page']))? ($_GET['page'] + 1) : 1;
 $Prevpg = (isset($_GET['page']) && $Nextpg > 1)? ($_GET['page'] - 1) : 0;
-$offset = (isset($_GET['page']))? ($_GET['page'] * 16) : 0;
+$offset = (isset($_GET['page']))? ($_GET['page'] * $limit ) : 0;
 
 require SITE_PATH .'/Controllers/c_produto.php';
 
@@ -24,6 +25,7 @@ $titlePage = "Todos os Jogos";
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
+  <link rel="icon" href="<?php echo SITE_URL ?>/favicon.ico" type="image/x-icon">
 
   <title>
     Games.com | <?php echo $titlePage ;?>
@@ -46,6 +48,8 @@ $titlePage = "Todos os Jogos";
   <main>
     <section>
       <div class="container mt-5">
+        <?php
+          if ($listaTodosJogos) { ?>
         <div class="row">
           <?php foreach ($listaTodosJogos as $jogo) { ?>
           <div class="col-sm-3 mb-3">
@@ -66,7 +70,9 @@ $titlePage = "Todos os Jogos";
                   <p class="card-text">Jogo de <?php echo $jogo['nome_genero']?>
                   </p>
                   <p class="card-text mt-n3"><small class="text-muted">Por Apenas</small></p>
-                  <p class="card-text h2 font-weight-bold"><small>R$ </small><?php echo number_format($jogo['valor_un'], 2, ',', '.') ?></p>
+                  <p class="card-text h2 font-weight-bold"><small>R$
+                    </small><?php echo number_format($jogo['valor_un'], 2, ',', '.') ?>
+                  </p>
                 </div>
                 <div class="card-footer border-0 bg-transparent">
                   <a href="<?php echo SITE_URL ?>/Controllers/c_pedido.php?addProduto=<?php echo $jogo['cod_produto']?>"
@@ -75,24 +81,30 @@ $titlePage = "Todos os Jogos";
               </div>
             </a>
           </div>
-
           <?php } ?>
         </div>
+        <?php } else {
+              /**Carregar a pagina de erro quando não tiver produto cadastrado */
+              include SITE_PATH.'/includes/erroCarregarProduto.php';
+          } ?>
       </div>
-
     </section>
     <!-- menu de navegação das paginas -->
     <?php if (!$jogoPesquisa) { ?>
     <nav aria-label="Navegação de página exemplo">
       <ul class="pagination justify-content-center ">
-        <li class="page-item <?php if ($Nextpg == 1) {
-    echo 'disabled';
-}  ?>">
+        <li class="page-item 
+        <?php
+        if ($Nextpg == 1) {
+            echo 'disabled';
+        }  ?>">
           <a class="page-link bk-escuro ft-branca" href="./todos.php?page=<?php echo $Prevpg?>">Anterior</a>
         </li>
-        <li class="page-item <?php if (count($listaTodosJogos) < $limit) {
-    echo 'disabled';
-}  ?>">
+        <li class="page-item 
+        <?php
+        if (count($listaTodosJogos) < $limit) {
+            echo 'disabled';
+        }  ?>">
           <a class="page-link bk-escuro ft-branca" href="./todos.php?page=<?php echo $Nextpg ?>">Próximo</a>
         </li>
       </ul>
