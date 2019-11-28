@@ -1,25 +1,23 @@
 <?php
 
+/**Verificar os itens pendentes no carrinho */
+$itPendentes = false;
 if (isset($_SESSION['carrinho'])) {
     // var_dump($_SESSION['carrinho']);
     $itPendentes = count($_SESSION['carrinho']);
 }
 
 ?>
-
 <header class="menu-principal bk-laranja mb-4">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4">
-        <a href="<?php echo SITE_URL ?>/Views/home/index.php"><img
-            id="icon-logo"
-            src="<?php echo SITE_URL ?>/images/logo.png"
-            alt="Logo"></a>
+        <a href="<?php echo SITE_URL ?>/Views/home/index.php"><img id="icon-logo"
+            src="<?php echo SITE_URL ?>/images/logo.png" alt="Logo do site Games.com"></a>
       </div>
       <div class="col-md-4">
-        <form class="box-search bk-escuro"
-          action="<?php echo SITE_URL ?>/Views/produtos/todos.php"
-          method="get">
+        <!-- caixa de pesquisa dos produto  -->
+        <form class="box-search bk-escuro" action="<?php echo SITE_URL ?>/Views/produtos/todos.php" method="get">
           <input class="input-search bk-escuro" type="search" name="pesquisa" id="pesquisa"
             placeholder="Pesquise seu jogo">
           <span>
@@ -39,32 +37,42 @@ if (isset($_SESSION['carrinho'])) {
         </form>
       </div>
       <div class="col-md-3 text-right">
-        <img id="icone-user"
-          src="<?php echo SITE_URL ?>/images/icones/utilizador.svg"
-          alt="">
+        <?php
+        /**Tela de Login e Logout do cliente */
+        if (isset($_SESSION['nome_cliente'])) {
+            $nomeCliente = explode(" ", $_SESSION['nome_cliente']); ?>
+        <img id="icone-user" src="<?php echo SITE_URL ?>/images/icones/utilizador.svg" alt="">
         <div class="menu-entrar">
           <ul class="text-left">
-            <li><a
-                href="<?php echo SITE_URL ?>/Views/Clientes/loginClientes.php">Entrar</a>
+            <li>Olá, <strong><?php echo $nomeCliente[0] ?></strong>
             </li>
-            <li><a
-                href="<?php echo SITE_URL ?>/Views/Clientes/cadastroClientes.php">Cadastrar</a>
+            <li><a href="<?php echo SITE_URL ?>/Controllers/c_cliente.php?sair=true">Sair</a>
             </li>
           </ul>
         </div>
+        <?php
+        } else { ?>
+        <img id="icone-user" src="<?php echo SITE_URL ?>/images/icones/utilizador.svg" alt="">
+        <div class="menu-entrar">
+          <ul class="text-left">
+            <li><a href="<?php echo SITE_URL ?>/Views/Clientes/loginCliente.php">Entrar</a>
+            </li>
+            <li><a href="<?php echo SITE_URL ?>/Views/Clientes/cadastroClientes.php">Cadastrar</a>
+            </li>
+          </ul>
+        </div>
+        <?php }?>
       </div>
       <div class="col-md-1 text-right">
         <div class="carrinho">
-          <a class="text-right"
-            href="<?php echo SITE_URL ?>/Views/pedidos/carrinho.php"
-            title="Meu Carrinho">
+          <a class="text-right" href="<?php echo SITE_URL ?>/Views/pedidos/carrinho.php" title="Meu Carrinho">
             <div class="icone-carrinho">
-              <?php if ($itPendentes) {
-    echo "<span class='badge badge-light bdg-carrinho'>$itPendentes</span>";
-}?>
-              <img class="img-carrinho"
-                src="<?php echo SITE_URL ?>/images/icones/carrinho.svg"
-                alt="Meu Carrinho">
+              <?php
+              /**itens no carrinho */
+              if ($itPendentes) {
+                  echo "<span class='badge badge-light bdg-carrinho'>$itPendentes</span>";
+              }?>
+              <img class="img-carrinho" src="<?php echo SITE_URL ?>/images/icones/carrinho.svg" alt="Meu Carrinho">
             </div>
           </a>
         </div>
@@ -72,27 +80,24 @@ if (isset($_SESSION['carrinho'])) {
     </div>
     <div class="row">
       <div class="col-12">
+        <!-- menu principal do site -->
         <nav id="lista-menu">
           <ul>
             <li>
-              <a class="border-button ft-escuro"
-                href="<?php echo SITE_URL ?>/Views/produtos/playstation.php"><span><img
-                    src="<?php echo SITE_URL  ?>/images/icones/ps4-control.svg"></span>Playstation</a>
+              <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/produtos/playstation.php"><span><img
+                    src="<?php echo SITE_URL  ?>/images/icones/ps4-control.svg" alt=""></span>Playstation</a>
             </li>
             <li>
-              <a class="border-button ft-escuro"
-                href="<?php echo SITE_URL ?>/Views/produtos/xbox.php"><span><img
-                    src="<?php echo SITE_URL ?>/images/icones/xbox-control.svg"></span>Xbox</a>
+              <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/produtos/xbox.php"><span><img
+                    src="<?php echo SITE_URL ?>/images/icones/xbox-control.svg" alt=""></span>Xbox</a>
             </li>
             <li>
-              <a class="border-button ft-escuro"
-                href="<?php echo SITE_URL ?>/Views/produtos/nintendo.php"><span><img
-                    src="<?php echo SITE_URL ?>/images/icones/nintendo-swtch.png"></span>Nintendo</a>
+              <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/produtos/nintendo.php"><span><img
+                    src="<?php echo SITE_URL ?>/images/icones/nintendo-swtch.png" alt=""></span>Nintendo</a>
             </li>
             <li>
-              <a class="border-button ft-escuro"
-                href="<?php echo SITE_URL ?>/Views/produtos/todos.php"><span><img
-                    src="<?php echo SITE_URL ?>/images/icones/joystick-control.svg"></span>Todos</a>
+              <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/produtos/todos.php"><span><img
+                    src="<?php echo SITE_URL ?>/images/icones/joystick-control.svg" alt=""></span>Todos</a>
             </li>
           </ul>
         </nav>

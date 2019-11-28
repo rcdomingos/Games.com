@@ -222,13 +222,16 @@ input {
 
 /*Destaques*/
 section.destaques {
-  max-height: 400px;
+  max-height: 350px;
   max-width: 100%;
   margin: 0 auto;
 }
 
-#carroselDestaques img {
-  max-height: 400px;
+#listaItensCarrosel .carousel-item {
+  height: 350px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left 75%;
 }
 
 /*** cards dos jogos **/
@@ -242,6 +245,7 @@ img.img-cover {
 
 .card-jogo:hover {
   box-shadow: 0px 0px 12px 0 #dadada;
+  transform: scale(1.01);
 }
 
 .btn-comprar {
@@ -419,11 +423,11 @@ img.img-detalhe {
   width: 100%;
   height: 100px;
 }
-.principal-cadastro:hover {
+/* .principal-cadastro:hover{
   background-color: #000000;
   border-color: rgba(0, 0, 0, 0);
   color: #ff6f00;
-}
+} */
 
 /* .efeito:hover{
   background-color: #ff6f00;
@@ -455,6 +459,14 @@ img.img-detalhe {
     transparent 0
   );
   color: #666;
+}
+
+/* .dividor-cadastro::after, .dividor-cadastro::before {
+  box-sizing: border-box;
+} */
+
+.cadastroForm input {
+  padding-left: 9px;
 }
 
 .botao-cadastro {
@@ -598,8 +610,8 @@ input:-internal-autofill-selected {
 .texto-carrosel p {
   text-shadow: 1px 1px 2px #000000;
   /* text-shadow: 1px 1px 2px #000000, 0 0 1em #ff6f00, 0 0 0.2em #ff6f00; */
-  color: white;
-  font: 1.8em Georgia, "Bitstream Charter", "URW Bookman L",
+  color: #ffffff;
+  font: 2em Georgia, "Bitstream Charter", "URW Bookman L",
     "Century Schoolbook L", serif;
 }
 
@@ -611,11 +623,11 @@ input:-internal-autofill-selected {
   font-size: 1.2em;
 }
 
-#listaItensCarrosel div:nth-child(even) .carousel-caption {
+#listaItensCarrosel div:nth-child(odd) .carousel-caption {
   text-align: right !important;
 }
 
-#listaItensCarrosel div:nth-child(odd) .carousel-caption {
+#listaItensCarrosel div:nth-child(even) .carousel-caption {
   text-align: left !important;
 }
 

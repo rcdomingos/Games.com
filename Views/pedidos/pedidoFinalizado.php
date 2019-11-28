@@ -1,8 +1,8 @@
 <?php
 
 include_once '../../config.php';
-$titlePage = "Pedido Finalizado";
 session_start();
+$titlePage = "Pedido Finalizado";
 $PedidoCriado=[];
 
 require SITE_PATH.'/Controllers/c_pedido.php';
@@ -23,27 +23,31 @@ require SITE_PATH.'/Controllers/c_pedido.php';
 </head>
 
 <body>
-  <main id="bg-finalizado" >
-    <section >
+  <main id="bg-finalizado">
+    <section>
       <div class="d-flex justify-content-center">
-        <div class="card-pedido bk-escuro ft-branca mt-md-5 p-5 rounded shadow  align-items-center">
+        <div class="card-pedido bk-escuro ft-branca mt-md-2 px-5 py-2 rounded shadow  align-items-center">
           <img class="mx-auto d-block" src="<?php echo SITE_URL ?>/images/logo.png" alt="Logo Games.com">
-          <h1 class="text-center mb-4 py-4 ft-laranja ">Pedido nº <?php echo $PedidoCriado['cod_pedido'] ?></h1>
-          <p>Obrigado <span class="ft-laranja" ><?php echo $PedidoCriado['nome_cliente']?></span>, </p>
-          <p>seu pedido no valor de <span class="ft-laranja ">R$ <?php echo number_format($PedidoCriado['valor_pedido'] , 2, ',', '') ?></span>
+          <h1 class="text-center mb-4 py-4 ft-laranja ">Pedido nº <?php echo $PedidoCriado['cod_pedido'] ?>
+          </h1>
+          <p>Obrigado <span class="ft-laranja"><?php echo $PedidoCriado['nome_cliente']?></span>,
+          </p>
+          <p>seu pedido no valor de <span class="ft-laranja ">R$
+              <?php echo number_format($PedidoCriado['valor_pedido'], 2, ',', '') ?></span>
             foi efetuado com Sucesso!</p>
           <p>A entrega esta programada até <span class="ft-laranja ">
-           <?php 
+              <?php
             $dataEntrega = new DateTime($PedidoCriado['data_entrega']);
-            echo date_format($dataEntrega, 'd-m-Y'); 
-           ?> 
-           </span></p>
+            echo date_format($dataEntrega, 'd-m-Y');
+           ?>
+            </span></p>
           <p><small>Para qualquer dúvida estaremos à disposição para maiores esclarecimentos.</small> </p>
           <p class="text-right">Equipe <span class="ft-laranja ">Games.com</span></p>
-          <p class="text-right "><small><a class="ft-branca" href="<?php echo SITE_URL ?>/Views/home/index.php">Voltar a Loja</a></small></p>
+          <p class="text-right "><small><a class="ft-branca" href="<?php echo SITE_URL ?>/Views/home/index.php">Voltar
+                a Loja</a></small></p>
 
         </div>
-        </div>
+      </div>
     </section>
 
 
