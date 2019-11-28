@@ -204,6 +204,21 @@ require SITE_PATH.'/Controllers/c_home.php';
     </div>
   </section>
 
+  <!-- section com link para lançamentos -->
+  <section>
+    <div class="jumbotron jumbotron-fluid bk-escuro mt-5">
+      <div class="container ">
+        <div class="col">
+          <h2 class="display-4 ft-laranja">Lançamentos</h2>
+          <p class="lead ft-branca">Não perca nada, Fique de olho em todos os lançamentos dos jogos mais aguardados do
+            momento</p>
+          <a href="<?php echo SITE_URL ?>/Views/home/jogosLancamentos.php"
+            class="mx-auto btn btn-dark btn-comprar">Conferir</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- footer site -->
   <?php include SITE_PATH.'/includes/footer.php'; ?>
   <!-- script bootstrap -->

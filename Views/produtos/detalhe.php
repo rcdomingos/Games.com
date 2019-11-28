@@ -141,9 +141,9 @@ $titlePage =  "Jogo " . $infoProduto['nome_prod'];
           </div>
         </div>
       </div>
-      <div class="row px-4 pt-2">
-        <div class="col-12">
-          <p>Parte separado para as Avalições e Comentários</p>
+      <div class="row pt-2">
+        <div class="col-12 text-right">
+         <p class="text-right"><a class=" btn btn-dark btn-comprar btn-lg" href="<?php echo SITE_URL ?>/Views/Clientes/cadastroComentario.php?jogo=<?php echo $infoProduto['cod_produto'];?>&nome=<?php echo $infoProduto['nome_prod'];?>">Adicionar</a></p>
         </div>
       </div>
     </div>

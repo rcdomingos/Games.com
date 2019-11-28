@@ -1,12 +1,12 @@
 <?php
 
 include_once '../../config.php';
-
+session_start();
 if (isset($_GET['page'])) {
     $urlApi = $_GET['page'];
-    $apiJogosLancamentos = buscarJogoApiRawg($urlApi);
+    $apiJogosLancamentos = buscarJogosApiRawg($urlApi);
 } else {
-    $apiJogosLancamentos = buscarJogoApiRawg(null);
+    $apiJogosLancamentos = buscarJogosApiRawg(null);
 }
 
 $DtAtual = new DateTime();
@@ -50,24 +50,27 @@ $titlePage = "Ultimos Lançamentos";
         <div class="row justify-content-around">
           <?php foreach ($apiJogosLancamentos['jogos'] as $jogo) { ?>
           <div class="col-sm-6 ">
-            <div class="card bg-transparent mb-5 text-center border-0 card-jogo pt-2">
-              <img class="card-img-top px-3 " src="<?php echo $jogo['img'] ?>" alt="Cover: <?php echo $jogo['nome'] ?>">
-              <div class="card-body">
-                <h5 class="card-title ft-branca "> <?php echo  $jogo['nome'] ?>
-                </h5>
-                <p class="card-text ft-branca">Plataforma(s): <?php echo $jogo['console'] ?>
-                </p>
-                <p class="card-text ft-branca">Avaliação: <?php echo $jogo['rating'] ?>
-                </p>
-                <p class="card-text"><small class="text-muted">Lançamento:
-                    <?php
+            <a class="link-none" href="./jogosLancamentosDetalhe.php?id=<?php echo $jogo['id'] ?>">
+              <div class="card bg-transparent mb-5 text-center border-0 card-jogo pt-2">
+                <img class="card-img-top px-3 " src="<?php echo $jogo['img'] ?>"
+                  alt="Cover: <?php echo $jogo['nome'] ?>">
+                <div class="card-body">
+                  <h5 class="card-title ft-branca "> <?php echo  $jogo['nome'] ?>
+                  </h5>
+                  <p class="card-text ft-branca">Plataforma(s): <?php echo $jogo['console'] ?>
+                  </p>
+                  <p class="card-text ft-branca">Avaliação: <?php echo $jogo['rating'] ?>
+                  </p>
+                  <p class="card-text"><small class="text-muted">Lançamento:
+                      <?php
                     $dataLancamento = new DateTime($jogo['released']);
                     echo date_format($dataLancamento, 'd-m-Y'); ?>
-                  </small>
-                </p>
-                </p>
+                    </small>
+                  </p>
+                  </p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
 
           <?php } ?>
@@ -99,7 +102,7 @@ $titlePage = "Ultimos Lançamentos";
 
 <?php
 // FUÇÃO PARA BUSCAR OS JOGOS NA API
-function buscarJogoApiRawg($pagina)
+function buscarJogosApiRawg($pagina)
 {
     $DtAtual = new DateTime();
     $DtFinal = new DateTime('-1 month');
@@ -110,9 +113,9 @@ function buscarJogoApiRawg($pagina)
     $page = $pagina;
 
     if ($page == null) {
-        $urlRawg = "https://api.rawg.io/api/games?dates=$dataIn,$dataFim&$platforms";
+        $urlRawg = "https://api.rawg.io/api/games?dates=$dataIn,$dataFim&platforms=$platforms";
     } else {
-        $urlRawg = "https://api.rawg.io/api/games?dates=$dataIn,$dataFim&$platforms&page=$page";
+        $urlRawg = "https://api.rawg.io/api/games?dates=$dataIn,$dataFim&platforms=$platforms&page=$page";
     }
   
     $json = file_get_contents($urlRawg);
@@ -126,7 +129,7 @@ function buscarJogoApiRawg($pagina)
         foreach ($jogo->platforms as $platfom) {
             $console .= $platfom->platform->name .", ";
         }
-        $jogos[$key] = array('nome'=> $jogo->name,'img' => $jogo->background_image,
+        $jogos[$key] = array('id'=>$jogo->id, 'nome'=> $jogo->name,'img' => $jogo->background_image,
         'released' => $jogo->released,'rating'=> $jogo->rating ,'console' => rtrim($console, ", "));
     }
     $listaJogos = array('jogos'=>$jogos, 'next'=> $next, 'previous'=>$previous);
