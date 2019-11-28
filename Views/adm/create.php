@@ -16,8 +16,6 @@ $titlePage = "Criar Usuário";
   <title><?php echo $titlePage; ?></title>
 </head>
 
-<body>
-
   <body>
     <div class="container col-8 mt-5 pt-3 pb-5 ">
       <div class="row justify-content-md-center text-center ">
@@ -68,6 +66,5 @@ $titlePage = "Criar Usuário";
     </div>
   </body>
 
-</body>
 
 </html>
