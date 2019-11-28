@@ -101,15 +101,19 @@ ALTER TABLE pedido_item
 CREATE TABLE comentario (
 	cod_comentario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	cod_cliente INT,
+  cod_produto int,
 	comentario VARCHAR(255),
 	data_comentario DATE,
 	data_edit DATE,
-	excluido INT DEFAULT 0
+	excluido INT DEFAULT 0,
+  avaliacao int DEFAULT 0,
+  titulo_comentario VARCHAR(50)
 );
 
 /**ADICIONANDO AS CHAVES ESTRANGEIRAS DA TABELA COMNETARIO**/
 ALTER TABLE comentario
-	ADD CONSTRAINT FK_comentario_cliente FOREIGN KEY (cod_cliente) REFERENCES cliente(cod_cliente);
+	ADD CONSTRAINT FK_comentario_cliente FOREIGN KEY (cod_cliente) REFERENCES cliente(cod_cliente),
+  ADD CONSTRAINT FK_comentario_produto FOREIGN KEY (cod_produto) REFERENCES produto(cod_produto);
 
 
 /**CRIANDO A TABELA FAVORITO **/

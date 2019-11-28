@@ -5,7 +5,7 @@
         <nav id="lista-footer" class="bk-laranja ">
           <ul>
             <li>
-              <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/home/lancamentos.php">
+              <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/home/jogosLancamentos.php">
                 <span><img src="<?php echo SITE_URL ?>/images/icones/four-ps-games-controls.svg"></span>Lançamentos
               </a>
             </li>

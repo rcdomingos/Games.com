@@ -32,6 +32,10 @@ body {
   border-radius: 7px;
 }
 
+a.link-none {
+  text-decoration: none;
+}
+
 .tt-header {
   background: url(../images/icones/plus-control.png) no-repeat;
   background-position: center right;
@@ -618,4 +622,40 @@ input:-internal-autofill-selected {
 
 .card-pedido img {
   width: 180px;
+}
+
+#box-jogo-shadow {
+  width: 100%;
+}
+
+#box-jogo-shadow span {
+  max-width: 40%;
+  position: absolute;
+  bottom: 40px;
+  color: #ffffff;
+  z-index: 2;
+}
+
+#box-jogo-img {
+  width: 100%;
+  min-height: 75vh;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+}
+
+#box-jogo-shadow {
+  background-color: #20232c;
+}
+
+#box-jogo-shadow:after {
+  background: linear-gradient(to left, transparent 0%, rgba(7, 2, 2, 0.9) 70%);
+  bottom: 0;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
 }

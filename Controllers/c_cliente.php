@@ -21,7 +21,8 @@ if (isset($_POST['cadastrar'])) {
     if (cadastrarUsuario($data, $conn)) {
         header("location:". SITE_URL . "/Views/Clientes/retorno.php");
     } else {
-        echo "Erro para Cadastrar o Usuario ";
+        $msgErro = "Ocorreu um erro para cadastrar o usuario no banco, tente novamente";
+        header("location:". SITE_URL . "/Views/home/PaginaErro.php?erro=$msgErro");
     }
 }
 
