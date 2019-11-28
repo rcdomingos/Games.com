@@ -63,15 +63,12 @@ require SITE_PATH . '/Controllers/c_produto.php';
             <label class="sr-only" for="estoque">Quantidade do Produto:</label>
             <input class="form-control input-adm" type="number" name="estoque" placeholder="Quantidade">
           </div>
-          <div class="form-check input-adm ">
-            <label for="destaque">Produto em Destaque?</label><br>
-            <input class="form-check-input" type="radio" name="destaque" id="destaque1" value="1">
-            <label class="form-check-label  " for="destaque">
-              Sim <br>
-              <input class="form-check-input" type="radio" name="destaque" id="destaque0" value="0">
-              <label class="form-check-label " for="destaque">
-                Não
-              </label>
+          <div class="form-check input-adm">
+            <label for="destaque" class="pl-2">Produto em Destaque?</label><br>
+            <input class=" input-destaque" type="radio" name="destaque" id="destaque1" value="1">
+            <label class="form-check-label " for="destaque">Sim </label><br>
+            <input class="input-destaque" type="radio" name="destaque" id="destaque0" value="0">
+            <label class=" mb-2" for="destaque">Não</label>
           </div><br>
           <div class="form-group  mb-3">
             <label class="sr-only" for="categoria">Categoria</label>
@@ -93,9 +90,9 @@ require SITE_PATH . '/Controllers/c_produto.php';
           </div>
           <div class="input-group d-flex justify-content-center">
             <input type="hidden" class="btn btn-dark btn-block btn-comprar">
-            <input class="btn btn-dark btn-block btn-comprar mx-2 col-3" type="submit" value="Cadastrar" name="cadastrar-produto" id="cadastrar-produto">
-            <input class="btn btn-dark btn-block btn-comprar mx-2 col-3" type="reset" value="Limpar" id="limpar">
-            <a class="btn btn-dark btn-block btn-comprar mx-2 col-3" href="./prod-index.php">Cancelar</a>
+            <input class="btn btn-dark btn-block btn-adm mx-2 col-3" type="submit" value="Cadastrar" name="cadastrar-produto" id="cadastrar-produto">
+            <input class="btn btn-dark btn-block btn-adm mx-2 col-3" type="reset" value="Limpar" id="limpar">
+            <a class="btn btn-dark btn-block btn-adm mx-2 col-3" href="./prod-index.php">Cancelar</a>
           </div>
         </form>
       </div>

@@ -84,9 +84,9 @@ function listargenero($conn)
 /* ALTERAR GENERO NO BANCO */
 function alterargenero($dados, $conn)
 {
-  $sql = 'UPDATE genero SET name_genero = ?';
+  $sql = 'UPDATE genero SET nome_genero = ? WHERE cod_genero = ?';
   $stmt = $conn->prepare($sql);
-  $stmt->bind_param("s", $dados['nome_genero']);
+  $stmt->bind_param("si", $dados['nome_genero'], $dados['cod_genero']);
   $result = $stmt->execute() ? true : false;
   $stmt->close();
   return $result;
@@ -105,6 +105,17 @@ function cadastrarcategoria($dados, $conn)
   $result = $stmt->execute() ? true : false;
   $stmt->close();
 
+  return $result;
+}
+
+/* ALTERAR CATEGORIA NO BANCO */
+function alterarcategoria($dados, $conn)
+{
+  $sql = 'UPDATE categoria SET nome_categoria = ? WHERE cod_categoria = ?';
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("si", $dados['nome_categoria'], $dados['cod_categoria']);
+  $result = $stmt->execute() ? true : false;
+  $stmt->close();
   return $result;
 }
 
@@ -193,6 +204,33 @@ function carregarprodutos($conn)
   $stmt->execute();
 
   $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+  $stmt->close();
+  return $result;
+}
+
+/* FUNÇÃO PARA FAZER O SELECT QUE VAI CARREGAR OS DADOS "VIA $_GET" PARA ALTERAÇÃO DO PRODUTO */
+function selectalterarproduto($cod_produto, $conn)
+{
+
+  $sql = "SELECT p.nome_prod, p.codigobarra, p.descricao_prod, p.data_lancamento, p.valor_un, p.cover_img, p.banner_img, p.estoque, gc.cod_categoria, g.cod_genero, p.destaque, p.promocao, p.valor_promocao
+    FROM produto p INNER JOIN genero g ON p.cod_genero = g.cod_genero INNER JOIN categoria c ON p.cod_categoria = c.cod_categoria WHERE cod_produto = ?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("i", $cod_produto);
+
+  $stmt->execute();
+
+  $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+  $stmt->close();
+  return $result;
+}
+
+function alterarproduto($dados, $conn)
+{
+
+  $sql = 'UPDATE produtos SET nome_prod = ? , codigobarra = ? , descricao_prod = ?, valor_un = ?, cover_img = ?, banner_img = ?, estoque = ?, cod_categoria = ?, cod_genero = ?, destaque = ?, promocao = ?, valor_promocao = ?, data_lancamento = ?, situação = ? WHERE cod_genero = ?';
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("sssdssiiiiidsii", $dados['nome_prod'], $dados['codigobarra'], $dados['descricao_prod'], $dados['valor_un'], $dados['cover_img'], $dados['banner_img'], $dados['estoque'], $dados['cod_categoria'], $dados['cod_genero'], $dados['destaque'], $dados['promocao'], $dados['valor_promocao'], $dados['data_lancamento'], $dados['situacao'], $dados['cod_produto']);
+  $result = $stmt->execute() ? true : false;
   $stmt->close();
   return $result;
 }

@@ -84,6 +84,8 @@ if (isset($_POST['alterar-genero'])) {
       $dados[$key] = ($value);
     }
   }
+  // print_r($dados);
+  // print_r($_POST);
   if (alterargenero($dados, $conn)) {
     header("location:" . SITE_URL . "/Views/produtos/genero-index.php");
   } else {
@@ -121,6 +123,24 @@ if (isset($_POST['cadastrar-categoria'])) {
   exit;
 }
 
+/* ALTERAR CATEGORIA NO BANCO */
+if (isset($_POST['alterar-categoria'])) {
+  $dados = [];
+  foreach ($_POST as $key => $value) {
+    if ($key != "alterar-categoria") {
+      $dados[$key] = ($value);
+    }
+  }
+  // print_r($dados);
+  // print_r($_POST);
+  if (alterarcategoria($dados, $conn)) {
+    header("location:" . SITE_URL . "/Views/produtos/categ-index.php");
+  } else {
+    echo 'Erro ao alterar o cadastro no banco';
+  }
+  exit;
+}
+
 /* LISTAR AS CATEGORIAS CADASTRADAS NA INDEX CATEGORIA */
 if (isset($categorias)) {
   $categorias = listarcategoria($conn);
@@ -150,6 +170,28 @@ if (isset($_POST['cadastrar-produto'])) {
     header("location:" . SITE_URL . "/Views/produtos/prod-index.php");
   } else {
     echo 'Erro para cadastrar dado no Banco';
+  }
+  exit;
+}
+
+
+/* ALTERAR PRODUTO NO BANCO  ||  THAIS M.  */
+if (isset($_GET['cod_produto'])) {
+  $selectproduto = current(selectalterarproduto($cod_produto, $conn));
+}
+if (isset($_POST['alterar-produto'])) {
+  $dados = [];
+  foreach ($_POST as $key => $value) {
+    if ($key != "alterar-produto") {
+      $dados[$key] = ($value);
+    }
+  }
+  // print_r($dados);
+  // print_r($_POST);
+  if (alterarproduto($dados, $conn)) {
+    header("location:" . SITE_URL . "/Views/produtos/prod-index.php");
+  } else {
+    echo 'Erro ao alterar o cadastro no banco';
   }
   exit;
 }
