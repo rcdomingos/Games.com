@@ -30,7 +30,7 @@ require SITE_PATH . '/Controllers/c_produto.php';
         <h1>Gênero Produtos</h1>
       </div>
       <div class="row">
-        <a class="col-2 btn btn-dark btn-block btn-comprar my-2" href="<?php echo SITE_URL ?>/Views/produtos/create-genero.php" role="button">Cadastrar Gênero</a>
+        <a class="col-2 btn btn-dark btn-block btn-adm my-2" href="<?php echo SITE_URL ?>/Views/produtos/create-genero.php" role="button">Cadastrar Gênero</a>
 
         <table class=" table text-center " style="width: 100%">
           <thead>
@@ -46,8 +46,8 @@ require SITE_PATH . '/Controllers/c_produto.php';
                 <td><?php echo $linha['cod_genero'] ?>
                 </td>
                 <td><?php echo $linha['nome_genero'] ?>
-                <td class="col-3"><a class=" btn btn-dark btn-comprar" href="<?php echo SITE_URL ?>/Views/produtos/alter-genero.php?genero=<?php echo $linha['cod_genero']; ?>" role="button">Alterar</a>
-                  <a class=" btn btn-dark btn-comprar" href="<?php echo SITE_URL ?>/Controllers/c_produto.php?excluir=<?php echo $linha['cod_genero']; ?>" name="excluir-genero" id="excluir-genero">Excluir</a>
+                <td class="col-3"><a class=" btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Views/produtos/alter-genero.php?genero=<?php echo $linha['cod_genero']; ?>&nome=<?php echo $linha['nome_genero'] ?>" role="button">Alterar</a>
+                  <a class=" btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Controllers/c_produto.php?excluir=<?php echo $linha['cod_genero']; ?>" name="excluir-genero" id="excluir-genero">Excluir</a>
                 </td>
               </tr>
             <?php } ?>

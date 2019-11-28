@@ -522,15 +522,23 @@ input:-internal-autofill-selected {
   color: #20232c;
   border: 1px solid #20232c;
   transition: all 0.3s ease;
-  /* width: 50 px; */
+  border-radius: 70px;
+  width: 40%;
+  padding-left: 10px;
+  font-size: 16px;
+  border: 2px solid #ff6f00;
 }
 
-.btn-adm-lista {
+.btn-adm-2 {
   background-color: #ff6f00;
   color: #20232c;
   border: 1px solid #20232c;
   transition: all 0.3s ease;
-  width: 50 px;
+  border-radius: 70px;
+  width: 100%;
+  padding-left: 10px;
+  font-size: 16px;
+  border: 2px solid #ff6f00;
 }
 
 .quadro-sucess {
@@ -538,22 +546,36 @@ input:-internal-autofill-selected {
   border: 2px solid #20232c;
   padding: 50px;
   margin: 100px;
+  box-shadow: 4px 3px 6px 1px rgba(176, 176, 176, 1);
+
 }
 
 .quadro-adm {
-  /* background-color: #ff6f00; */
-  border: 3px solid #ff6f00;
+  /* box-shadow: 4px 3px 10px 1px rgba(176, 176, 176, 1); */
+  background-color: rgba(0, 0, 0, 0.9);
+  
 }
 
 .input-adm {
-  /* background-color: #ff6f00; */
+  border: none;
+  border-radius: 70px;
+  width: 100%;
+  padding-left: 10px;
+  font-size: 16px;
   border: 2px solid #ff6f00;
 }
 
+.input-destaque{
+  padding-left: 90px;;
+}
 .min-h-75 {
   min-height: 75vh;
 }
 
+.box-adm {
+  border-radius: 70px;
+
+}
 /*AJuste da pagina carrinho */
 .img-carrinho {
   max-width: 60px;

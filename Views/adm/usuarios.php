@@ -2,11 +2,10 @@
 include_once '../../config.php';
 include   SITE_PATH . '/Controllers/c_valida_usuario.php';
 
-$titlePage   = 'Cadastrar Produtos';
-// $linha = [];
-$itensProdHome = [];
+$titlePage   = 'Usuários do ADM';
 
-require SITE_PATH . '/Controllers/c_produto.php';
+
+require SITE_PATH . '/Controllers/c_usuario.php';
 
 ?>
 <!DOCTYPE html>
@@ -28,36 +27,27 @@ require SITE_PATH . '/Controllers/c_produto.php';
   <main class="min-h-75">
     <div class="container">
       <div class="row">
-        <h1>Produtos</h1>
+        <h1>USUÁRIOS</h1>
       </div>
       <div class="row">
-        <a class="col-2 btn btn-dark btn-adm my-2" href="<?php echo SITE_URL ?>/Views/produtos/create-prod.php" role="button">Cadastrar Produto</a>
+        <a class="col-2 btn btn-dark btn-adm my-2" href="<?php echo SITE_URL ?>/Views/adm/create.php" role="button">Cadastrar Usuário</a>
         <table class=" table text-center ">
           <thead>
             <tr>
               <th scope="col-1">Código</th>
               <th scope="col-4">Nome</th>
-              <th scope="col-2">Gênero</th>
-              <th scope="col-3">Categoria</th>
-              <th scope="col-2">Estoque</th>
               <th scope="col-2">Ações</th>
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($itensProdHome as  $linha) { ?>
+            <?php foreach ($selectusuario as  $linha) { ?>
               <tr>
-                <td><?php echo $linha['cod_produto'] ?>
+                <td><?php echo $linha['cod_usuario'] ?>
                 </td>
-                <td><?php echo $linha['nome_prod'] ?>
+                <td><?php echo $linha['nome_usuario'] ?>
                 </td>
-                <td><?php echo $linha['nome_genero'] ?>
-                </td>
-                <td><?php echo $linha['nome_categoria'] ?>
-                </td>
-                <td><?php echo $linha['estoque'] ?>
-                </td>
-                <td><a class="btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Views/produtos/alter-prod.php?produto=<?php echo $linha['cod_produto']; ?>" role="button">Alterar</a>
-                  <a class="btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Controllers/c_produto.php?excluir=<?php echo $linha['cod_produto']; ?>" role="button">Excluir</a>
+                <td><a class="btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Views/produtos/alter-usuario.php?produto=<?php echo $linha['cod_usuario']; ?>" role="button">Alterar</a>
+                  <a class="btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Controllers/c_usuario.php?excluir=<?php echo $linha['cod_usuario']; ?>" role="button">Excluir</a>
                 </td>
               </tr>
             <?php } ?>
