@@ -2,9 +2,12 @@
 include_once '../../config.php';
 session_start();
 
+if (!isset($_SESSION['cod_cliente'])) {
+    header("location:" . SITE_URL . "/Views/Clientes/loginCliente.php");
+}
+
 $cod_jogo = $_GET['jogo'];
 $nome_jogo = $_GET['nome'];
-
 
 $titlePage = "Adicionar Comentario";
 ?>
@@ -26,13 +29,13 @@ $titlePage = "Adicionar Comentario";
 
 <body>
 
-  <?php include SITE_PATH .'/includes/menu.php';?>
+  <?php include SITE_PATH . '/includes/menu.php';?>
 
   <main>
 
     <div class="container col-8 mt-5 pt-3 pb-5 ">
       <div class="row justify-content-md-center text-center ">
-        <h1>Avalie o jogo: <?php echo $nome_jogo?>
+        <h1>Avalie o jogo: <?php echo $nome_jogo ?>
         </h1>
       </div>
       <div class="row justify-content-md-center mt-3">
@@ -46,11 +49,6 @@ $titlePage = "Adicionar Comentario";
                 placeholder="Titulo do Comentário">
             </div>
             <div class="form-group mb-3">
-              <label class="sr-only" for="comentario">Comentário</label>
-              <textarea class="form-control input-adm" name="comentario" id="comentario" cols="49" rows="5"
-                placeholder="Escreva seu Comentário"></textarea>
-            </div>
-            <div class="form-group mb-3">
               <label class="sr-only" for="avaliacao">Avaliação</label>
               <select class="form-control input-adm" name="avaliacao">
                 <option value="">Selecione uma Nota</option>
@@ -61,6 +59,11 @@ $titlePage = "Adicionar Comentario";
                 <option value="5">5-Muito Top</option>
               </select>
             </div>
+            <div class="form-group mb-3">
+              <label class="sr-only" for="comentario">Comentário</label>
+              <textarea class="form-control input-adm" name="comentario" id="comentario" cols="49" rows="5"
+                placeholder="Escreva seu Comentário"></textarea>
+            </div>
             <div class="d-flex justify-content-center">
               <input class="btn btn-dark btn-block " type="hidden">
               <input class="btn btn-dark btn-block btn-adm mx-2 col-3" type="submit" value="Avaliar"
@@ -70,7 +73,7 @@ $titlePage = "Adicionar Comentario";
                 href="<?php echo SITE_URL ?>/Views/produtos/detalhe.php?jogo=<?php echo $cod_jogo ?>">Cancelar</a>
             </div>
             <input type="hidden" name="cod_cliente"
-              value="<?php echo $_SESSION['cod_cliente']?>">
+              value="<?php echo $_SESSION['cod_cliente'] ?>">
             <input type="hidden" name="data_comentario"
               value="<?php echo date("Y-m-d") ?>">
             <input type="hidden" name="cod_produto"
@@ -82,7 +85,7 @@ $titlePage = "Adicionar Comentario";
   </main>
 
   <!-- footer site -->
-  <?php include SITE_PATH .'/includes/footer.php';?>
+  <?php include SITE_PATH . '/includes/footer.php';?>
 
 </body>
 

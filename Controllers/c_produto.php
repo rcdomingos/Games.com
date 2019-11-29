@@ -2,19 +2,18 @@
 
 include_once '../config.php';
 
-
 $conn = require SITE_PATH . '/Models/conexao.php';
-
 
 // var_dump($conn);
 /**funçoes usadas nos produtos*/
 include SITE_PATH . '/Models/m_produto.php';
-
+include SITE_PATH . '/Models/m_comentario.php';
 
 /**Verificar se foi selecionado o produto para mostrar */
 if (isset($DetalheProduto)) {
     if ($DetalheProduto) {
         $infoProduto = listarProduto($DetalheProduto, $conn);
+        $Comentarios = carregarComentarios($conn, $DetalheProduto);
     } else {
         header("location:" . SITE_URL . "/Views/home/index.php");
     }
@@ -78,20 +77,20 @@ if (isset($selectcategoria)) {
 
 /* ALTERAR GENERO NO BANCO */
 if (isset($_POST['alterar-genero'])) {
-  $dados = [];
-  foreach ($_POST as $key => $value) {
-    if ($key != "alterar-genero") {
-      $dados[$key] = ($value);
+    $dados = [];
+    foreach ($_POST as $key => $value) {
+        if ($key != "alterar-genero") {
+            $dados[$key] = ($value);
+        }
     }
-  }
-  // print_r($dados);
-  // print_r($_POST);
-  if (alterargenero($dados, $conn)) {
-    header("location:" . SITE_URL . "/Views/produtos/genero-index.php");
-  } else {
-    echo 'Erro ao alterar o cadastro no banco';
-  }
-  exit;
+    // print_r($dados);
+    // print_r($_POST);
+    if (alterargenero($dados, $conn)) {
+        header("location:" . SITE_URL . "/Views/produtos/genero-index.php");
+    } else {
+        echo 'Erro ao alterar o cadastro no banco';
+    }
+    exit;
 }
 
 /* LISTAR OS GÊNEROS CADASTRADOS NA INDEX GÊNERO */
@@ -125,67 +124,66 @@ if (isset($_POST['cadastrar-categoria'])) {
 
 /* ALTERAR CATEGORIA NO BANCO */
 if (isset($_POST['alterar-categoria'])) {
-  $dados = [];
-  foreach ($_POST as $key => $value) {
-    if ($key != "alterar-categoria") {
-      $dados[$key] = ($value);
+    $dados = [];
+    foreach ($_POST as $key => $value) {
+        if ($key != "alterar-categoria") {
+            $dados[$key] = ($value);
+        }
     }
-  }
-  // print_r($dados);
-  // print_r($_POST);
-  if (alterarcategoria($dados, $conn)) {
-    header("location:" . SITE_URL . "/Views/produtos/categ-index.php");
-  } else {
-    echo 'Erro ao alterar o cadastro no banco';
-  }
-  exit;
+    // print_r($dados);
+    // print_r($_POST);
+    if (alterarcategoria($dados, $conn)) {
+        header("location:" . SITE_URL . "/Views/produtos/categ-index.php");
+    } else {
+        echo 'Erro ao alterar o cadastro no banco';
+    }
+    exit;
 }
 
 /*  CADASTRAR OS PRODUTOS NO BANCO || THAIS M. */
 if (isset($_POST['cadastrar-produto'])) {
-  $dados = [];
-  foreach ($_POST as $key => $value) {
-    if ($key != "cadastrar-produto") {
-      $dados[$key] = ($value);
+    $dados = [];
+    foreach ($_POST as $key => $value) {
+        if ($key != "cadastrar-produto") {
+            $dados[$key] = ($value);
+        }
     }
-  }
 
-  $nomecover = publicarImagem($_FILES['cover_img']);
-  $nomebanner = publicarImagem($_FILES['banner_img']);
+    $nomecover = publicarImagem($_FILES['cover_img']);
+    $nomebanner = publicarImagem($_FILES['banner_img']);
 
-  $dados['cover_img'] = $nomecover;
-  $dados['banner_img'] = $nomebanner;
+    $dados['cover_img'] = $nomecover;
+    $dados['banner_img'] = $nomebanner;
 
-  // print_r($dados);
+    // print_r($dados);
 
-  // print_r($nomecover);
+    // print_r($nomecover);
 
-  if (cadastarproduto($dados, $conn)) {
-    header("location:" . SITE_URL . "/Views/produtos/prod-index.php");
-  } else {
-    echo 'Erro para cadastrar dado no Banco';
-  }
-  exit;
+    if (cadastarproduto($dados, $conn)) {
+        header("location:" . SITE_URL . "/Views/produtos/prod-index.php");
+    } else {
+        echo 'Erro para cadastrar dado no Banco';
+    }
+    exit;
 }
-
 
 /* ALTERAR PRODUTO NO BANCO  ||  THAIS M.  */
 if (isset($_GET['cod_produto'])) {
-  $selectproduto = current(selectalterarproduto($cod_produto, $conn));
+    $selectproduto = current(selectalterarproduto($cod_produto, $conn));
 }
 if (isset($_POST['alterar-produto'])) {
-  $dados = [];
-  foreach ($_POST as $key => $value) {
-    if ($key != "alterar-produto") {
-      $dados[$key] = ($value);
+    $dados = [];
+    foreach ($_POST as $key => $value) {
+        if ($key != "alterar-produto") {
+            $dados[$key] = ($value);
+        }
     }
-  }
-  // print_r($dados);
-  // print_r($_POST);
-  if (alterarproduto($dados, $conn)) {
-    header("location:" . SITE_URL . "/Views/produtos/prod-index.php");
-  } else {
-    echo 'Erro ao alterar o cadastro no banco';
-  }
-  exit;
+    // print_r($dados);
+    // print_r($_POST);
+    if (alterarproduto($dados, $conn)) {
+        header("location:" . SITE_URL . "/Views/produtos/prod-index.php");
+    } else {
+        echo 'Erro ao alterar o cadastro no banco';
+    }
+    exit;
 }
