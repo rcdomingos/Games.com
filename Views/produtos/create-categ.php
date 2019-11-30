@@ -1,6 +1,9 @@
 <?php
-include '../../config.php';
-include   SITE_PATH . '/Controllers/c_valida_usuario.php';
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../../config.php';
+}
+include SITE_PATH . '/Controllers/c_valida_usuario.php';
 
 ?>
 <!DOCTYPE html>
@@ -17,7 +20,7 @@ include   SITE_PATH . '/Controllers/c_valida_usuario.php';
 </head>
 
 <body>
-  <?php include SITE_PATH . '/includes/menu-adm.php'; ?>
+  <?php include SITE_PATH . '/includes/menu-adm.php';?>
   <main class="min-h-50">
     <div class="container mt-5">
       <div class="row justify-content-md-center text-center">
@@ -42,7 +45,7 @@ include   SITE_PATH . '/Controllers/c_valida_usuario.php';
     </div>
   </main>
 
-  <?php include SITE_PATH . '/includes/footer-adm.php'; ?>
+  <?php include SITE_PATH . '/includes/footer-adm.php';?>
 
 </body>
 

@@ -1,11 +1,16 @@
 <?php
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../../config.php';
+}
 
-include_once '../../config.php';
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $titlePage = "Pedido Finalizado";
-$PedidoCriado=[];
+$PedidoCriado = [];
 
-require SITE_PATH.'/Controllers/c_pedido.php';
+require SITE_PATH . '/Controllers/c_pedido.php';
 // print_r($_SESSION);
 ?>
 <!DOCTYPE html>
@@ -18,7 +23,7 @@ require SITE_PATH.'/Controllers/c_pedido.php';
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
   <title>
-    Games.com | <?php echo $titlePage ;?>
+    Games.com | <?php echo $titlePage; ?>
   </title>
 </head>
 
@@ -30,16 +35,16 @@ require SITE_PATH.'/Controllers/c_pedido.php';
           <img class="mx-auto d-block" src="<?php echo SITE_URL ?>/images/logo.png" alt="Logo Games.com">
           <h1 class="text-center mb-4 py-4 ft-laranja ">Pedido nº <?php echo $PedidoCriado['cod_pedido'] ?>
           </h1>
-          <p>Obrigado <span class="ft-laranja"><?php echo $PedidoCriado['nome_cliente']?></span>,
+          <p>Obrigado <span class="ft-laranja"><?php echo $PedidoCriado['nome_cliente'] ?></span>,
           </p>
           <p>seu pedido no valor de <span class="ft-laranja ">R$
               <?php echo number_format($PedidoCriado['valor_pedido'], 2, ',', '') ?></span>
             foi efetuado com Sucesso!</p>
           <p>A entrega esta programada até <span class="ft-laranja ">
               <?php
-            $dataEntrega = new DateTime($PedidoCriado['data_entrega']);
-            echo date_format($dataEntrega, 'd-m-Y');
-           ?>
+$dataEntrega = new DateTime($PedidoCriado['data_entrega']);
+echo date_format($dataEntrega, 'd-m-Y');
+?>
             </span></p>
           <p><small>Para qualquer dúvida estaremos à disposição para maiores esclarecimentos.</small> </p>
           <p class="text-right">Equipe <span class="ft-laranja ">Games.com</span></p>

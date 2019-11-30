@@ -1,7 +1,10 @@
 <?php
-include_once '../../config.php';
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../../config.php';
+}
 $categorias = [];
-include   SITE_PATH . '/Controllers/c_valida_usuario.php';
+include SITE_PATH . '/Controllers/c_valida_usuario.php';
 
 require SITE_PATH . '/Controllers/c_produto.php';
 // $linha = [];
@@ -20,7 +23,7 @@ require SITE_PATH . '/Controllers/c_produto.php';
 </head>
 
 <body>
-  <?php include SITE_PATH . '/includes/menu-adm.php'; ?>
+  <?php include SITE_PATH . '/includes/menu-adm.php';?>
   <main class="min-h-75">
     <div class="container">
       <div class="row">
@@ -37,23 +40,23 @@ require SITE_PATH . '/Controllers/c_produto.php';
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($categorias as $linha) { ?>
+            <?php foreach ($categorias as $linha) {?>
               <tr>
                 <td><?php echo $linha['cod_categoria'] ?>
                 </td>
                 <td><?php echo $linha['nome_categoria'] ?>
-                <td><a class="btn btn-dark btn-adm col-2" href="<?php echo SITE_URL ?>/Views/produtos/alter-categ.php?categoria=<?php echo $linha['cod_categoria']; ?>&nome=<?php echo $linha['nome_categoria'];?>" role="button">Alterar</a>
+                <td><a class="btn btn-dark btn-adm col-2" href="<?php echo SITE_URL ?>/Views/produtos/alter-categ.php?categoria=<?php echo $linha['cod_categoria']; ?>&nome=<?php echo $linha['nome_categoria']; ?>" role="button">Alterar</a>
                   <a class="btn btn-dark btn-adm col-2" href="<?php echo SITE_URL ?>/Controllers/c_produto.php?excluir=<?php echo $linha['cod_categoria']; ?>" role="button">Excluir</a>
                 </td>
               </tr>
-            <?php } ?>
+            <?php }?>
           </tbody>
         </table>
       </div>
     </div>
   </main>
 
-  <?php include SITE_PATH . '/includes/footer-adm.php'; ?>
+  <?php include SITE_PATH . '/includes/footer-adm.php';?>
 </body>
 
 </html>

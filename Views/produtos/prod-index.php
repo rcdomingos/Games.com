@@ -1,8 +1,12 @@
 <?php
-include_once '../../config.php';
-include   SITE_PATH . '/Controllers/c_valida_usuario.php';
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../../config.php';
+}
 
-$titlePage   = 'Cadastrar Produtos';
+include SITE_PATH . '/Controllers/c_valida_usuario.php';
+
+$titlePage = 'Cadastrar Produtos';
 // $linha = [];
 $itensProdHome = [];
 
@@ -19,12 +23,12 @@ require SITE_PATH . '/Controllers/c_produto.php';
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
 
-  <title><?php $titlePage; ?>
+  <title><?php $titlePage;?>
   </title>
 </head>
 
 <body>
-  <?php require SITE_PATH . '/includes/menu-adm.php'; ?>
+  <?php require SITE_PATH . '/includes/menu-adm.php';?>
   <main class="min-h-75">
     <div class="container">
       <div class="row">
@@ -44,7 +48,7 @@ require SITE_PATH . '/Controllers/c_produto.php';
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($itensProdHome as  $linha) { ?>
+            <?php foreach ($itensProdHome as $linha) {?>
               <tr>
                 <td><?php echo $linha['cod_produto'] ?>
                 </td>
@@ -60,14 +64,14 @@ require SITE_PATH . '/Controllers/c_produto.php';
                   <a class="btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Controllers/c_produto.php?excluir=<?php echo $linha['cod_produto']; ?>" role="button">Excluir</a>
                 </td>
               </tr>
-            <?php } ?>
+            <?php }?>
           </tbody>
         </table>
       </div>
     </div>
   </main>
 
-  <?php require SITE_PATH . '/includes/footer-adm.php'; ?>
+  <?php require SITE_PATH . '/includes/footer-adm.php';?>
 </body>
 
 </html>

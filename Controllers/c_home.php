@@ -1,5 +1,8 @@
 <?php
-include_once '../config.php';
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../config.php';
+}
 
 $conn = require SITE_PATH . '/Models/conexao.php';
 

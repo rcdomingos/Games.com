@@ -1,12 +1,17 @@
 <?php
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../../config.php';
+}
 
-include_once '../../config.php';
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $titlePage = 'Meu Carrinho';
 
 $itensCarrinho = [];
 $totalPedido = 0.00;
-require SITE_PATH.'/Controllers/c_pedido.php';
+require SITE_PATH . '/Controllers/c_pedido.php';
 
 // $_SESSION['cod_carrinho']233
 // $_SESSION['cod_cliente']
@@ -31,7 +36,7 @@ require SITE_PATH.'/Controllers/c_pedido.php';
 
 <body>
   <!-- menu do site -->
-  <?php include SITE_PATH.'/includes/menu.php'; ?>
+  <?php include SITE_PATH . '/includes/menu.php';?>
 
   <!--conteudo da pagina -->
   <main class="min-h-50">
@@ -63,8 +68,8 @@ require SITE_PATH.'/Controllers/c_pedido.php';
               </thead>
               <tbody>
                 <?php
-                foreach ($itensCarrinho as $itemCarrinho) {
-                    $totalPedido += floatval($itemCarrinho['quantidade'] * $itemCarrinho['valor_prod']); ?>
+foreach ($itensCarrinho as $itemCarrinho) {
+    $totalPedido += floatval($itemCarrinho['quantidade'] * $itemCarrinho['valor_prod']);?>
                 <tr>
                   <td>
                     <img src="<?php echo SITE_URL ?>/images/produtos/<?php echo $itemCarrinho['cover_img'] ?>"
@@ -96,7 +101,7 @@ require SITE_PATH.'/Controllers/c_pedido.php';
                   </td>
                 </tr>
                 <?php
-                }?>
+}?>
               </tbody>
             </table>
           </div>
@@ -109,7 +114,7 @@ require SITE_PATH.'/Controllers/c_pedido.php';
                 </p>
               </div>
               <div class="card-footer border-0 bg-transparent">
-                <a href="<?php echo SITE_URL ?>/Controllers/c_pedido.php?finalizar=<?php echo $_SESSION['cod_carrinho'] ?>&total=<?php echo $totalPedido?>"
+                <a href="<?php echo SITE_URL ?>/Controllers/c_pedido.php?finalizar=<?php echo $_SESSION['cod_carrinho'] ?>&total=<?php echo $totalPedido ?>"
                   class="btn btn-dark btn-block btn-comprar btn-lg">Finalizar Pedido</a>
               </div>
             </div>
@@ -123,7 +128,7 @@ require SITE_PATH.'/Controllers/c_pedido.php';
   </main>
 
   <!-- footer site -->
-  <?php include SITE_PATH.'/includes/footer.php'; ?>
+  <?php include SITE_PATH . '/includes/footer.php';?>
 </body>
 
 </html>

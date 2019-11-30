@@ -1,6 +1,10 @@
 <?php
+if (!defined('SITE_URL')) {
+    include_once '../../config.php';
+}
 session_start();
-include_once '../../config.php';
+session_destroy();
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

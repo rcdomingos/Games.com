@@ -1,13 +1,17 @@
 <?php
-
-include_once '../config.php';
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../config.php';
+}
 
 $conn = require SITE_PATH . '/Models/conexao.php';
 
 /**funçoes usadas nos produtos*/
 include SITE_PATH . '/Models/m_pedido.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // adicionar o item no carrinho
 if (isset($_GET['addProduto'])) {
@@ -21,9 +25,9 @@ if (isset($_GET['addProduto'])) {
 }
 
 // listar os itens na pagina carrinho
-if (isset($itensCarrinho)) {
+if (isset($itensCarrinho) && isset($_SESSION['carrinho'])) {
     foreach ($_SESSION['carrinho'] as $key => $itvalue) {
-        $itensCarrinho[] = listarProdutoCarrinho($itvalue['cod_produto'], $conn) + ['quantidade' => $itvalue['quantidade']] ;
+        $itensCarrinho[] = listarProdutoCarrinho($itvalue['cod_produto'], $conn) + ['quantidade' => $itvalue['quantidade']];
     }
 }
 
@@ -53,11 +57,9 @@ if (isset($_GET['finalizar'])) {
     }
 }
 
-
-
 /**Finalizar o pedido de compra */
 if (isset($PedidoCriado)) {
-    $PedidoCriado=listarPedidoAberto($_SESSION['cod_carrinho'], $_SESSION['cod_cliente'], $conn);
+    $PedidoCriado = listarPedidoAberto($_SESSION['cod_carrinho'], $_SESSION['cod_cliente'], $conn);
     unset($_SESSION['carrinho']);
     unset($_SESSION['cod_carrinho']);
 }

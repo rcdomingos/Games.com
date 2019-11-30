@@ -1,6 +1,10 @@
 <?php
-include '../../config.php';
-include   SITE_PATH . '/Controllers/c_valida_usuario.php';
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../../config.php';
+}
+
+include SITE_PATH . '/Controllers/c_valida_usuario.php';
 
 $cod_genero = $_GET['genero'];
 $nome_genero = $_GET['nome'];
@@ -20,7 +24,7 @@ $nome_genero = $_GET['nome'];
 
   <title>Alterar Gênero</title>
 </head>
-<?php include SITE_PATH . '/includes/menu-adm.php'; ?>
+<?php include SITE_PATH . '/includes/menu-adm.php';?>
 
 <body>
   <div class="container mt-5 min-h-50">
@@ -47,6 +51,6 @@ $nome_genero = $_GET['nome'];
     </div>
   </div>
 </body>
-<?php include SITE_PATH . '/includes/footer-adm.php'; ?>
+<?php include SITE_PATH . '/includes/footer-adm.php';?>
 
 </html>

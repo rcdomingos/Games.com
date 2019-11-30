@@ -1,9 +1,15 @@
 <?php
 
-include_once '../../config.php';
-session_start();
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../../config.php';
+}
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $titlePage = 'Game Over';
-$msgErro = ($_GET['erro'])? $_GET['erro']:"Erro inesperado no processamento da requisição.";
+$msgErro = ($_GET['erro']) ? $_GET['erro'] : "Erro inesperado no processamento da requisição.";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -22,7 +28,7 @@ $msgErro = ($_GET['erro'])? $_GET['erro']:"Erro inesperado no processamento da r
 
 <body>
   <!-- menu do site -->
-  <?php include SITE_PATH.'/includes/menu.php'; ?>
+  <?php include SITE_PATH . '/includes/menu.php';?>
   <!--conteudo da pagina -->
   <main>
     <article>
@@ -34,7 +40,7 @@ $msgErro = ($_GET['erro'])? $_GET['erro']:"Erro inesperado no processamento da r
           <div class="col-md-7">
             <h1 class="ft-laranja">Ops, algo deu errado... =( </h1>
             <p>Desculpe mas não foi possivel realizar a sua solicitação devido ao erro:</p>
-            <samp><?php echo $msgErro?></samp>
+            <samp><?php echo $msgErro ?></samp>
             <p class="h4 text-right pt-4">
               <a href="<?php echo SITE_URL ?>/Views/home">Voltar a
                 Home</a>
@@ -46,7 +52,7 @@ $msgErro = ($_GET['erro'])? $_GET['erro']:"Erro inesperado no processamento da r
   </main>
 
   <!-- footer site -->
-  <?php include SITE_PATH.'/includes/footer.php'; ?>
+  <?php include SITE_PATH . '/includes/footer.php';?>
 </body>
 
 </html>

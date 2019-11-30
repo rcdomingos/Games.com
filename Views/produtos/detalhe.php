@@ -1,7 +1,12 @@
 <?php
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../../config.php';
+}
 
-include_once '../../config.php';
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $DetalheProduto = $_GET['jogo'];
 
@@ -9,7 +14,7 @@ require SITE_PATH . '/Controllers/c_produto.php';
 
 /**Titulo da pagina mudar de acordo com a pagina rederenciada */
 $titlePage = "Jogo " . $infoProduto['nome_prod'];
-
+$clienteLogado = isset($_SESSION['cod_cliente']) ? $_SESSION['cod_cliente'] : false;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -157,8 +162,7 @@ $titlePage = "Jogo " . $infoProduto['nome_prod'];
       </div>
       <div class="row">
         <div class="col">
-          <?php
-foreach ($Comentarios as $comentario) {
+          <?php foreach ($Comentarios as $comentario) {
     if ($comentario['avaliacao'] == 1) {
         $corAvaliacao = 'aval-ruim ';
     } elseif ($comentario['avaliacao'] >= 4) {
@@ -182,7 +186,7 @@ foreach ($Comentarios as $comentario) {
               <div class="avaliacao <?php echo $corAvaliacao ?>"><span><?php echo $comentario['avaliacao'] ?></span> </div>
               <p class="ft-branca"><?php echo $comentario['comentario'] ?></p>
             </div>
-            <?php if ($comentario['cod_cliente'] == $_SESSION['cod_cliente']) {?>
+            <?php if ($comentario['cod_cliente'] == $clienteLogado) {?>
              <div><a class="h4" href="<?php echo SITE_URL ?>/Controllers/c_comentario.php?cod_comentario=<?php echo $comentario['cod_comentario'] ?>&cod_produto=<?php echo $comentario['cod_produto'] ?>">X</a></div>
             <?php }?>
           </div>

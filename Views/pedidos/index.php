@@ -1,11 +1,16 @@
 <?php
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../../config.php';
+}
 
-include_once '../../config.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $titlePage = "Sua Loja de Games on-line";
 
-
 $Data = new DateTime();
-$carrinho= $Data->format('dmy') . rand(1, 99999) ;
+$carrinho = $Data->format('dmy') . rand(1, 99999);
 echo $carrinho;
 
 ?>
@@ -20,13 +25,13 @@ echo $carrinho;
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
 
   <title>
-    Games.com | <?php echo $titlePage ;?>
+    Games.com | <?php echo $titlePage; ?>
   </title>
 </head>
 
 <body>
   <!-- menu do site -->
-  <?php include SITE_PATH .'/includes/menu.php';?>
+  <?php include SITE_PATH . '/includes/menu.php';?>
 
   <!--conteudo da pagina -->
   <main>
@@ -35,7 +40,7 @@ echo $carrinho;
   </main>
 
   <!-- footer site -->
-  <?php include SITE_PATH .'/includes/footer.php';?>
+  <?php include SITE_PATH . '/includes/footer.php';?>
 </body>
 
 </html>

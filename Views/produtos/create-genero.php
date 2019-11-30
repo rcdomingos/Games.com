@@ -1,8 +1,11 @@
 <?php
-include_once '../../config.php';
-include   SITE_PATH . '/Controllers/c_valida_usuario.php';
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../../config.php';
+}
+include SITE_PATH . '/Controllers/c_valida_usuario.php';
 
-$titlePage    = 'Cadastrar Gênero';
+$titlePage = 'Cadastrar Gênero';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,9 +17,9 @@ $titlePage    = 'Cadastrar Gênero';
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
 
-  <title><?php $titlePage ?></title>
+  <title><?php $titlePage?></title>
 </head>
-<?php require SITE_PATH . '/includes/menu-adm.php'; ?>
+<?php require SITE_PATH . '/includes/menu-adm.php';?>
 
 <body>
   <div class="container mt-5 min-h-50">
@@ -41,6 +44,6 @@ $titlePage    = 'Cadastrar Gênero';
     </div>
   </div>
 </body>
-<?php require SITE_PATH . '/includes/footer-adm.php'; ?>
+<?php require SITE_PATH . '/includes/footer-adm.php';?>
 
 </html>

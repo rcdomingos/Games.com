@@ -1,6 +1,8 @@
 <?php
-
-include_once '../config.php';
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../config.php';
+}
 
 $conn = require SITE_PATH . '/Models/conexao.php';
 
@@ -20,7 +22,7 @@ if (isset($DetalheProduto)) {
 }
 
 /**verificar se esta na pagina todos os jogos e se teve pesquisa */
-if ($jogoPesquisa) {
+if (isset($jogoPesquisa)) {
     $listaTodosJogos = pesquisarJogo($conn, $jogoPesquisa);
 } elseif (isset($listaTodosJogos)) {
     $listaTodosJogos = carregarJogos($conn, $limit, $offset);

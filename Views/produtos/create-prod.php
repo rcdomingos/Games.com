@@ -1,10 +1,13 @@
 <?php
-include_once '../../config.php';
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../../config.php';
+}
 
-$titlePage      = "Cadastrar Produto";
+$titlePage = "Cadastrar Produto";
 $selectgenero = [];
 $selectcategoria = [];
-include   SITE_PATH . '/Controllers/c_valida_usuario.php';
+include SITE_PATH . '/Controllers/c_valida_usuario.php';
 
 require SITE_PATH . '/Controllers/c_produto.php';
 
@@ -19,9 +22,9 @@ require SITE_PATH . '/Controllers/c_produto.php';
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
 
-  <title><?php $titlePage; ?></title>
+  <title><?php $titlePage;?></title>
 </head>
-<?php require SITE_PATH . '/includes/menu-adm.php'; ?>
+<?php require SITE_PATH . '/includes/menu-adm.php';?>
 
 <body>
   <div class="container mt-5">
@@ -74,18 +77,20 @@ require SITE_PATH . '/Controllers/c_produto.php';
             <label class="sr-only" for="categoria">Categoria</label>
             <select class="form-control input-adm" name="cod_categoria" id="cod_categoria">
               <option value="">Selecione Categoria</option>
-              <?php foreach ($selectcategoria as $itemcategoria) { ?>
+              <?php foreach ($selectcategoria as $itemcategoria) {?>
                 <option value="<?php echo $itemcategoria['cod_categoria'] ?>"><?php echo $itemcategoria['nome_categoria'] ?></option>
-              <?php }; ?>
+              <?php }
+;?>
             </select>
           </div>
           <div class="form-group  mb-3">
             <label class="sr-only" for="genero">Gênero</label>
             <select class="form-control input-adm" name="cod_genero" id="cod_genero">
               <option value="">Selecione Gênero</option>
-              <?php foreach ($selectgenero as $itemgenero) { ?>
+              <?php foreach ($selectgenero as $itemgenero) {?>
                 <option value="<?php echo $itemgenero['cod_genero'] ?>"><?php echo $itemgenero['nome_genero'] ?></option>
-              <?php }; ?>
+              <?php }
+;?>
             </select>
           </div>
           <div class="input-group d-flex justify-content-center">
@@ -99,6 +104,6 @@ require SITE_PATH . '/Controllers/c_produto.php';
     </div>
   </div>
 </body>
-<?php require SITE_PATH . '/includes/footer-adm.php'; ?>
+<?php require SITE_PATH . '/includes/footer-adm.php';?>
 
 </html>

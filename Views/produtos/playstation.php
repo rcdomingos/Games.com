@@ -1,15 +1,20 @@
 <?php
-include_once '../../config.php';
-session_start();
-$listaJogosPlaystation =[];
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+    include_once '../../config.php';
+}
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$listaJogosPlaystation = [];
 $codCategoria = 1; /** 1-Plastation */
-$limit = 12;/** quantidade de jogo por pagina */
-$Nextpg = (isset($_GET['page']))? ($_GET['page'] + 1) : 1;
-$Prevpg = (isset($_GET['page']) && $Nextpg > 1)? ($_GET['page'] - 1) : 0;
-$offset = (isset($_GET['page']))? ($_GET['page'] * $limit ) : 0;
+$limit = 12; /** quantidade de jogo por pagina */
+$Nextpg = (isset($_GET['page'])) ? ($_GET['page'] + 1) : 1;
+$Prevpg = (isset($_GET['page']) && $Nextpg > 1) ? ($_GET['page'] - 1) : 0;
+$offset = (isset($_GET['page'])) ? ($_GET['page'] * $limit) : 0;
 
-
-require SITE_PATH .'/Controllers/c_produto.php';
+require SITE_PATH . '/Controllers/c_produto.php';
 
 $titlePage = "Jogos Playstation";
 
@@ -25,13 +30,13 @@ $titlePage = "Jogos Playstation";
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
 
   <title>
-    Games.com | <?php echo $titlePage ;?>
+    Games.com | <?php echo $titlePage; ?>
   </title>
 </head>
 
 <body>
   <!-- menu do site -->
-  <?php include SITE_PATH .'/includes/menu.php';?>
+  <?php include SITE_PATH . '/includes/menu.php';?>
   <!--conteudo da pagina -->
 
   <!-- header da pagina -->
@@ -48,25 +53,25 @@ $titlePage = "Jogos Playstation";
     <section>
       <div class="container mt-5">
       <?php
-        if ($listaJogosPlaystation) { ?>
+if ($listaJogosPlaystation) {?>
         <div class="row">
-          <?php foreach ($listaJogosPlaystation as $jogo) { ?>
+          <?php foreach ($listaJogosPlaystation as $jogo) {?>
           <div class="col-sm-3 mb-3">
-            <a href="<?php echo SITE_URL ?>/Views/produtos/detalhe.php?jogo=<?php echo $jogo['cod_produto']?>"
+            <a href="<?php echo SITE_URL ?>/Views/produtos/detalhe.php?jogo=<?php echo $jogo['cod_produto'] ?>"
               class="linkCardsGames">
               <div class="card text-center border-0 card-jogo">
                 <div class="card-header border-0 bg-transparent">
                   <h5 class="card-title text-uppercase">
-                    <?php echo $jogo['nome_prod']?>
+                    <?php echo $jogo['nome_prod'] ?>
                   </h5>
-                  <p class="text-muted mt-n3"><?php echo $jogo['nome_categoria']  ?>
+                  <p class="text-muted mt-n3"><?php echo $jogo['nome_categoria'] ?>
                   </p>
                 </div>
                 <img class="card-img-top px-5 img-cover"
-                  src="<?php echo SITE_URL  ?>/images/produtos/<?php echo $jogo['cover_img']?>"
-                  alt="Cover: <?php echo $jogo['nome_prod']?>">
+                  src="<?php echo SITE_URL ?>/images/produtos/<?php echo $jogo['cover_img'] ?>"
+                  alt="Cover: <?php echo $jogo['nome_prod'] ?>">
                 <div class="card-body">
-                  <p class="card-text">Jogo de <?php echo $jogo['nome_genero']?>
+                  <p class="card-text">Jogo de <?php echo $jogo['nome_genero'] ?>
                   </p>
                   <p class="card-text mt-n3"><small class="text-muted">Por Apenas</small></p>
                   <p class="card-text h2 font-weight-bold"><small>R$
@@ -74,18 +79,18 @@ $titlePage = "Jogos Playstation";
                   </p>
                 </div>
                 <div class="card-footer border-0 bg-transparent">
-                  <a href="<?php echo SITE_URL ?>/Controllers/c_pedido.php?addProduto=<?php echo $jogo['cod_produto']?>"
+                  <a href="<?php echo SITE_URL ?>/Controllers/c_pedido.php?addProduto=<?php echo $jogo['cod_produto'] ?>"
                     class="btn btn-dark btn-block btn-comprar">Comprar</a>
                 </div>
               </div>
             </a>
           </div>
-          <?php } ?>
+          <?php }?>
         </div>
         <?php } else {
-              /**Carregar a pagina de erro quando não tiver produto cadastrado */
-            include SITE_PATH.'/includes/erroCarregarProduto.php';
-          } ?>
+    /**Carregar a pagina de erro quando não tiver produto cadastrado */
+    include SITE_PATH . '/includes/erroCarregarProduto.php';
+}?>
       </div>
     </section>
     <!-- menu de navegação das paginas -->
@@ -93,12 +98,12 @@ $titlePage = "Jogos Playstation";
       <ul class="pagination justify-content-center ">
         <li class="page-item <?php if ($Nextpg == 1) {
     echo 'disabled';
-}  ?>">
-          <a class="page-link bk-escuro ft-branca" href="./playstation.php?page=<?php echo $Prevpg?>">Anterior</a>
+}?>">
+          <a class="page-link bk-escuro ft-branca" href="./playstation.php?page=<?php echo $Prevpg ?>">Anterior</a>
         </li>
         <li class="page-item <?php if (count($listaJogosPlaystation) < $limit) {
     echo 'disabled';
-}  ?>">
+}?>">
           <a class="page-link bk-escuro ft-branca" href="./playstation.php?page=<?php echo $Nextpg ?>">Próximo</a>
         </li>
       </ul>
@@ -106,7 +111,7 @@ $titlePage = "Jogos Playstation";
   </main>
 
   <!-- footer site -->
-  <?php include SITE_PATH .'/includes/footer.php';?>
+  <?php include SITE_PATH . '/includes/footer.php';?>
 </body>
 
 </html>
