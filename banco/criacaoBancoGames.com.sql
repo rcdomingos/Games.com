@@ -1,5 +1,3 @@
-DROP DATABASE games_com;
-
 CREATE DATABASE games_com;
 
 USE games_com;
@@ -132,6 +130,15 @@ ALTER TABLE favorito
 
 
 
+/** CRIANDO O USUARIO NO BANCO PARA ACESSAR APLICAÇÃO **/
+CREATE USER 'usergames'@'localhost' IDENTIFIED BY 'Games!user123';
+GRANT USAGE ON *.* TO 'usergames'@'localhost';
+GRANT EXECUTE, SELECT, SHOW VIEW, ALTER, ALTER ROUTINE, CREATE, CREATE ROUTINE, CREATE TEMPORARY TABLES, CREATE VIEW, DELETE, DROP, EVENT, INDEX, INSERT, REFERENCES, TRIGGER, UPDATE, LOCK TABLES  ON `games\_com`.* TO 'usergames'@'localhost' WITH GRANT OPTION;
+CREATE USER 'usergames'@'%' IDENTIFIED BY 'Games!user123';
+GRANT USAGE ON *.* TO 'usergames'@'%';
+GRANT EXECUTE, SELECT, SHOW VIEW, ALTER, ALTER ROUTINE, CREATE, CREATE ROUTINE, CREATE TEMPORARY TABLES, CREATE VIEW, DELETE, DROP, EVENT, INDEX, INSERT, REFERENCES, TRIGGER, UPDATE, LOCK TABLES  ON `games\_com`.* TO 'usergames'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
 
 
 /**ADCIOANDO ITENS PARA TESTE **/
@@ -139,22 +146,11 @@ INSERT INTO categoria (nome_categoria)
 VALUES ("Playstation"),("Xbox"),("Nintendo");
 
 INSERT INTO genero (nome_genero)
-VALUE ("corrida"),("luta"),("Aventura");
+VALUE ("Corrida"),("Luta"),("Aventura");
 
 INSERT INTO produto (nome_prod, codigobarra, descricao_prod, valor_un,cover_img, banner_img ,	estoque , cod_categoria,
 	cod_genero, destaque , promocao , valor_promocao, data_lancamento)
 	VALUES("Grid","789123456","Com o Grid seu conceito de corrida ira mudar",119.90,"grid-ps4.jpg","GRID-PS4-banner.jpg",10,1,1,1,1,99.99,'2019-10-19'),
-        ("Grid","789123456","Com o Grid seu conceito de corrida ira mudar",119.90,"grid-ps4.jpg","GRID-PS4-banner.jpg",10,1,1,1,1,99.99,'2019-10-19'),
-        ("Grid","789123456","Com o Grid seu conceito de corrida ira mudar",119.90,"grid-ps4.jpg","GRID-PS4-banner.jpg",10,1,1,1,1,99.99,'2019-10-19'),
-        ("Grid","789123456","Com o Grid seu conceito de corrida ira mudar",119.90,"grid-ps4.jpg","GRID-PS4-banner.jpg",10,1,1,1,1,99.99,'2019-10-19'),
-        ("Forza Horizon 4","789123456","Forza Horizon 4 é um jogo de corrida em mundo aberto desenvolvido pela Playground Games em colaboração com a Turn 10 e publicado pela Xbox Game Studios, que na época do lançamento ainda era conhecida como Microsoft Studios.",149.90,"forza-horizon-xbox.jpg","forza-horizon-banner.jpg",10,2,1,1,0,NULL,'2019-10-1'),
-        ("Forza Horizon 4","789123456","Forza Horizon 4 é um jogo de corrida em mundo aberto desenvolvido pela Playground Games em colaboração com a Turn 10 e publicado pela Xbox Game Studios, que na época do lançamento ainda era conhecida como Microsoft Studios.",149.90,"forza-horizon-xbox.jpg","forza-horizon-banner.jpg",10,2,1,1,0,NULL,'2019-10-1'),
-			  ("Grid","789123456","Com o Grid seu conceito de corrida ira mudar",119.90,"grid-ps4.jpg","GRID-PS4-banner.jpg",10,1,1,1,0,NULL,'2019-10-19'),
-	      ("Forza Horizon 4","789123456","Forza Horizon 4 é um jogo de corrida em mundo aberto desenvolvido pela Playground Games em colaboração com a Turn 10 e publicado pela Xbox Game Studios, que na época do lançamento ainda era conhecida como Microsoft Studios.",149.90,"forza-horizon-xbox.jpg","forza-horizon-banner.jpg",10,2,1,1,0,NULL,'2019-10-1'),
-	      ("Death Stranding","789123456","Death Stranding é um jogo eletrônico de ação desenvolvido pela Kojima Productions e publicado pela Sony Interactive Entertainment. Foi lançado no dia 8 de novembro de 2019 para PlayStation 4",229.00,"death-stranding-ps4.jpg","death-stranding-ps4-banner.jpg",10,1,3,1,0,NULL,'2019-11-8'),
-	      ("Death Stranding","789123456","Death Stranding é um jogo eletrônico de ação desenvolvido pela Kojima Productions e publicado pela Sony Interactive Entertainment. Foi lançado no dia 8 de novembro de 2019 para PlayStation 4",229.00,"death-stranding-ps4.jpg","death-stranding-ps4-banner.jpg",10,1,3,1,0,NULL,'2019-11-8'),
-	      ("Death Stranding","789123456","Death Stranding é um jogo eletrônico de ação desenvolvido pela Kojima Productions e publicado pela Sony Interactive Entertainment. Foi lançado no dia 8 de novembro de 2019 para PlayStation 4",229.00,"death-stranding-ps4.jpg","death-stranding-ps4-banner.jpg",10,1,3,1,0,NULL,'2019-11-8'),
-        ("Mario+Rabbits","789123456","Mario + Rabbids Kingdom Battle é um RPG eletrônico baseado em turnos desenvolvido e distribuído pela Ubisoft. É um crossover da franquia Mario, da Nintendo, e da franquia Raving Rabbids, da Ubisoft, que foi lançada mundialmente em agosto de 2017.",249.90,"mario-rabbits-switch.jpg","MarioAndRabbidsKingdomBattl_banner.jpg",10,3,1,1,0,NULL,'2019-10-1'),
-        ("Mario+Rabbits","789123456","Mario + Rabbids Kingdom Battle é um RPG eletrônico baseado em turnos desenvolvido e distribuído pela Ubisoft. É um crossover da franquia Mario, da Nintendo, e da franquia Raving Rabbids, da Ubisoft, que foi lançada mundialmente em agosto de 2017.",249.90,"mario-rabbits-switch.jpg","MarioAndRabbidsKingdomBattl_banner.jpg",10,3,1,1,0,NULL,'2019-10-1');
-
-
+        ("Forza Horizon 4","789123456","Forza Horizon 4 é um jogo de corrida em mundo aberto desenvolvido pela Playground.",149.90,"forza-horizon-xbox.jpg","forza-horizon-banner.jpg",10,2,1,1,0,NULL,'2019-10-1'),
+	      ("Death Stranding","789123456","Death Stranding é um jogo eletrônico de ação desenvolvido pela Kojima Productions e publicado pela Sony Interactive Entertainment.",229.00,"death-stranding-ps4.jpg","death-stranding-ps4-banner.jpg",10,1,3,1,0,NULL,'2019-11-8'),
+        ("Mario+Rabbits","789123456","Mario + Rabbids Kingdom Battle é um RPG eletrônico baseado em turnos desenvolvido e distribuído pela Ubisoft.",249.90,"mario-rabbits-switch.jpg","MarioAndRabbidsKingdomBattl_banner.jpg",10,3,1,1,0,NULL,'2019-10-1');
