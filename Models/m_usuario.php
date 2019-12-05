@@ -1,4 +1,5 @@
 <?php
+
 function validarUsuario($user, $pass, $conn)
 {
   $sql = 'SELECT cod_usuario, nome_usuario, logim, senha  from usuario where logim = ? ';
@@ -34,4 +35,41 @@ function cadastrarUsuario($dados, $conn)
   } else {
     echo "Usuario ja existe ...";
   }
+}
+
+/* FUNÇÃO PARA LISTAR CATEGORIA  ||  THAIS M */
+function listarusuarios($conn)
+{
+  $sql = 'SELECT cod_usuario, nome_usuario, logim FROM usuario';
+  $stmt = $conn->prepare($sql);
+  $stmt->execute();
+
+  $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+  $stmt->close();
+  return $result;
+  // print_r($result);
+}
+
+/* ALTERAR USUARIO NO BANCO */
+function alterarusuario($dados, $conn)
+{
+  print_r($dados);
+  $sql = 'UPDATE usuario SET logim = ?, senha = ?  WHERE cod_usuario = ?';
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("ssi", $dados['logim'], $dados['senha'], $dados['cod_usuario']);
+  $result = $stmt->execute() ? true : false;
+  $stmt->close();
+  return $result;
+}
+
+function deletarusuario($conn, $id_usuario)
+{
+  $sql = "DELETE usuario WHERE cod_usuario = ? ";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("i", $id_usuario);
+
+  $result = $stmt->execute() ? true : false;
+  $stmt->close();
+
+  return $result;
 }

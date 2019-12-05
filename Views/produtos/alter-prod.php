@@ -1,21 +1,19 @@
 <?php
 /*remover o warning do include e da session**/
 if (!defined('SITE_URL')) {
-    include_once '../../config.php';
+  include_once '../../config.php';
 }
 
 $titlePage = "Alterar Produto";
 $selectgenero = [];
 $selectcategoria = [];
 include SITE_PATH . '/Controllers/c_valida_usuario.php';
-$cod_produto = $_GET['cod_produto'];
-$linha = [];
-if (isset($_GET['cod_produto'])) {
-    $linha = $selectproduto;
-}
 
 require SITE_PATH . '/Controllers/c_produto.php';
-
+$cod_produto = $_GET['produto'];
+if (isset($_GET['produto'])) {
+  $selectproduto = selectalterarproduto($conn, $cod_produto);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -27,14 +25,14 @@ require SITE_PATH . '/Controllers/c_produto.php';
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
 
-  <title><?php $titlePage;?></title>
+  <title><?php $titlePage; ?></title>
 </head>
-<?php require SITE_PATH . '/includes/menu-adm.php';?>
+<?php require SITE_PATH . '/includes/menu-adm.php'; ?>
 
 <body>
   <div class="container mt-5">
     <div class="row justify-content-md-center text-center">
-      <h1>Alterando Produto <?php echo $cod_produto; ?></h1>
+      <h1>Alterando Produto: <?php echo $cod_produto; ?></h1>
     </div>
     <div class="row justify-content-md-center mt-3">
       <div class="col-md-6">
@@ -43,23 +41,23 @@ require SITE_PATH . '/Controllers/c_produto.php';
           <div class=" form-group mb-3">
             <input class="form-control input-adm" type="hidden" value="<?php echo $cod_produto; ?>">
             <label class="sr-only" for="nome_prod">Nome Produto:</label>
-            <input class="form-control input-adm" type="text" name="nome_prod" placeholder="Nome Produto">
+            <input class="form-control input-adm" type="text" name="nome_prod" value="<?php echo $selectproduto['nome_prod']; ?>">
           </div>
           <div class="form-group mb-3">
             <label class="sr-only" for="codigobarra">Codigo de Barra:</label>
-            <input class="form-control input-adm" type="text" name="codigobarra" placeholder="Codigo de Barra">
+            <input class="form-control input-adm" type="text" name="codigobarra" value="<?php echo $selectproduto['codigobarra']; ?>">
           </div>
           <div class="form-group mb-3">
             <label class="sr-only" for="descricao_prod">Descrição do Produto</label>
-            <input class="form-control input-adm" type="text" name="descricao_prod" placeholder="Descrição do Produto">
+            <input class="form-control input-adm" type="text" name="descricao_prod" value="<?php echo $selectproduto['descricao_prod']; ?>">
           </div>
           <div class="form-group mb-3">
             <label class="sr-only" for="data-lacamento">Data de Lançamento: </label>
-            <input class="form-control input-adm" type="date" name="data_lancamento" placeholder="Lançamento">
+            <input class="form-control input-adm" type="text" name="data_lancamento" value="<?php echo $selectproduto['data_lancamento']; ?>">
           </div>
           <div class="form-group mb-3">
             <label class="sr-only" for="valor_un">Valor do Produto:</label>
-            <input class="form-control input-adm" type="text" name="valor_un" placeholder="Valor R$">
+            <input class="form-control input-adm" type="text" name="valor_un" value="<?php echo $selectproduto['valor_un']; ?>">
           </div>
           <div class="form-group mb-3">
             <label class="sr-only" for="cover_img">Imagem do Produto:</label>
@@ -71,26 +69,32 @@ require SITE_PATH . '/Controllers/c_produto.php';
           </div>
           <div class="form-group  mb-3">
             <label class="sr-only" for="estoque">Quantidade do Produto:</label>
-            <input class="form-control input-adm" type="number" name="estoque" placeholder="Quantidade">
+            <input class="form-control input-adm" type="number" name="estoque" value="<?php echo $selectproduto['estoque']; ?>">
           </div>
           <div class="form-group  mb-3">
             <label class="sr-only" for="categoria">Categoria</label>
             <select class="form-control input-adm" name="cod_categoria" id="cod_categoria">
-              <option value="">Selecione Categoria</option>
-              <?php foreach ($selectcategoria as $itemcategoria) {?>
-                <option value="<?php echo $itemcategoria['cod_categoria'] ?>"><?php echo $itemcategoria['nome_categoria'] ?></option>
-              <?php }
-;?>
+              <option>Selecione Categoria</option>
+              <?php foreach ($selectcategoria as $itemcategoria) {
+                $categoria_atual = '';
+                if ($itemcategoria['cod_categoria'] == $selectproduto['cod_categoria']) {
+                  $categoria_atual = "selected";
+                } ?>
+                <option <?php echo $categoria_atual ?> value="<?php echo $itemcategoria['cod_categoria'] ?>"><?php echo $itemcategoria['nome_categoria'] ?></option>
+              <?php }; ?>
             </select>
           </div>
           <div class="form-group  mb-3">
             <label class="sr-only" for="genero">Gênero</label>
             <select class="form-control input-adm" name="cod_genero" id="cod_genero">
-              <option value="">Selecione Gênero</option>
-              <?php foreach ($selectgenero as $itemgenero) {?>
-                <option value="<?php echo $itemgenero['cod_genero'] ?>"><?php echo $itemgenero['nome_genero'] ?></option>
-              <?php }
-;?>
+              <option>Selecione Gênero</option>
+              <?php foreach ($selectgenero as $itemgenero) {
+                $genero_atual = "";
+                if ($itemgenero['cod_genero'] == $selectproduto['cod_genero']) {
+                  $genero_atual = "selected";
+                } ?>
+                <option <?php echo $genero_atual; ?> value="<?php echo $itemgenero['cod_genero'] ?>"><?php echo $itemgenero['nome_genero'] ?></option>
+              <?php }; ?>
             </select>
           </div>
           <div class="form-check input-adm">
@@ -109,8 +113,15 @@ require SITE_PATH . '/Controllers/c_produto.php';
           </div><br>
           <div class="form-group mb-3">
             <label class="sr-only" for="valor_promocao">Valor Promoção:</label>
-            <input class="form-control input-adm" type="text" name="valor_promocao" placeholder="Valor Promoção R$">
+            <input class="form-control input-adm" type="text" name="valor_promocao" value="<?php echo $selectproduto['valor_promocao']; ?>">
           </div>
+          <div class="form-check input-adm">
+            <label for="situacao" class="pl-2">Situação do Produto em Estoque: </label><br>
+            <input class=" input-destaque" type="radio" name="situacao" id="situacao1" value="0">
+            <label class="form-check-label " for="situacao">Ativo </label><br>
+            <input class="input-destaque" type="radio" name="situacao" id="situacao0" value="1">
+            <label class=" mb-2" for="situacao">Inativo</label>
+          </div><br>
           <div class="input-group d-flex justify-content-center">
             <input type="hidden" class="btn btn-dark btn-block btn-adm">
             <input class="btn btn-dark btn-block btn-adm mx-2 col-3" type="submit" value="Alterar" name="alterar-produto" id="alterar-produto">
@@ -122,6 +133,6 @@ require SITE_PATH . '/Controllers/c_produto.php';
     </div>
   </div>
 </body>
-<?php require SITE_PATH . '/includes/footer-adm.php';?>
+<?php require SITE_PATH . '/includes/footer-adm.php'; ?>
 
 </html>
