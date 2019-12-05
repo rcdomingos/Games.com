@@ -1,7 +1,7 @@
 <?php
 /*remover o warning do include e da session**/
 if (!defined('SITE_URL')) {
-    include_once '../../config.php';
+  include_once '../../config.php';
 }
 
 $generos = [];
@@ -22,46 +22,46 @@ require SITE_PATH . '/Controllers/c_produto.php';
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo SITE_URL ?>/css/styles.css">
 
-  <title><?php $titlePage;?>
+  <title><?php $titlePage; ?>
   </title>
 </head>
 
 <body>
-  <?php require SITE_PATH . '/includes/menu-adm.php';?>
+  <?php require SITE_PATH . '/includes/menu-adm.php'; ?>
   <main class="min-h-75">
     <div class="container">
-      <div class="row text-center">
+      <div class="row justify-content-md-center">
         <h1>Gênero Produtos</h1>
       </div>
-      <div class="row">
+      <div class="row justify-content-md-center">
         <a class="col-2 btn btn-dark btn-block btn-adm my-2" href="<?php echo SITE_URL ?>/Views/produtos/create-genero.php" role="button">Cadastrar Gênero</a>
-
-        <table class=" table text-center " style="width: 100%">
+      </div>
+      <div class="row justify-content-md-center">
+        <table class="col-8 table text-center " style="width: 70%">
           <thead>
             <tr>
-              <th scope="col-1">Código</th>
-              <th scope="col-1">Nome</th>
-              <th scope="col-5">Ações</th>
+              <th>Código</th>
+              <th>Nome</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($generos as $linha) {?>
+            <?php foreach ($generos as $linha) { ?>
               <tr>
                 <td><?php echo $linha['cod_genero'] ?>
                 </td>
                 <td><?php echo $linha['nome_genero'] ?>
                 <td class="col-3"><a class=" btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Views/produtos/alter-genero.php?genero=<?php echo $linha['cod_genero']; ?>&nome=<?php echo $linha['nome_genero'] ?>" role="button">Alterar</a>
-                  <a class=" btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Controllers/c_produto.php?excluir=<?php echo $linha['cod_genero']; ?>" name="excluir-genero" id="excluir-genero">Excluir</a>
                 </td>
               </tr>
-            <?php }?>
+            <?php } ?>
           </tbody>
         </table>
 
       </div>
     </div>
   </main>
-  <?php require SITE_PATH . '/includes/footer-adm.php';?>
+  <?php require SITE_PATH . '/includes/footer-adm.php'; ?>
 </body>
 
 </html>

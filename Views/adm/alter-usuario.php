@@ -3,7 +3,11 @@ if (!defined('SITE_URL')) {
   include_once '../../config.php';
 }
 
-$titlePage = "Criar Usuário";
+$titlePage = "Alterar Usuário";
+include SITE_PATH . '/Controllers/c_valida_usuario.php';
+$alter_usuario = $_GET['login'];
+$id_usuario    = $_GET['usuario'];
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -19,32 +23,19 @@ $titlePage = "Criar Usuário";
 </head>
 
 <body>
+  <?php require SITE_PATH . '/includes/menu-adm.php'; ?>
   <div class="container col-8 mt-5 pt-3 pb-5 ">
     <div class="row justify-content-md-center text-center ">
-      <h1>Novo Usuário</h1>
+      <h1>Alterar Usuario: <?php echo $alter_usuario; ?></h1>
     </div>
     <div class="row justify-content-md-center mt-3">
       <div class="col-md-6">
         <form action='<?php echo SITE_URL ?>/Controllers/c_usuario.php' method="post">
           <div class="form-group mb-3">
-            <label class="sr-only" for="nome_usuario">Nome:</label>
-            <input class="form-control input-adm" type="text" name="nome_usuario" placeholder="Nome Completo">
-          </div>
-          <div class="form-group mb-3">
-            <label class="sr-only" for="telefone">Telefone:</label>
-            <input class="form-control input-adm" type="text" name="telefone" placeholder="Telefone">
-          </div>
-          <div class="form-group mb-3">
-            <label class="sr-only" for="cpf">CPF:</label>
-            <input class="form-control input-adm" type="text" name="cpf" placeholder="CPF">
-          </div>
-          <div class="form-group mb-3">
-            <label class="sr-only" for="email">E-Mail:</label>
-            <input class="form-control input-adm" type="text" name="email" placeholder="E-Mail">
-          </div>
-          <div class="form-group mb-3">
             <label class="sr-only" for="logim">Login:</label>
-            <input class="form-control input-adm" type="text" name="logim" placeholder="Login">
+            <input class="form-control input-adm" type="text" name="logim" placeholder="Novo Login" value="<?php echo $linha['logim']; ?>">
+            <input class="form-control input-adm" type="hidden" name="cod_usuario" value="<?php echo $id_usuario; ?>">
+
           </div>
           <div class="form-row">
             <div class="form-group col-6 mb-3">
@@ -58,7 +49,7 @@ $titlePage = "Criar Usuário";
           </div>
           <div class="d-flex justify-content-center">
             <input class="btn btn-dark btn-block " type="hidden">
-            <input class="btn btn-dark btn-block btn-adm mx-2 col-3" type="submit" value="Cadastrar" name="cadastrar-usuario" id="cadastrar-usuario">
+            <input class="btn btn-dark btn-block btn-adm mx-2 col-3" type="submit" value="Alterar" name="alterar-usuario" id="alterar-usuario">
             <input class="btn btn-dark btn-block btn-adm mx-2 col-3" type="reset" value="Limpar" id="limpar">
             <a class="btn btn-dark btn-block btn-adm mx-2 col-3" href="./index.php">Cancelar</a>
           </div>
@@ -67,6 +58,7 @@ $titlePage = "Criar Usuário";
     </div>
   </div>
 </body>
+<?php require SITE_PATH . '/includes/footer-adm.php'; ?>
 
 
 </html>
