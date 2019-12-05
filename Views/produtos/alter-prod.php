@@ -14,6 +14,12 @@ $cod_produto = $_GET['produto'];
 if (isset($_GET['produto'])) {
   $selectproduto = selectalterarproduto($conn, $cod_produto);
 }
+$promocao1 = 1;
+$promocao0 = 0;
+$destaque1 = 1;
+$destaque0 = 0;
+$situacaoAtivo   = 0;
+$situacaoInativo = 1;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -99,16 +105,28 @@ if (isset($_GET['produto'])) {
           </div>
           <div class="form-check input-adm">
             <label for="destaque" class="pl-2">Produto em Destaque?</label><br>
-            <input class=" input-destaque" type="radio" name="destaque" id="destaque1" value="1">
+            <input class=" input-destaque" type="radio" name="destaque" id="destaque1" <?php $destaqueatual = "";
+                                                                                        if ($destaque1 == $selectproduto['destaque']) {
+                                                                                          $destaqueatual = "checked";
+                                                                                        } ?><?php echo $destaqueatual; ?> value="<?php echo $destaque1; ?>">
             <label class="form-check-label " for="destaque">Sim </label><br>
-            <input class="input-destaque" type="radio" name="destaque" id="destaque0" value="0">
+            <input class="input-destaque" type="radio" name="destaque" id="destaque0" <?php
+                                                                                      if ($destaque0 == $selectproduto['destaque']) {
+                                                                                        $destaqueatual = "checked";
+                                                                                      } ?><?php echo $destaqueatual; ?> value="<?php echo $destaque0 ?>">
             <label class=" mb-2" for="destaque">Não</label>
           </div><br>
           <div class="form-check input-adm">
             <label for="promocao" class="pl-2">Produto em Promoção?</label><br>
-            <input class=" input-destaque" type="radio" name="promocao" id="promocao1" value="1">
+            <input class=" input-destaque" type="radio" name="promocao" id="promocao1" <?php $promocaoatual = "";
+                                                                                        if ($promocao1 == $selectproduto['promocao']) {
+                                                                                          $promocaoatual = "checked";
+                                                                                        } ?><?php echo $promocaoatual; ?> value="<?php echo $promocao1 ?>">
             <label class="form-check-label " for="promocao">Sim </label><br>
-            <input class="input-destaque" type="radio" name="promocao" id="promocao2" value="0">
+            <input class="input-destaque" type="radio" name="promocao" id="promocao2" <?php $promocaoatual = "";
+                                                                                      if ($promocao0 == $selectproduto['promocao']) {
+                                                                                        $promocaoatual = "checked";
+                                                                                      } ?><?php echo $promocaoatual; ?> value="0">
             <label class=" mb-2" for="promocao">Não</label>
           </div><br>
           <div class="form-group mb-3">
@@ -117,9 +135,15 @@ if (isset($_GET['produto'])) {
           </div>
           <div class="form-check input-adm">
             <label for="situacao" class="pl-2">Situação do Produto em Estoque: </label><br>
-            <input class=" input-destaque" type="radio" name="situacao" id="situacao1" value="0">
+            <input class=" input-destaque" type="radio" name="situacao" id="situacao0" <?php $situacaoatual = "";
+                                                                                        if ($situacao0 == $selectproduto['situacao']) {
+                                                                                          $situacaoatual = "checked";
+                                                                                        } ?><?php echo $situacaoatual; ?> value="<?php echo $situacao0; ?>">
             <label class="form-check-label " for="situacao">Ativo </label><br>
-            <input class="input-destaque" type="radio" name="situacao" id="situacao0" value="1">
+            <input class="input-destaque" type="radio" name="situacao" id="situacao1" <?php $situacaoatual = "";
+                                                                                      if ($situacao1 == $selectproduto['promocao']) {
+                                                                                        $situacaoatual = "checked";
+                                                                                      } ?><?php echo $situacaoatual; ?>value="<?php echo $situacao1; ?>">
             <label class=" mb-2" for="situacao">Inativo</label>
           </div><br>
           <div class="input-group d-flex justify-content-center">
