@@ -20,7 +20,8 @@ if (isset($_POST['AddComentario'])) {
 }
 
 if (isset($_GET['cod_comentario'])) {
-    if (deletarComentario($conn, $_GET['cod_comentario'])) {
+   $codComentario = $_GET['cod_comentario'];
+    if (deletarComentario($conn, $codComentario)) {
         header("location:" . SITE_URL . "/Views/produtos/detalhe.php?jogo=" . $_GET['cod_produto']);
     } else {
         /** max 250 char */

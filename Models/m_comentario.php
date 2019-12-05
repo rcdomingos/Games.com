@@ -40,3 +40,21 @@ function deletarComentario($conn, $codComentario)
 
     return $result;
 }
+
+
+/*calcular a nota media do jogo */
+function calculaNotaMedia($dados){
+  $somaNota = 0;
+  $totalAvaliacao = 0;
+
+  foreach ($dados as $nota){
+    if($nota['avaliacao']){
+      $somaNota +=  $nota['avaliacao'];
+      $totalAvaliacao ++;
+    }
+  }
+  $media = ($somaNota) ? $somaNota / $totalAvaliacao : 0 ;
+
+  return array ('TotalAvaliacao'=> $totalAvaliacao, 'notaMedia' => round($media,1));
+}
+

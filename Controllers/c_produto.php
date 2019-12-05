@@ -16,6 +16,7 @@ if (isset($DetalheProduto)) {
     if ($DetalheProduto) {
         $infoProduto = listarProduto($DetalheProduto, $conn);
         $Comentarios = carregarComentarios($conn, $DetalheProduto);
+        $notaMedia = calculaNotaMedia($Comentarios);
     } else {
         header("location:" . SITE_URL . "/Views/home/index.php");
     }

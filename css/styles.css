@@ -643,14 +643,14 @@ input:-internal-autofill-selected {
   width: 180px;
 }
 
-#box-jogo-shadow {
+#box-jogo-shadow{
   width: 100%;
 }
 
 #box-jogo-shadow span {
   max-width: 40%;
   position: absolute;
-  bottom: 40px;
+  bottom: 80px;
   color: #ffffff;
   z-index: 2;
 }
@@ -663,12 +663,13 @@ input:-internal-autofill-selected {
   background-position: 100% 50%;
 }
 
-#box-jogo-shadow {
-  background-color: #20232c;
+#box-jogo-shadow, #headerLançamentos {
+  background-color: #000000;
 }
 
 #box-jogo-shadow:after {
-  background: linear-gradient(to left, transparent 0%, rgba(7, 2, 2, 0.9) 70%);
+  /*background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.9) 70%);*/
+  background:  linear-gradient(to right, rgb(0, 0, 0) 40%, rgba(0, 0, 0,0.5) 60%);
   bottom: 0;
   content: "";
   height: 100%;
