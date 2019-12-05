@@ -1,5 +1,7 @@
 <?php
-include_once '../../config.php';
+if (!defined('SITE_URL')) {
+  include_once '../../config.php';
+}
 $titlePage = 'ADM Games.com'
 ?>
 <!DOCTYPE html>

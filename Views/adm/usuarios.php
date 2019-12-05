@@ -1,9 +1,13 @@
 <?php
-include_once '../../config.php';
+/*remover o warning do include e da session**/
+if (!defined('SITE_URL')) {
+  include_once '../../config.php';
+}
+
 include   SITE_PATH . '/Controllers/c_valida_usuario.php';
 
 $titlePage   = 'Usuários do ADM';
-
+$listarusuarios = [];
 
 require SITE_PATH . '/Controllers/c_usuario.php';
 
@@ -26,27 +30,33 @@ require SITE_PATH . '/Controllers/c_usuario.php';
   <?php require SITE_PATH . '/includes/menu-adm.php'; ?>
   <main class="min-h-75">
     <div class="container">
-      <div class="row">
-        <h1>USUÁRIOS</h1>
+      <div class="row justify-content-md-center">
+        <h1 class="h3 pt-2">USUÁRIOS</h1>
       </div>
-      <div class="row">
+      <div class="row justify-content-md-center">
         <a class="col-2 btn btn-dark btn-adm my-2" href="<?php echo SITE_URL ?>/Views/adm/create.php" role="button">Cadastrar Usuário</a>
-        <table class=" table text-center ">
+      </div>
+      <div class="row justify-content-md-center">
+        <table class="table text-center " style="width: 70%">
           <thead>
             <tr>
-              <th scope="col-1">Código</th>
+              <th scope="col-1">ID</th>
               <th scope="col-4">Nome</th>
+              <th scope="col-2">Login</th>
               <th scope="col-2">Ações</th>
+
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($selectusuario as  $linha) { ?>
+            <?php foreach ($listarusuarios as  $linha) { ?>
               <tr>
                 <td><?php echo $linha['cod_usuario'] ?>
                 </td>
                 <td><?php echo $linha['nome_usuario'] ?>
                 </td>
-                <td><a class="btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Views/produtos/alter-usuario.php?produto=<?php echo $linha['cod_usuario']; ?>" role="button">Alterar</a>
+                <td><?php echo $linha['logim'] ?>
+                </td>
+                <td><a class="btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Views/adm/alter-usuario.php?usuario=<?php echo $linha['cod_usuario']; ?>&login=<?php echo $linha['logim']; ?> " role="button">Alterar</a>
                   <a class="btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Controllers/c_usuario.php?excluir=<?php echo $linha['cod_usuario']; ?>" role="button">Excluir</a>
                 </td>
               </tr>

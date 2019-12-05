@@ -30,6 +30,7 @@ CREATE TABLE produto (
 	promocao TINYINT DEFAULT 0,
 	valor_promocao DECIMAL(6,2),
 	data_lancamento DATE
+	situacao INT NOT NULL DEFAULT 0,
 );
 
 /**ADICIONANDO AS CHAVES ESTRANGEIRAS DA TABELA PRODUTO**/

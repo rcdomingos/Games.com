@@ -1,6 +1,8 @@
 <?php
 session_start();
-include_once '../../config.php';
+if (!defined('SITE_URL')) {
+  include_once '../../config.php';
+}
 include   SITE_PATH . '/Controllers/c_valida_usuario.php';
 
 $titlePage = 'ADM Games.com'
