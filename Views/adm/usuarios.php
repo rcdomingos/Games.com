@@ -57,7 +57,6 @@ require SITE_PATH . '/Controllers/c_usuario.php';
                 <td><?php echo $linha['logim'] ?>
                 </td>
                 <td><a class="btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Views/adm/alter-usuario.php?usuario=<?php echo $linha['cod_usuario']; ?>&login=<?php echo $linha['logim']; ?> " role="button">Alterar</a>
-                  <a class="btn btn-dark btn-adm" href="<?php echo SITE_URL ?>/Controllers/c_usuario.php?excluir=<?php echo $linha['cod_usuario']; ?>" role="button">Excluir</a>
                 </td>
               </tr>
             <?php } ?>

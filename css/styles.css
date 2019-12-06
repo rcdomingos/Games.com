@@ -560,7 +560,7 @@ input:-internal-autofill-selected {
   border: 1px solid #20232c;
   transition: all 0.3s ease;
   border-radius: 70px;
-  width: 40%;
+  width: 50%;
   padding-left: 10px;
   font-size: 16px;
   border: 2px solid #ff6f00;
@@ -578,6 +578,18 @@ input:-internal-autofill-selected {
   border: 2px solid #ff6f00;
 }
 
+.btn-adm3 {
+  background-color: #ff6f00;
+  color: #20232c;
+  border: 1px solid #20232c;
+  transition: all 0.3s ease;
+  border-radius: 70px;
+  width: 36%;
+  padding-left: 10px;
+  font-size: 16px;
+  border: 2px solid #ff6f00;
+}
+
 .quadro-sucess {
   background-color: #ff6f00;
   border: 2px solid #20232c;
@@ -587,8 +599,8 @@ input:-internal-autofill-selected {
 }
 
 .quadro-adm {
-  /* box-shadow: 4px 3px 10px 1px rgba(176, 176, 176, 1); */
-  background-color: rgba(0, 0, 0, 0.9);
+  box-shadow: 4px 3px 10px 1px rgba(176, 176, 176, 1);
+  background-color: rgba(0, 0, 0);
 }
 
 .input-adm {

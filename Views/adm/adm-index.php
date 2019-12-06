@@ -30,7 +30,6 @@ $titlePage = 'ADM Games.com'
           <a class="btn btn-dark btn-block btn-adm-2 py-4 my-3 col align-self-center" href="<?php echo SITE_URL ?>/Views/produtos/prod-index.php"><strong class="h5">PRODUTOS</strong></a>
           <a class="btn btn-dark btn-block btn-adm-2 py-4 my-3 col align-self-center" href="<?php echo SITE_URL ?>/Views/produtos/genero-index.php"><strong class="h5">GÊNEROS</strong></a>
           <a class="btn btn-dark btn-block btn-adm-2 py-4 my-3 col align-self-center" href="<?php echo SITE_URL ?>/Views/produtos/categ-index.php"><strong class="h5">CATEGORIAS</strong></a>
-          <a class="btn btn-dark btn-block btn-adm-2 py-4 my-3 col align-self-center" href="<?php echo SITE_URL ?>/Views/adm/clientes.php"><strong class="h5">CLIENTES</strong></a>
           <a class="btn btn-dark btn-block btn-adm-2 py-4 my-3 col align-self-center" href="<?php echo SITE_URL ?>/Views/adm/usuarios.php"><strong class="h5">USUÁRIOS</strong></a>
         </div>
       </div>

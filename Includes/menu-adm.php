@@ -12,7 +12,11 @@
       </li>
     </ul>
     <span class="navbar-text">
-      Olá Administrador(a), <?php echo $_SESSION['nome_usuario'] ?>!
+      Olá Administrador(a), <b><?php
+                                if (isset($_SESSION['nome_usuario'])) {
+                                  $usuario = explode(" ", $_SESSION['nome_usuario']);
+                                }
+                                echo ucfirst($usuario[0]); ?>!</b>
       <a class="ml-4" href="<?php echo SITE_URL ?>/Controllers/c_sair.php"><strong class="ft-escuro">Sair</strong></a>
     </span>
   </div>
