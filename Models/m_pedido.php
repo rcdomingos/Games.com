@@ -141,14 +141,44 @@ function ajustarSaldoEstoque($cod_produto, $quantidade, $conn)
     $stmt = $conn->prepare($sqlSET);
     $stmt->bind_param("i", $cod_produto);
     $stmt->execute();
-    
-    $sql = " UPDATE produto SET estoque = (@qdtEstoque - ?) WHERE cod_produto = ? ";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ii", $quantidade, $cod_produto);
 
-    $result = $stmt->execute() ? true : false;
+  $sql = " UPDATE produto SET estoque = (@qdtEstoque - ?) WHERE cod_produto = ? ";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("ii", $quantidade, $cod_produto);
 
-    $stmt->close();
-      
-    return $result;
+  $result = $stmt->execute() ? true : false;
+
+  $stmt->close();
+
+  return $result;
+}
+
+/*função para listar os pedidos do cliente*/
+function listarTodosPedidosCliente($conn, $cod_cliente)
+{
+  $sql = "SELECT cod_pedido , cod_cliente, data_pedido, data_entrega, valor_pedido, situacao FROM pedido  WHERE  cod_cliente = ? ";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("i", $cod_cliente);
+  $stmt->execute();
+
+  $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+  $stmt->close();
+
+  return $result;
+}
+
+
+/*função para listar os itens do pedido */
+function listarTodosItensDoPedidos($conn, $ccod_pedido)
+{
+  $sql = "SELECT pdi.cod_pedido, pdi.cod_produto, pdi.valor_item, pdi.quantidade,p.cover_img, p.nome_prod,c.nome_categoria FROM pedido_item pdi 
+            INNER JOIN produto p ON pdi.cod_produto = p.cod_produto INNER JOIN categoria c ON p.cod_categoria = c.cod_categoria
+            WHERE pdi.cod_pedido = ? ";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("i", $ccod_pedido);
+  $stmt->execute();
+
+  $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+  $stmt->close();
+  return $result;
 }

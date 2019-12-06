@@ -30,9 +30,9 @@ $msgErro = ($_GET['erro']) ? $_GET['erro'] : "Erro inesperado no processamento d
   <!-- menu do site -->
   <?php include SITE_PATH . '/includes/menu.php';?>
   <!--conteudo da pagina -->
-  <main>
+  <main class="min-h-60 mx-4">
     <article>
-      <div class="container">
+      <div class="container mb-md-n4">
         <div class="row align-items-center">
           <div class="col-md-5 col-12">
             <img class="img-fluid" src="<?php echo SITE_URL ?>/images/img-gameOver.webp" alt="GAME OVER">

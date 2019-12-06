@@ -72,8 +72,9 @@ CREATE TABLE pedido (
 	data_pedido DATE NOT NULL, 
 	data_entrega DATE,
 	valor_pedido DECIMAL(6,2),
-  cod_carrinho VARCHAR(50)
-);
+   cod_carrinho VARCHAR(50),
+   situacao INT(1) NULL DEFAULT 0
+   );
 
 /**ADICIONANDO AS CHAVES ESTRANGEIRAS DA TABELA PEDIDO**/
 ALTER TABLE pedido
@@ -119,7 +120,8 @@ ALTER TABLE comentario
 CREATE TABLE favorito (
 cod_favorito INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 cod_produto INT,
-cod_cliente INT 
+cod_cliente INT,
+data_inclusao DATE,
 );
 
 

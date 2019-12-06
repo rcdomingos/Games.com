@@ -9,12 +9,14 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $DetalheProduto = $_GET['jogo'];
+$clienteLogado = isset($_SESSION['cod_cliente']) ? $_SESSION['cod_cliente'] : false;
 
 require SITE_PATH . '/Controllers/c_produto.php';
 
+include SITE_PATH . '/Controllers/c_favorito.php';
+
 /**Titulo da pagina mudar de acordo com a pagina rederenciada */
 $titlePage = "Jogo " . $infoProduto['nome_prod'];
-$clienteLogado = isset($_SESSION['cod_cliente']) ? $_SESSION['cod_cliente'] : false;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -49,11 +51,23 @@ $clienteLogado = isset($_SESSION['cod_cliente']) ? $_SESSION['cod_cliente'] : fa
       </div>
       <div class="col-12 col-md-5 align-self-center">
         <!-- link para adicionar o jogo aos favoritos -->
-        <a class="text-right" href="#?idcliente=1&cod_jogo=23">
-          <img class="text-right ico-favoritos"
-               src="<?php echo SITE_URL ?>/images/icones/add-favoritos.svg"
-               alt="Adicionar a Favoritos" title="Adicionar aos Favoritos">
-        </a>
+        <div class="text-right ico-favoritos">
+          <?php if (isset($jogoNosFavorito) and ($jogoNosFavorito)) { ?>
+            <a class="link-none text-right ft-laranja"
+               href="<?php echo SITE_URL ?>/Controllers/c_favorito.php?idcliente=<?php echo $clienteLogado ?>&rm_favorito_jogo=<?php echo $DetalheProduto ?>">
+              <span class="ft-laranja">Remover dos Favoritos</span>
+              <img src="<?php echo SITE_URL ?>/images/icones/remover-favorito.svg"
+                   alt="Remover dos Favoritos" title="Remover dos Favoritos">
+            </a>
+          <?php } else { ?>
+            <a class="link-none text-right ft-escuro"
+               href="<?php echo SITE_URL ?>/Controllers/c_favorito.php?idcliente=<?php echo $clienteLogado ?>&add_favorito_jogo=<?php echo $DetalheProduto ?>">
+              <span class="ft-escuro">Adicionar aos Favoritos</span>
+              <img src="<?php echo SITE_URL ?>/images/icones/add-favoritos.svg"
+                   alt="Adicionar a Favoritos" title="Adicionar aos Favoritos">
+            </a>
+          <?php } ?>
+        </div>
         <!-- card com a opção de comprar -->
         <div class="card box-detalhe-jogo p-2 bk-escuro mt-1">
           <div class="card-body text-center">
@@ -155,14 +169,15 @@ $clienteLogado = isset($_SESSION['cod_cliente']) ? $_SESSION['cod_cliente'] : fa
       </div>
     </div>
     <div class="row pt-2">
-      <div class="col-6" >
-        <p class="text-left font-weight-bold"><span class="h5">Nota do Jogo: <?php echo $notaMedia['notaMedia'];?></span>
-          <br><small class="font-italic">Total de Avaliações: <?php echo $notaMedia['TotalAvaliacao'];?> </small></p>
+      <div class="col-6">
+        <p class="text-left font-weight-bold"><span
+            class="h5">Nota do Jogo: <?php echo $notaMedia['notaMedia']; ?></span>
+          <br><small class="font-italic">Total de Avaliações: <?php echo $notaMedia['TotalAvaliacao']; ?> </small></p>
       </div>
       <div class="col-6 text-right">
-        <p class="text-right"> 
-            <a class=" btn btn-dark btn-comprar btn-lg"
-               href="<?php echo SITE_URL ?>/Views/Clientes/cadastroComentario.php?jogo=<?php echo $infoProduto['cod_produto']; ?>&nome=<?php echo $infoProduto['nome_prod']; ?>">Adicionar</a>
+        <p class="text-right">
+          <a class=" btn btn-dark btn-comprar btn-lg"
+             href="<?php echo SITE_URL ?>/Views/Clientes/cadastroComentario.php?jogo=<?php echo $infoProduto['cod_produto']; ?>&nome=<?php echo $infoProduto['nome_prod']; ?>">Adicionar</a>
         </p>
       </div>
     </div>
@@ -185,7 +200,8 @@ $clienteLogado = isset($_SESSION['cod_cliente']) ? $_SESSION['cod_cliente'] : fa
               <p class="font-italic text-muted"><small>
                   <?php $nomeClienteComentario = explode(" ", $comentario['nome_cliente']);
                   echo current($nomeClienteComentario) ?></small></p>
-              <p class="text-muted font-italic mt-n4"><small><?php echo date('d-m-Y',strtotime($comentario['data_comentario'])) ?></small></p>
+              <p class="text-muted font-italic mt-n4">
+                <small><?php echo date('d-m-Y', strtotime($comentario['data_comentario'])) ?></small></p>
             </div>
             <div class="media-body">
               <h5

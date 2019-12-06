@@ -13,13 +13,6 @@ $itensCarrinho = [];
 $totalPedido = 0.00;
 require SITE_PATH . '/Controllers/c_pedido.php';
 
-// $_SESSION['cod_carrinho']233
-// $_SESSION['cod_cliente']
-
-// echo "<pre>";
-// print_r($itensCarrinho);
-// echo "</pre>";
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -39,7 +32,7 @@ require SITE_PATH . '/Controllers/c_pedido.php';
   <?php include SITE_PATH . '/includes/menu.php';?>
 
   <!--conteudo da pagina -->
-  <main class="min-h-50">
+  <main class="min-h-60 mx-4">
     <section>
       <div class="container">
         <div class="row">

@@ -84,8 +84,12 @@ if (isset($_SESSION['carrinho'])) {
         <nav id="lista-menu">
           <ul>
             <li>
+              <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/home/index.php"><span><img
+                    src="<?php echo SITE_URL ?>/images/icones/home.svg" alt=""></span>Home</a>
+            </li>
+            <li>
               <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/produtos/playstation.php"><span><img
-                    src="<?php echo SITE_URL  ?>/images/icones/ps4-control.svg" alt=""></span>Playstation</a>
+                    src="<?php echo SITE_URL ?>/images/icones/ps4-control.svg" alt=""></span>Playstation</a>
             </li>
             <li>
               <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/produtos/xbox.php"><span><img

@@ -21,16 +21,16 @@ $conf = require '../../config.php';
   <?php include SITE_PATH.'/includes/menu.php'; ?>
   <!--conteudo da pagina -->
 
-<div class="container">
-<!-- <body>
-  <div class="container mt-5">
-    <div class="row justify-content-md-center mt-5">
-      <div class="col-md-9 text-center">
-        <h1>Usuario Cadastrado com Sucesso!</h1>
+  <div class="container min-h-50">
+    <!-- <body>
+      <div class="container mt-5">
+        <div class="row justify-content-md-center mt-5">
+          <div class="col-md-9 text-center">
+            <h1>Usuario Cadastrado com Sucesso!</h1>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</body> -->
+    </body> -->
     <div class="row justify-content-md-center mt-5 ">
       <div class="col-md-4 mt-md-5">
         <form class="mt-5 px-md-3" action='<?php echo SITE_URL ?>/Controllers/c_cliente.php' method="post">

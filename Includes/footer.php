@@ -31,7 +31,7 @@
               </a>
             </li>
             <li>
-              <a class="border-button ft-escuro" href="#">
+              <a class="border-button ft-escuro" href="<?php echo SITE_URL ?>/Views/home/sobreNos.php">
                 <span><img src="<?php echo SITE_URL ?>/images/icones/quem-somos.svg"></span>Sobre
                 Nós
               </a>
@@ -45,8 +45,7 @@
           </ul>
         </nav>
       </div>
-      
-      
+
       <div class="col-md-4 text-right">
         <a href="<?php echo SITE_URL ?>/Views/home/index.php"><img id="logo-footer"
             src="<?php echo SITE_URL ?>/images/logo.png" alt="Logo"></a>
