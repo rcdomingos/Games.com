@@ -41,7 +41,9 @@ if (isset($_SESSION['carrinho'])) {
         /**Tela de Login e Logout do cliente */
         if (isset($_SESSION['nome_cliente'])) {
             $nomeCliente = explode(" ", $_SESSION['nome_cliente']); ?>
+        <a href="<?php echo SITE_URL ?>/Views/Clientes/alterarCliente.php">
         <img id="icone-user" src="<?php echo SITE_URL ?>/images/icones/utilizador.svg" alt="">
+        </a>
         <div class="menu-entrar">
           <ul class="text-left">
             <li>Olá, <strong><?php echo $nomeCliente[0] ?></strong>

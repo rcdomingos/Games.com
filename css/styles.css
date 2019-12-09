@@ -781,3 +781,10 @@ h5.titulo-comentario {
   width: 40px;
   margin-right: 2px;
 }
+
+.btn-renata{
+  background-color: #ff6f00;
+  color: #20232c;
+  border: 1px solid #20232c;
+  border: 2px solid #ff6f00;
+}
